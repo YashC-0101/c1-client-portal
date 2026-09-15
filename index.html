@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C1 Clearance — Client Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=IBM+Plex+Sans:wght@0,400;0,500&display=swap">
+<style>
+  :root {
+    --lime: #9fe870;
+    --lime-deep: #66b534;
+    --lime-wash: #eef9e2;
+    --ink: #062f28;
+    --ground: #f1f3f0;
+    --surface: #ffffff;
+    --line: #dde3dc;
+    --fg: #0d221d;
+    --fg-2: #4e615a;
+    --fg-3: #7d8d86;
+    --display: "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+    --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--ground); color: var(--fg);
+    font-family: var(--body); font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .top { background: var(--ink); padding: 40px 22px 34px; }
+  .top-inner { max-width: 760px; margin: 0 auto; }
+  .eyebrow {
+    font-family: var(--display); font-size: 11px; font-weight: 500;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--lime); margin: 0 0 12px;
+  }
+  h1 {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(26px, 5.5vw, 34px); line-height: 1.15;
+    letter-spacing: -.02em; margin: 0 0 12px; color: #fff;
+  }
+  .top p { margin: 0; color: #bed4ca; max-width: 58ch; }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 30px 22px 60px; }
+
+  .sec { margin-bottom: 34px; }
+  .sec-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 0 0 6px 2px; }
+  .sec-head h3 {
+    font-family: var(--display); font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .08em; color: var(--fg-2); margin: 0;
+  }
+  .sec-head .tag {
+    font-family: var(--display); font-size: 10px; font-weight: 600;
+    letter-spacing: .06em; padding: 2px 8px; border-radius: 999px;
+    background: var(--lime-wash); color: #3f7a1f;
+  }
+  .sec-note { font-size: 14px; color: var(--fg-3); margin: 0 0 14px 2px; }
+
+  .card {
+    display: block; background: var(--surface);
+    border: 1px solid var(--line); border-radius: 16px;
+    padding: 22px 24px; margin-bottom: 14px;
+    text-decoration: none; color: inherit;
+    transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease;
+  }
+  .card:hover {
+    border-color: var(--lime-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px -14px rgba(6, 47, 40, .4);
+  }
+  .card.key { border-color: var(--lime-deep); }
+  .card .row { display: flex; align-items: flex-start; gap: 16px; }
+  .ic {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--lime-wash);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 20px;
+  }
+  .ic.pdf { background: #fdeceb; }
+  .card h2 {
+    font-family: var(--display); font-size: 17px; font-weight: 600;
+    margin: 0 0 4px; line-height: 1.35;
+  }
+  .card p { font-size: 14.5px; color: var(--fg-2); margin: 0; }
+  .card code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13px; background: var(--lime-wash); border-radius: 4px; padding: 1px 5px;
+  }
+  .arrow { color: var(--fg-3); font-size: 18px; margin-left: auto; align-self: center; }
+  .badge {
+    font-family: var(--display); font-size: 10.5px; font-weight: 600;
+    padding: 2px 8px; border-radius: 999px; margin-left: 6px;
+    letter-spacing: .04em; color: #fff; white-space: nowrap;
+  }
+  footer {
+    margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line);
+    color: var(--fg-3); font-size: 12.5px; text-align: center;
+  }
+  :focus-visible { outline: 2px solid var(--lime-deep); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <p class="eyebrow">C1 Clearance · Octogle Technologies</p>
+    <h1>C1 Clearance — Client Portal</h1>
+    <p>
+      Hi Sam, hi Dan — everything for the Lead Centre lives here, newest at the top.
+      Start with the questions page: it's the only thing we're waiting on. That page
+      and the admin view need the access code the Octogle Team sent you.
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="sec">
+    <div class="sec-head">
+      <h3>We're waiting on you</h3>
+      <span class="tag">15 SEP 2026</span>
+    </div>
+    <p class="sec-note">One page, nine questions. It saves as you type, so you can leave it and come back.</p>
+
+    <a class="card key" href="2026-09-15-c1-go-live-questions.html">
+      <div class="row">
+        <div class="ic">📋</div>
+        <div>
+          <h2>A few things we need from you <span class="badge" style="background:#3f7a1f;">START HERE</span></h2>
+          <p><strong>The nine answers that unblock go-live.</strong> Two of them decide everything else: whether
+          <code>0330 133 9144</code> is moving to Aircall or a new number is being used (if it's new, the number on
+          the van is wrong from day one), and whether we go ahead with the separate WhatsApp number. The rest is
+          the detail we need to set the system up as you actually work — where the jobs come from, who's on the
+          team, your Aircall admin, how fast an enquiry should be answered, what the automatic replies say, and
+          anything we've guessed wrong about the job stages.</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head">
+      <h3>Where things stand</h3>
+      <span class="tag">SEPTEMBER 2026</span>
+    </div>
+    <p class="sec-note">The three notes that changed the plan, newest first.</p>
+
+    <a class="card" href="2026-09-07-c1-where-to-focus-next.html">
+      <div class="row">
+        <div class="ic">🎯</div>
+        <div>
+          <h2>Where to focus next (7 September) <span class="badge" style="background:#3f7a1f;">LATEST</span></h2>
+          <p><strong>Two WhatsApp enquiries in eight months — so the plan got smaller.</strong> The van stays as it
+          is (no restickering the QR code, nothing to spend), Dan's number <code>07440 517077</code> isn't touched
+          so the chat history stays put, and the separate WhatsApp number is worth having only because it's
+          cheap — say the word and we drop it. Updates the WhatsApp options paper of 4 September: Plans B and D
+          are both off. Ends with the two questions that are now on the questions page.</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+    </a>
+
+    <a class="card" href="2026-09-07-c1-where-to-focus-next.pdf">
+      <div class="row">
+        <div class="ic pdf">📄</div>
+        <div>
+          <h2>Where to focus next (7 September, PDF)</h2>
+          <p>The same note as a PDF, for printing or forwarding.</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+    </a>
+
+    <a class="card" href="2026-09-04-c1-whatsapp-options.pdf">
+      <div class="row">
+        <div class="ic pdf">📄</div>
+        <div>
+          <h2>WhatsApp — the options (4 September, PDF)</h2>
+          <p>The routes for getting WhatsApp into the Lead Centre laid side by side, with what each one costs and
+          what it does to the number on the van. Superseded in part by the 7 September note above — Plans B and D
+          are off — but it's the paper the decision was made from.</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+    </a>
+
+    <a class="card" href="2026-09-03-c1-lead-centre-go-live.pdf">
+      <div class="row">
+        <div class="ic pdf">📄</div>
+        <div>
+          <h2>Lead Centre — go-live (3 September, PDF)</h2>
+          <p>What going live actually involves: the real numbers and the live Aircall events wired into the Lead
+          Centre, and what has to be in place on your side before real enquiries land in it.</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head">
+      <h3>The project</h3>
+      <span class="tag">17 AUG 2026</span>
+    </div>
+    <p class="sec-note">
+      One Lead Centre — every enquiry from WhatsApp, the office line, email, the website form and the van's QR
+      code landing on a single record. Three pages: what it is, what it looks like, and whether it's actually
+      buildable.
+    </p>
+
+    <a class="card" href="2026-08-17-c1-lead-centre-overview.html">
+      <div class="row">
+        <div class="ic">🎯</div>
+        <div>
+          <h2>C1 Lead Centre — project overview <span class="badge" style="background:#0e5db8;">THE PITCH</span></h2>
+          <p><strong>The pitch in one scroll.</strong> Today two numbers sit in two places with no shared memory:
+          WhatsApp on a Lycamobile SIM in a van, and the office line <code>0330 133 9144</code>. Photos of a garage
+          full of stuff live on one handset, so nobody else can quote from them; a missed call at 07:14 leaves no
+          trace. After: <strong>five ways in, one record</strong> — WhatsApp, calls, email, website form and
+          Meta/Google ads all matched on phone number, with photos treated as the primary content of the lead.
+          Includes a live animated feed, the number that actually decides the job (speed to first reply), the
+          six-week sequence, running cost, and the six things needed to start.</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+    </a>
+
+    <a class="card" href="2026-08-17-c1-lead-centre-mockup.html">
+      <div class="row">
+        <div class="ic">📱</div>
+        <div>
+          <h2>C1 Lead Centre — clickable mockup <span class="badge" style="background:#25a566;">DEMO</span></h2>
+          <p><strong>The product itself, mobile-first — tap through it as if it were live.</strong> The unified
+          inbox with every channel in one list, a lead record with the enquiry photos, postcode, access notes and
+          volume estimate pinned to the top, the pipeline stages built around how a clearance job really runs, and
+          the reply flow. Best opened on a phone. <strong>Interface concept — the figures inside are a
+          demonstration, not live data.</strong></p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+    </a>
+
+    <a class="card" href="2026-08-17-c1-lead-centre-feasibility.html">
+      <div class="row">
+        <div class="ic" style="background:#fdf3e2;">🔧</div>
+        <div>
+          <h2>C1 Lead Centre — feasibility &amp; build plan <span class="badge" style="background:#b4720a;">TECHNICAL</span></h2>
+          <p><strong>Verdict: buildable — with three changes to the original plan.</strong> <strong>(1) Don't port
+          the WhatsApp number</strong> — WhatsApp is tied to the number, not the SIM, and the number is printed
+          <em>inside</em> the QR code on the van, so a failed re-verification is a re-wrap, not a settings change;
+          Meta's Coexistence route brings it in on its existing SIM with the chat history intact. <strong>(2) A
+          divert carries calls, not WhatsApp</strong> — the two are separate jobs. <strong>(3) Six weeks, not 21
+          days</strong> — Aircall's own docs for UK ports, but the divert makes recording live in week one. Plus
+          the three-asset ledger, what Coexistence costs you in features, running costs including the 1 October
+          2026 Meta pricing change, an 8-row risk ledger and the compliance points on call recording.</p>
+        </div>
+        <div class="arrow">›</div>
+      </div>
+    </a>
+  </div>
+
+  <a class="card" href="view.html" style="border-style: dashed;">
+    <div class="row">
+      <div class="ic" style="background:#eceeeb;">🔒</div>
+      <div>
+        <h2 style="font-size: 15px; color: var(--fg-2);">Admin view (Octogle Team only)</h2>
+        <p>The latest answers from the questions page — password protected.</p>
+      </div>
+      <div class="arrow">›</div>
+    </div>
+  </a>
+
+  <footer>
+    Updated 15 September 2026 · C1 Clearance Lead Centre · Octogle Technologies
+  </footer>
+</div>
+
+</body>
+</html>

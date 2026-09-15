@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C1 answers — admin view</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=IBM+Plex+Sans:wght@0,400;0,500&display=swap">
+<style>
+  :root {
+    --lime-deep: #66b534;
+    --lime-wash: #eef9e2;
+    --ink: #062f28;
+    --ground: #f1f3f0;
+    --surface: #fff;
+    --line: #dde3dc;
+    --fg: #0d221d;
+    --fg-2: #4e615a;
+    --fg-3: #7d8d86;
+    --amber: #b0741a;
+    --display: "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+    --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--fg);
+    font-family: var(--body); font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .top { background: var(--ink); padding: 32px 22px 26px; }
+  .top-inner { max-width: 700px; margin: 0 auto; }
+  .eyebrow {
+    font-family: var(--display); font-size: 11px; font-weight: 500;
+    letter-spacing: .14em; text-transform: uppercase; color: #9fe870; margin: 0 0 10px;
+  }
+  h1 {
+    font-family: var(--display); font-weight: 600; font-size: 27px;
+    letter-spacing: -.02em; margin: 0; color: #fff;
+  }
+  .wrap { max-width: 700px; margin: 0 auto; padding: 0 22px 60px; }
+  .meta {
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 12px 16px; margin-top: -16px;
+    font-family: var(--display); font-size: 13px; color: var(--fg-2);
+    box-shadow: 0 8px 24px -18px rgba(6, 47, 40, .5);
+  }
+  .meta b { color: var(--fg); font-weight: 600; }
+  .meta.warn { color: var(--amber); }
+  .a { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin-top: 14px; }
+  .a h2 { font-family: var(--display); font-weight: 600; font-size: 16px; margin: 0 0 8px; line-height: 1.35; }
+  .a .ans { white-space: pre-wrap; margin: 0; }
+  .a .ans.empty { color: var(--fg-3); font-style: italic; }
+  .a.key { border-color: var(--lime-deep); }
+  .bar { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; align-items: center; }
+  button {
+    font-family: var(--display); font-size: 14px; font-weight: 500;
+    padding: 10px 16px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--fg); cursor: pointer;
+  }
+  button.primary { background: var(--ink); color: var(--ground); border-color: transparent; }
+  button:hover { border-color: var(--lime-deep); }
+  #note { font-family: var(--display); font-size: 12.5px; color: var(--lime-deep); }
+  footer { margin-top: 28px; font-size: 12.5px; color: var(--fg-3); }
+  footer a { color: var(--fg-3); }
+  :focus-visible { outline: 2px solid var(--lime-deep); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <p class="eyebrow">C1 Clearance · Octogle Team only</p>
+    <h1>Go-live answers</h1>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="meta" id="meta">Loading…</div>
+  <div id="answers"></div>
+
+  <div class="bar">
+    <button type="button" class="primary" id="copyBtn">Copy all</button>
+    <button type="button" id="reloadBtn">Reload</button>
+    <button type="button" id="lockBtn">Lock this browser</button>
+    <span id="note"></span>
+  </div>
+
+  <footer>C1 Clearance Lead Centre · <a href="index.html">Back to the portal</a></footer>
+</div>
+
+<script src="lib.js"></script>
+<script>
+  // Mirrors the question list on the form. Kept here so the view still labels
+  // an answer whose question was reworded on the form since.
+  const QUESTIONS = [
+    { id: "q1-0330", key: true, q: "Is 0330 133 9144 moving over to Aircall, or is the Aircall number a new one?" },
+    { id: "q2-whatsapp", key: true, q: "Happy for us to get the new WhatsApp number going?" },
+    { id: "q3-sources", q: "Where does most of your work actually come from?" },
+    { id: "q4-team", q: "Who's in the team, and who should be an admin?" },
+    { id: "q5-aircall", q: "Who's your Aircall admin?" },
+    { id: "q6-business", q: "Business details for the WhatsApp profile" },
+    { id: "q7-speed", q: "How quickly should a new enquiry be answered?" },
+    { id: "q8-autoreply", q: "What should the automatic replies say?" },
+    { id: "q9-wrong", q: "Anything we've got wrong?" },
+  ];
+
+  const metaEl = document.getElementById("meta");
+  const listEl = document.getElementById("answers");
+  const noteEl = document.getElementById("note");
+  let password = null;
+  let latest = null;
+
+  function note(msg) {
+    noteEl.textContent = msg;
+    setTimeout(function () { noteEl.textContent = ""; }, 2600);
+  }
+
+  function render(data) {
+    latest = data;
+    listEl.textContent = "";
+
+    if (!data) {
+      metaEl.className = "meta warn";
+      metaEl.textContent = "Nothing submitted yet — answers.json does not exist in the repo.";
+      return;
+    }
+
+    const when = data.savedAt ? new Date(data.savedAt).toLocaleString("en-GB") : "unknown time";
+    const who = data.savedBy || "(name not given)";
+    metaEl.className = "meta";
+    metaEl.innerHTML = "";
+    const b = document.createElement("span");
+    b.innerHTML = "Last saved by <b></b> · ";
+    b.querySelector("b").textContent = who;
+    metaEl.appendChild(b);
+    const t = document.createElement("span");
+    t.textContent = when;
+    metaEl.appendChild(t);
+
+    const answers = data.answers || {};
+    QUESTIONS.forEach(function (item) {
+      const card = document.createElement("div");
+      card.className = "a" + (item.key ? " key" : "");
+
+      const h = document.createElement("h2");
+      h.textContent = item.q;
+      card.appendChild(h);
+
+      const p = document.createElement("p");
+      const text = (answers[item.id] || "").trim();
+      p.className = "ans" + (text ? "" : " empty");
+      p.textContent = text || "— not answered";
+      card.appendChild(p);
+
+      listEl.appendChild(card);
+    });
+
+    // Anything saved under an id this page does not know about.
+    Object.keys(answers).forEach(function (id) {
+      if (QUESTIONS.some(function (q) { return q.id === id; })) return;
+      const card = document.createElement("div");
+      card.className = "a";
+      const h = document.createElement("h2");
+      h.textContent = id;
+      card.appendChild(h);
+      const p = document.createElement("p");
+      p.className = "ans";
+      p.textContent = answers[id];
+      card.appendChild(p);
+      listEl.appendChild(card);
+    });
+  }
+
+  function asText() {
+    if (!latest) return "No answers saved yet.";
+    const answers = latest.answers || {};
+    const lines = ["C1 Clearance — go-live answers",
+                   "Saved by: " + (latest.savedBy || "(name not given)"),
+                   "Saved at: " + (latest.savedAt || "unknown"),
+                   ""];
+    QUESTIONS.forEach(function (item, i) {
+      lines.push((i + 1) + ". " + item.q);
+      lines.push((answers[item.id] || "").trim() || "(not answered)");
+      lines.push("");
+    });
+    return lines.join("\n");
+  }
+
+  function load() {
+    metaEl.className = "meta";
+    metaEl.textContent = "Loading…";
+    loadAnswers(password)
+      .then(render)
+      .catch(function (err) {
+        metaEl.className = "meta warn";
+        metaEl.textContent = "Couldn't read the answers — " + err.message;
+        console.error(err);
+      });
+  }
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(asText())
+        .then(function () { note("Copied"); })
+        .catch(function () { note("Couldn't copy"); });
+    } else {
+      note("Couldn't copy");
+    }
+  });
+
+  document.getElementById("reloadBtn").addEventListener("click", load);
+
+  document.getElementById("lockBtn").addEventListener("click", function () {
+    clearVerified();
+    location.reload();
+  });
+
+  mountPasswordGate(function (pw) {
+    password = pw;
+    load();
+  });
+</script>
+
+</body>
+</html>

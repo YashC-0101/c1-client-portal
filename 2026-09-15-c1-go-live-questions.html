@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>C1 Go-Live Questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=IBM+Plex+Sans:wght@0,400;0,500&display=swap">
+
+<style>
+  :root {
+    --lime: #9fe870;
+    --lime-deep: #66b534;
+    --lime-wash: #eef9e2;
+    --ink: #062f28;
+
+    --ground: #f1f3f0;
+    --surface: #ffffff;
+    --line: #dde3dc;
+    --field: #fbfcfa;
+
+    --fg: #0d221d;
+    --fg-2: #4e615a;
+    --fg-3: #7d8d86;
+    --amber: #b0741a;
+
+    --display: "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+    --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --lime: #9fe870;
+      --lime-deep: #b6ed8e;
+      --lime-wash: #14312a;
+      --ink: #dff0e6;
+
+      --ground: #071a16;
+      --surface: #0e2520;
+      --line: #234139;
+      --field: #0a1f1a;
+
+      --fg: #e8f2ec;
+      --fg-2: #a6bcb2;
+      --fg-3: #7d968c;
+      --amber: #e8b45f;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --lime: #9fe870;
+    --lime-deep: #b6ed8e;
+    --lime-wash: #14312a;
+    --ink: #dff0e6;
+
+    --ground: #071a16;
+    --surface: #0e2520;
+    --line: #234139;
+    --field: #0a1f1a;
+
+    --fg: #e8f2ec;
+    --fg-2: #a6bcb2;
+    --fg-3: #7d968c;
+    --amber: #e8b45f;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .top { background: #062f28; padding: 36px 22px 30px; }
+  .top-inner { max-width: 620px; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #9fe870;
+    margin: 0 0 12px;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(25px, 5.5vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin: 0 0 12px;
+    color: #fff;
+    text-wrap: balance;
+  }
+
+  .top p { margin: 0; color: #bed4ca; font-size: 16px; max-width: 48ch; }
+  .top a { color: #9fe870; }
+
+  .wrap {
+    max-width: 620px;
+    margin: 0 auto;
+    padding-inline: 22px;
+    padding-block: 0 60px;
+  }
+
+  /* who + save state */
+
+  .whobar {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-top: -18px;
+    box-shadow: 0 8px 24px -18px rgba(6, 47, 40, .5);
+  }
+  .whobar label {
+    font-family: var(--display);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg-2);
+  }
+  .whobar input {
+    flex: 1 1 140px;
+    min-width: 0;
+    font: inherit;
+    font-size: 15px;
+    color: var(--fg);
+    background: var(--field);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 10px;
+  }
+  #state {
+    font-size: 12.5px;
+    color: var(--fg-3);
+    font-family: var(--display);
+    flex: 1 1 100%;
+  }
+  #state.warn { color: var(--amber); }
+
+  /* questions */
+
+  .qs { display: grid; gap: 16px; margin-top: 26px; }
+
+  .qcard {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .qcard.key { border-color: var(--lime-deep); }
+
+  .qhead {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .qcard h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 16.5px;
+    line-height: 1.35;
+    margin: 0;
+    color: var(--fg);
+    text-wrap: balance;
+  }
+
+  .flag {
+    font-family: var(--display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--lime-deep);
+    background: var(--lime-wash);
+    border-radius: 999px;
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+
+  .hint { margin: 6px 0 0; font-size: 14.5px; color: var(--fg-2); }
+
+  textarea {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--fg);
+    background: var(--field);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 11px 13px;
+    resize: vertical;
+    min-height: 56px;
+    overflow: hidden;
+  }
+  textarea::placeholder { color: var(--fg-3); }
+  textarea:focus { outline: 2px solid var(--lime-deep); outline-offset: 1px; border-color: transparent; }
+
+  .saved {
+    font-family: var(--display);
+    font-size: 11.5px;
+    color: var(--lime-deep);
+    margin-top: 7px;
+    height: 14px;
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .saved.on { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .saved { transition: none; } }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .actions button {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--fg);
+    cursor: pointer;
+  }
+  .actions button.primary { background: var(--ink); color: var(--ground); border-color: transparent; }
+  .actions button:hover { border-color: var(--lime-deep); }
+  #copyNote { font-family: var(--display); font-size: 12.5px; color: var(--lime-deep); align-self: center; }
+
+  .end {
+    margin-top: 26px;
+    background: var(--lime-wash);
+    border: 1px solid color-mix(in srgb, var(--lime-deep) 30%, transparent);
+    border-radius: 14px;
+    padding: 18px 20px;
+    font-size: 15.5px;
+    color: var(--fg-2);
+  }
+  .end b { font-family: var(--display); color: var(--fg); font-weight: 600; }
+
+  footer { margin-top: 26px; font-size: 12.5px; color: var(--fg-3); }
+  footer a { color: var(--fg-3); }
+
+  :focus-visible { outline: 2px solid var(--lime-deep); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <p class="eyebrow">C1 Clearance · Lead Centre</p>
+    <h1>A few things we need from you</h1>
+    <p>
+      Type straight into the boxes — it saves as you go. Skip anything you're not sure about; the line under
+      your name says where the answers are saved.
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="whobar">
+    <label for="who">Who's filling this in?</label>
+    <input id="who" type="text" placeholder="Sam" autocomplete="off">
+    <span id="state">Saves as you type</span>
+  </div>
+
+  <div class="qs" id="qs"></div>
+
+  <div class="actions">
+    <button type="button" class="primary" id="copyBtn">Copy answers</button>
+    <button type="button" id="downloadBtn">Download as text</button>
+    <span id="copyNote"></span>
+  </div>
+
+  <div class="end">
+    <b>That's the lot.</b> Once we've got the 0330 answer and a yes on the WhatsApp number, we can have real
+    enquiries landing in the Lead Centre within days. Anything you'd rather talk through, just give us a ring.
+  </div>
+
+  <footer>C1 Clearance Lead Centre · September 2026 · <a href="index.html">Back to the portal</a></footer>
+</div>
+
+<script src="lib.js"></script>
+<script>
+  const QUESTIONS = [
+    {
+      id: "q1-0330",
+      key: true,
+      flag: "Big one",
+      q: "Is 0330 133 9144 moving over to Aircall, or is the Aircall number a new one?",
+      hint: "If it's a new number, the one painted on the van is wrong from day one — so this is the first thing to sort.",
+      ph: "It's moving across / it's a new number / not decided yet"
+    },
+    {
+      id: "q2-whatsapp",
+      key: true,
+      flag: "Big one",
+      q: "Happy for us to get the new WhatsApp number going?",
+      hint: "About £45 a month. Separate number, wired straight into the Lead Centre. Nothing on your side goes near Facebook, and nothing happens to the van's number.",
+      ph: "Yes, go ahead / hold off for now"
+    },
+    {
+      id: "q3-sources",
+      q: "Where does most of your work actually come from?",
+      hint: "Phone calls, Google, the website, word of mouth, repeat customers. A rough split is plenty — it decides what we connect next.",
+      ph: "e.g. most ring the office, a few off Google, some word of mouth"
+    },
+    {
+      id: "q4-team",
+      q: "Who's in the team, and who should be an admin?",
+      hint: "Name and email for each person. Right now there are two made-up accounts and everyone shares one password.",
+      ph: "Sam — sam@…, admin\nDan — dan@…"
+    },
+    {
+      id: "q5-aircall",
+      q: "Who's your Aircall admin?",
+      hint: "We'll send them the five settings we need — two keys, the number id, and a webhook with its secret. Ten minutes at a keyboard.",
+      ph: "Name, and the best way to reach them"
+    },
+    {
+      id: "q6-business",
+      q: "Business details for the WhatsApp profile",
+      hint: "Legal company name, trading address, website — and the name you want customers to see when you message them.",
+      ph: "C1 Clearance Ltd, address, c1clearance.co.uk, shown as \"C1 Clearance\""
+    },
+    {
+      id: "q7-speed",
+      q: "How quickly should a new enquiry be answered?",
+      hint: "The inbox flags anything left too long. Half an hour, an hour, same day — whatever's realistic.",
+      ph: "e.g. within the hour on weekdays"
+    },
+    {
+      id: "q8-autoreply",
+      q: "What should the automatic replies say?",
+      hint: "One for a missed call, one for out of hours. In your words — we'll use them exactly as written.",
+      ph: "Sorry we missed you — we'll call you straight back…"
+    },
+    {
+      id: "q9-wrong",
+      q: "Anything we've got wrong?",
+      hint: "We guessed the job stages from the design: new enquiry, contacted, site photos in, quote sent, booked, job completed, invoiced, paid — plus lost / no answer. Same with the job types. Tell us what doesn't match how you work.",
+      ph: "Anything at all — better now than after real leads are in"
+    }
+  ];
+
+  const DRAFT_KEY = "c1-go-live-answers-v1";
+  const WHO_KEY = "c1-who";
+
+  const qsEl = document.getElementById("qs");
+  const whoEl = document.getElementById("who");
+  const stateEl = document.getElementById("state");
+  const copyNote = document.getElementById("copyNote");
+  const fields = {};
+
+  QUESTIONS.forEach(function (item) {
+    const card = document.createElement("div");
+    card.className = "qcard" + (item.key ? " key" : "");
+
+    const head = document.createElement("div");
+    head.className = "qhead";
+
+    const h = document.createElement("h2");
+    h.textContent = item.q;
+    h.id = "label-" + item.id;
+    head.appendChild(h);
+
+    if (item.flag) {
+      const flag = document.createElement("span");
+      flag.className = "flag";
+      flag.textContent = item.flag;
+      head.appendChild(flag);
+    }
+    card.appendChild(head);
+
+    const hint = document.createElement("p");
+    hint.className = "hint";
+    hint.textContent = item.hint;
+    card.appendChild(hint);
+
+    const ta = document.createElement("textarea");
+    ta.id = item.id;
+    ta.placeholder = item.ph;
+    ta.rows = 2;
+    ta.setAttribute("aria-labelledby", "label-" + item.id);
+    card.appendChild(ta);
+
+    const saved = document.createElement("div");
+    saved.className = "saved";
+    saved.textContent = "Saved";
+    card.appendChild(saved);
+
+    qsEl.appendChild(card);
+    fields[item.id] = { ta: ta, saved: saved };
+
+    ta.addEventListener("input", function () {
+      grow(ta);
+      writeDraft();           // never lose what was typed, even offline
+      queueSave(item.id);
+    });
+  });
+
+  function grow(ta) {
+    ta.style.height = "auto";
+    ta.style.height = ta.scrollHeight + "px";
+  }
+
+  function collect() {
+    const out = {};
+    QUESTIONS.forEach(function (item) { out[item.id] = fields[item.id].ta.value; });
+    return out;
+  }
+
+  function apply(answers) {
+    if (!answers) return;
+    QUESTIONS.forEach(function (item) {
+      const f = fields[item.id];
+      const text = typeof answers[item.id] === "string" ? answers[item.id] : "";
+      if (!text || document.activeElement === f.ta || f.ta.value === text) return;
+      f.ta.value = text;
+      grow(f.ta);
+    });
+  }
+
+  // ── Local draft — the safety net under everything else ────────────────────
+
+  function writeDraft() {
+    try {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({
+        at: new Date().toISOString(),
+        by: whoEl.value.trim(),
+        answers: collect(),
+      }));
+    } catch (e) { /* private window — fine */ }
+  }
+
+  function readDraft() {
+    try {
+      return JSON.parse(localStorage.getItem(DRAFT_KEY) || "null");
+    } catch (e) { return null; }
+  }
+
+  try {
+    const storedWho = localStorage.getItem(WHO_KEY);
+    if (storedWho) whoEl.value = storedWho;
+  } catch (e) { /* ignore */ }
+
+  whoEl.addEventListener("input", function () {
+    try { localStorage.setItem(WHO_KEY, whoEl.value); } catch (e) { /* ignore */ }
+    writeDraft();
+  });
+
+  // ── Saving back to the repo (encrypted) ───────────────────────────────────
+
+  let password = null;
+  let timer = null;
+  let writing = Promise.resolve();
+
+  function flashSaved(id) {
+    const f = fields[id];
+    if (!f) return;
+    f.saved.classList.add("on");
+    setTimeout(function () { f.saved.classList.remove("on"); }, 1600);
+  }
+
+  function queueSave(id) {
+    if (!password || !tokenConfigured()) {
+      flashSaved(id);   // the draft did save — just not off this device
+      return;
+    }
+    clearTimeout(timer);
+    timer = setTimeout(function () { save(id); }, 800);
+  }
+
+  function save(id) {
+    // One write at a time, in order, so a fast typist cannot overlap writes.
+    writing = writing
+      .then(function () { return saveAnswers(password, collect(), whoEl.value.trim()); })
+      .then(function () {
+        flashSaved(id);
+        stateEl.textContent = "Saved — the Octogle Team can see this";
+        stateEl.className = "";
+      })
+      .catch(function (err) {
+        stateEl.textContent = "Couldn't save to the portal — your answers are still on this device, use Copy answers";
+        stateEl.className = "warn";
+        console.error(err);
+      });
+  }
+
+  // ── Copy / download — always available, token or no token ─────────────────
+
+  function asText() {
+    const who = whoEl.value.trim() || "(name not given)";
+    const lines = ["C1 Clearance — Lead Centre: go-live questions",
+                   "Filled in by: " + who,
+                   "Date: " + new Date().toLocaleString("en-GB"),
+                   ""];
+    QUESTIONS.forEach(function (item, i) {
+      lines.push((i + 1) + ". " + item.q);
+      lines.push(fields[item.id].ta.value.trim() || "(no answer yet)");
+      lines.push("");
+    });
+    return lines.join("\n");
+  }
+
+  function note(msg) {
+    copyNote.textContent = msg;
+    setTimeout(function () { copyNote.textContent = ""; }, 2600);
+  }
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    const text = asText();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text)
+        .then(function () { note("Copied — paste it into WhatsApp or an email"); })
+        .catch(function () { note("Couldn't copy — use Download instead"); });
+    } else {
+      note("Couldn't copy — use Download instead");
+    }
+  });
+
+  document.getElementById("downloadBtn").addEventListener("click", function () {
+    const blob = new Blob([asText()], { type: "text/plain;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "c1-go-live-answers.txt";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+
+  // ── Boot: gate first, then whichever answers are newest ───────────────────
+
+  mountPasswordGate(function (pw) {
+    password = pw;
+
+    const draft = readDraft();
+    if (draft) {
+      apply(draft.answers);
+      if (draft.by && !whoEl.value) whoEl.value = draft.by;
+    }
+
+    if (!tokenConfigured()) {
+      stateEl.textContent = "Saved on this device as you type — when you're done, press Copy answers and send them over";
+      stateEl.className = "warn";
+      return;
+    }
+
+    loadAnswers(password)
+      .then(function (saved) {
+        if (!saved || !saved.answers) return;
+        // Whatever is in the repo was saved by whoever went last — it wins over
+        // an older local draft, but never over something being typed right now.
+        if (!draft || !draft.at || new Date(saved.savedAt) >= new Date(draft.at)) {
+          apply(saved.answers);
+          if (saved.savedBy && !whoEl.value.trim()) whoEl.value = saved.savedBy;
+        }
+      })
+      .catch(function (err) {
+        stateEl.textContent = "Couldn't load earlier answers — anything you type is still saved on this device";
+        stateEl.className = "warn";
+        console.error(err);
+      });
+  });
+</script>
+
+</body>
+</html>

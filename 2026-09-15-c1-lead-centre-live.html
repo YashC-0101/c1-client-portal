@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Lead Centre is live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=IBM+Plex+Sans:wght@0,400;0,500&display=swap">
+<style>
+  :root {
+    --lime: #9fe870;
+    --lime-deep: #66b534;
+    --lime-wash: #eef9e2;
+    --ink: #062f28;
+    --ground: #f1f3f0;
+    --surface: #ffffff;
+    --line: #dde3dc;
+    --field: #fbfcfa;
+    --fg: #0d221d;
+    --fg-2: #4e615a;
+    --fg-3: #7d8d86;
+    --amber: #b0741a;
+    --amber-wash: #fdf3e2;
+    --display: "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+    --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--fg);
+    font-family: var(--body); font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .top { background: var(--ink); padding: 38px 22px 32px; }
+  .top-inner { max-width: 640px; margin: 0 auto; }
+  .eyebrow {
+    font-family: var(--display); font-size: 11px; font-weight: 500;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--lime); margin: 0 0 12px;
+  }
+  h1 {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(25px, 5.5vw, 32px); line-height: 1.15;
+    letter-spacing: -.02em; margin: 0 0 12px; color: #fff; text-wrap: balance;
+  }
+  .top p { margin: 0; color: #bed4ca; max-width: 52ch; }
+
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 22px 60px; }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; overflow: hidden; margin-top: -18px;
+    box-shadow: 0 8px 24px -18px rgba(6, 47, 40, .5);
+  }
+  .stat { padding: 14px 16px; border-right: 1px solid var(--line); }
+  .stat:last-child { border-right: 0; }
+  .stat .k {
+    font-family: var(--display); font-size: 10px; font-weight: 500;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--fg-3); margin: 0 0 4px;
+  }
+  .stat .v { font-family: var(--display); font-size: 16px; font-weight: 600; margin: 0; }
+  .stat .v.amber { color: var(--amber); }
+  .stat .v.good { color: #3f7a1f; }
+
+  h2 {
+    font-family: var(--display); font-weight: 600; font-size: 19px;
+    letter-spacing: -.01em; margin: 32px 0 10px;
+  }
+  h3 {
+    font-family: var(--display); font-weight: 600; font-size: 14px;
+    margin: 18px 0 6px; color: var(--fg);
+  }
+  p { margin: 0 0 12px; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 18px 20px; margin-top: 14px;
+  }
+  .card.key { border-color: var(--lime-deep); }
+
+  .signin { display: grid; gap: 10px; margin: 12px 0 0; }
+  .who {
+    display: flex; gap: 10px; flex-wrap: wrap; align-items: baseline;
+    background: var(--field); border: 1px solid var(--line);
+    border-radius: 10px; padding: 10px 12px;
+  }
+  .who .name { font-family: var(--display); font-weight: 600; font-size: 14px; min-width: 42px; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 13.5px; background: var(--lime-wash); border-radius: 5px; padding: 2px 6px;
+  }
+  .btn {
+    display: inline-block; font-family: var(--display); font-size: 15px; font-weight: 500;
+    background: var(--ink); color: #fff; text-decoration: none;
+    border-radius: 10px; padding: 11px 18px; margin-top: 4px;
+  }
+  .btn:hover { background: #0a4136; }
+
+  ul { margin: 0; padding-left: 20px; }
+  li { margin-bottom: 7px; }
+  li b { font-family: var(--display); font-weight: 600; }
+
+  .note {
+    background: var(--amber-wash); border-left: 3px solid var(--amber);
+    border-radius: 0 10px 10px 0; padding: 14px 16px; margin: 16px 0;
+    font-size: 15px; color: var(--fg-2);
+  }
+  .note b { font-family: var(--display); color: var(--fg); font-weight: 600; }
+
+  .end {
+    margin-top: 26px; background: var(--lime-wash);
+    border: 1px solid color-mix(in srgb, var(--lime-deep) 30%, transparent);
+    border-radius: 14px; padding: 18px 20px; font-size: 15.5px; color: var(--fg-2);
+  }
+  .end b { font-family: var(--display); color: var(--fg); font-weight: 600; }
+  .end a { color: #3f7a1f; }
+
+  footer { margin-top: 26px; font-size: 12.5px; color: var(--fg-3); }
+  footer a { color: var(--fg-3); }
+  :focus-visible { outline: 2px solid var(--lime-deep); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <p class="eyebrow">C1 Clearance · Lead Centre · 15 September 2026</p>
+    <h1>The Lead Centre is built, and it's live</h1>
+    <p>
+      You can sign in and use it right now. It's running on made-up data until we plug the real
+      channels in — here's where to log in, what's done, and what we need from you next.
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="stats">
+    <div class="stat">
+      <p class="k">Built &amp; deployed</p>
+      <p class="v good">Yes</p>
+    </div>
+    <div class="stat">
+      <p class="k">Running on</p>
+      <p class="v">Demo data</p>
+    </div>
+    <div class="stat">
+      <p class="k">Channels connected</p>
+      <p class="v amber">None yet</p>
+    </div>
+    <div class="stat">
+      <p class="k">Waiting on you</p>
+      <p class="v amber">7 items</p>
+    </div>
+  </div>
+
+  <h2>Have a look round</h2>
+
+  <div class="card key">
+    <p><a class="btn" href="https://c1-lead-centre.vercel.app" target="_blank" rel="noopener">Open the Lead Centre</a></p>
+    <p style="margin-top:12px;color:var(--fg-2);font-size:15px;">
+      Two accounts, one for each of you. Best on a phone — that's how the crew would use it.
+    </p>
+
+    <div class="signin" id="signin"></div>
+    <p id="signin-note" style="margin:10px 0 0;font-size:14px;color:var(--fg-3);">Unlocking the sign-in details…</p>
+
+    <div class="note" style="margin-bottom:0;">
+      <b>These two are demo accounts.</b> They share one password and everything in them is made
+      up — no real customer, no real job. When you send us the real staff list we replace them with
+      proper accounts, each with its own password, before a single real enquiry lands.
+    </div>
+  </div>
+
+  <h2>What's done</h2>
+
+  <div class="card">
+    <ul>
+      <li><b>The app itself</b> — the unified inbox, the lead record with photos, postcode, access
+        notes and volume, the pipeline stages, and the reply flow.</li>
+      <li><b>Demo data</b> — enough leads, numbers and messages to use it as if it were a working week.</li>
+      <li><b>Deployed</b> — up and reachable, though still on a temporary web address. It moves to a
+        proper one before go-live.</li>
+      <li><b>CI/CD</b> — every change is tested and deployed automatically, so fixes reach you the
+        same day rather than in a batch.</li>
+    </ul>
+  </div>
+
+  <h2>What's still to build</h2>
+
+  <div class="card">
+    <p style="color:var(--fg-2);font-size:15px;">Being straight about what isn't finished. The first three matter most.</p>
+    <ul>
+      <li><b>The WhatsApp connection.</b> The app only speaks Aircall today, so a different provider
+        means building a second connection. Our cost, not yours.</li>
+      <li><b>Photos have nowhere to go.</b> You quote off photos, and right now anything sent over
+        WhatsApp arrives and gets dropped.</li>
+      <li><b>Nobody gets told when it breaks.</b> No alerting yet — if the connection fails, enquiries
+        stop and the inbox just looks quiet. Worst way for a lead system to fail.</li>
+      <li><b>Call recordings get binned</b>, backups aren't confirmed yet, and the Numbers &amp; Routing
+        screen still shows the old porting plan that's now cancelled.</li>
+      <li><b>Smaller stuff:</b> no password reset, everyone can see every screen, the lead list loads
+        all at once, and it's still on a temporary web address.</li>
+    </ul>
+  </div>
+
+  <h2>Why nothing real can arrive yet</h2>
+
+  <div class="card">
+    <p style="margin-bottom:0;">
+      The inbox is wired to Aircall, which carries voice, SMS and WhatsApp on one number. Until the
+      Aircall credentials are set, the webhook refuses every incoming event, and a reply is marked
+      <em>recorded locally — not sent</em> rather than pretending it went out. That's deliberate: an
+      inbox that half works and quietly drops an enquiry would be worse than one that plainly says
+      it's off.
+    </p>
+  </div>
+
+  <h2>What we need from you</h2>
+
+  <div class="card">
+    <h3 style="margin-top:0;">From Sam</h3>
+    <ul>
+      <li><b>Is 0330 133 9144 moving to Aircall</b>, or is the Aircall number a new one?</li>
+      <li><b>A yes to the new WhatsApp number</b> — roughly £45 a month.</li>
+      <li><b>The Aircall settings</b> — account, the two API keys, the number id, and a webhook with
+        its secret. Ten minutes for whoever's the Aircall admin; we'll send the exact steps.</li>
+      <li><b>Business details for WhatsApp</b> — legal name, address, website, and the name customers see.</li>
+      <li><b>Billing in C1's name</b>, so the number is always yours.</li>
+      <li><b>The real staff list</b> — who's in the team, who's an admin.</li>
+    </ul>
+
+    <h3>From Dan</h3>
+    <ul>
+      <li><b>Where the jobs actually come from</b> — calls, Google, the website, word of mouth. A rough split is plenty.</li>
+      <li><b>The job types</b> you really quote for.</li>
+      <li><b>Any live enquiries</b> to bring across, or do we start clean.</li>
+      <li><b>Ten minutes on switch-on day</b> to test a real message and a real call.</li>
+    </ul>
+  </div>
+
+  <div class="end">
+    <b>Easiest way to send it back:</b> the
+    <a href="2026-09-15-c1-go-live-questions.html">questions page</a> — same list, one box each, and it
+    saves as you type. The papers on the
+    <a href="index.html">portal</a> say the same thing in more detail if you'd rather read it there.
+  </div>
+
+  <footer>C1 Clearance Lead Centre · <a href="index.html">Back to the portal</a></footer>
+</div>
+
+<script src="lib.js"></script>
+<script>
+  // The sign-in details are AES-GCM encrypted with the access code, not merely
+  // hidden behind the gate — this page is public, so anything readable in the
+  // source is readable by anyone. Only the code unlocks them.
+  var CREDS = {
+    v: 1,
+    salt: "ZETADZDMhC+ZJIn78hXtSw==",
+    iv: "ZRabKpFLwra0qj4L",
+    ct: "epIWQAJK2gaRmm1a3fq54VgxjwU9adFGTAvzXNlXGm9qMEvyfHmI09DqS0O4wC6xQyUDnmZqYnFzejK48P/6UUX2Aj2NmmMtl+9k6E35z5Fl/0qFNX954x4oGNqmY0p5pSHSTj8n54I0UHtL4m4pizNsB1C22aMFNGqS/vD2RNkkf8iCRzIOBZ3+qe1MQ54dGoBAiqIBQq/Zq80PQn5vg1ogIm02u7jOtTgkTtDoHG9U9ts9LiaycAgnzj3g9PUIpRFXdE9JOnnXxnillg2IDyclvTl/ZBjvqb3kh3tWk0qnFg=="
+  };
+
+  var signinEl = document.getElementById("signin");
+  var noteEl = document.getElementById("signin-note");
+
+  function showAccounts(creds) {
+    signinEl.textContent = "";
+    (creds.accounts || []).forEach(function (acc) {
+      var row = document.createElement("div");
+      row.className = "who";
+
+      var name = document.createElement("span");
+      name.className = "name";
+      name.textContent = acc.name;
+      row.appendChild(name);
+
+      [acc.email, acc.password].forEach(function (value) {
+        var code = document.createElement("code");
+        code.textContent = value;
+        row.appendChild(code);
+      });
+
+      signinEl.appendChild(row);
+    });
+    noteEl.hidden = true;
+  }
+
+  mountPasswordGate(function (password) {
+    decryptJson(password, CREDS)
+      .then(showAccounts)
+      .catch(function (err) {
+        noteEl.textContent = "Couldn't unlock the sign-in details — give the Octogle Team a ring.";
+        console.error(err);
+      });
+  });
+</script>
+
+</body>
+</html>

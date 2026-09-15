@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What we need from you to go live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&display=swap">
+
+<style>
+  :root {
+    --lime: #9fe870;
+    --lime-deep: #66b534;
+    --lime-wash: #eef9e2;
+    --ink: #062f28;
+
+    --ground: #f1f3f0;
+    --surface: #ffffff;
+    --line: #dde3dc;
+
+    --fg: #0d221d;
+    --fg-2: #4e615a;
+    --fg-3: #7d8d86;
+
+    --amber: #b0741a;
+    --rose: #b8474b;
+    --rose-wash: #fbe8e8;
+    --teal: #2f6b78;
+
+    --display: "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+    --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --lime: #9fe870;
+      --lime-deep: #b6ed8e;
+      --lime-wash: #14312a;
+      --ink: #dff0e6;
+
+      --ground: #071a16;
+      --surface: #0e2520;
+      --line: #234139;
+
+      --fg: #e8f2ec;
+      --fg-2: #a6bcb2;
+      --fg-3: #7d968c;
+
+      --amber: #e8b45f;
+      --rose: #f0908f;
+      --rose-wash: #3a1d1e;
+      --teal: #8fc4cf;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --lime: #9fe870;
+    --lime-deep: #b6ed8e;
+    --lime-wash: #14312a;
+    --ink: #dff0e6;
+
+    --ground: #071a16;
+    --surface: #0e2520;
+    --line: #234139;
+
+    --fg: #e8f2ec;
+    --fg-2: #a6bcb2;
+    --fg-3: #7d968c;
+
+    --amber: #e8b45f;
+    --rose: #f0908f;
+    --rose-wash: #3a1d1e;
+    --teal: #8fc4cf;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding-inline: 22px;
+    padding-block: 0 64px;
+  }
+
+  /* masthead */
+
+  .top {
+    background: var(--ink);
+    padding: 40px 22px 34px;
+  }
+  .top-inner { max-width: 680px; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin: 0 0 12px;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(27px, 5.5vw, 36px);
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin: 0 0 14px;
+    color: #fff;
+    text-wrap: balance;
+  }
+
+  .top p {
+    margin: 0;
+    color: #bed4ca;
+    font-size: 16.5px;
+    max-width: 56ch;
+  }
+  .top .who-for {
+    margin-top: 20px;
+    font-family: var(--display);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #7e978f;
+  }
+
+  /* sections */
+
+  section { margin-top: 44px; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 19px;
+    margin: 0 0 6px;
+    color: var(--fg);
+    text-wrap: balance;
+  }
+
+  .lede {
+    margin: 0 0 18px;
+    color: var(--fg-2);
+    font-size: 15.5px;
+    max-width: 58ch;
+  }
+
+  /* simple lists */
+
+  ul.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+  ul.list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: baseline;
+    font-size: 15.5px;
+    color: var(--fg-2);
+  }
+  ul.list li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--lime-deep);
+    transform: translateY(-2px);
+  }
+  ul.list b {
+    font-family: var(--display);
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  .box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+
+  .name {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+    color: var(--fg-3);
+  }
+  .name.sam { color: var(--teal); }
+  .name.dan { color: var(--amber); }
+  .name.us { color: var(--lime-deep); }
+
+  .stack { display: grid; gap: 14px; }
+
+  /* the two questions */
+
+  .q {
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .q h3 {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 10px;
+    color: #fff;
+    text-wrap: balance;
+  }
+  .q p { margin: 0; color: #bed4ca; font-size: 15px; max-width: 54ch; }
+  .q .asked {
+    font-family: var(--display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin: 0 0 8px;
+  }
+
+  /* options */
+
+  .opt {
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    margin-top: 14px;
+  }
+  .opt:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+  .opt h3 {
+    font-family: var(--display);
+    font-size: 15.5px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--fg);
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .opt h3 span {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--fg-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .opt p { margin: 0; font-size: 15px; color: var(--fg-2); max-width: 58ch; }
+
+  .warn-box {
+    margin-top: 16px;
+    background: var(--rose-wash);
+    border: 1px solid color-mix(in srgb, var(--rose) 32%, transparent);
+    border-radius: 12px;
+    padding: 16px 18px;
+    font-size: 15px;
+    color: var(--fg-2);
+  }
+  .warn-box b { font-family: var(--display); color: var(--fg); }
+
+  /* steps */
+
+  ol.steps {
+    margin: 0;
+    padding: 0 0 0 22px;
+    display: grid;
+    gap: 10px;
+    font-size: 15.5px;
+    color: var(--fg-2);
+  }
+  ol.steps li::marker { color: var(--lime-deep); font-weight: 600; }
+  ol.steps b { font-family: var(--display); font-weight: 600; color: var(--fg); }
+
+  /* closing */
+
+  .closing {
+    margin-top: 44px;
+    background: var(--lime-wash);
+    border: 1px solid color-mix(in srgb, var(--lime-deep) 30%, transparent);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .closing h2 { font-size: 17px; }
+  .closing p { margin: 0; color: var(--fg-2); font-size: 15.5px; max-width: 56ch; }
+
+  footer {
+    margin-top: 34px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 12.5px;
+    color: var(--fg-3);
+  }
+  footer a { color: var(--fg-3); }
+
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: .88em;
+    background: color-mix(in srgb, var(--fg-3) 14%, transparent);
+    border-radius: 4px;
+    padding: 1px 5px;
+    word-break: break-word;
+  }
+  .q code { background: rgba(255,255,255,.12); color: #fff; }
+
+  :focus-visible { outline: 2px solid var(--lime-deep); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <p class="eyebrow">C1 Clearance · Lead Centre</p>
+    <h1>What we need from you to go live</h1>
+    <p>
+      The Lead Centre's built and running, it's just on made-up data until we plug the real stuff in. Here's the
+      short list of what we need from you.
+    </p>
+    <p class="who-for">For Sam and Dan · 15 September 2026</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2>What we need from Sam</h2>
+    <p class="lede">These six are what's holding everything else up.</p>
+    <div class="box">
+      <ul class="list">
+        <li><span><b>Is 0330 133 9144 moving to Aircall?</b> Or is the Aircall number a new one? More on this below.</span></li>
+        <li><span><b>A yes to the new WhatsApp number</b> — roughly £45 a month.</span></li>
+        <li><span><b>The Aircall settings</b> — account, the two API keys, the number id, and a webhook with its secret. Ten minutes for whoever's the Aircall admin. We'll send the exact steps.</span></li>
+        <li><span><b>Business details for WhatsApp</b> — legal name, address, website, and the name customers see.</span></li>
+        <li><span><b>Billing in C1's name</b>, so the number's always yours.</span></li>
+        <li><span><b>The real staff list</b> — who's in the team, who's an admin. There are two made-up accounts in there now, and everyone shares one password.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>What we need from Dan</h2>
+    <div class="box">
+      <ul class="list">
+        <li><span><b>Where the jobs actually come from</b> — calls, Google, the website, word of mouth. A rough split is plenty.</span></li>
+        <li><span><b>The job types</b> you really quote for.</span></li>
+        <li><span><b>Any live enquiries</b> to bring across, or do we start clean.</span></li>
+        <li><span><b>Ten minutes on switch-on day</b> to test a real message and a real call.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>The two we're still waiting on</h2>
+    <p class="lede">We asked both of these before. Everything else can run alongside, these two can't.</p>
+
+    <div class="stack">
+      <div class="q">
+        <p class="asked">Sam</p>
+        <h3>Is <code>0330 133 9144</code> moving to Aircall, or is the Aircall number brand new?</h3>
+        <p>
+          That number's painted down the side of the van and it's on the leaflets. If the Aircall one's new, the
+          number on your van is wrong from day one — which is a bigger problem than anything on the WhatsApp side,
+          because it's the number people ring. Either answer's fine, we just can't set the call routing up until
+          we know.
+        </p>
+      </div>
+
+      <div class="q">
+        <p class="asked">Dan</p>
+        <h3>Where do the jobs actually come from?</h3>
+        <p>
+          Dan's QR figure was the most useful thing anyone's told us — it stopped us spending money protecting a
+          channel that brought in two enquiries in eight months. A rough split is enough. It decides what we
+          connect after the phones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>WhatsApp without Facebook</h2>
+    <p class="lede">
+      Sam was clear he doesn't want the Facebook route, so we worked out where that leaves us. You can have
+      WhatsApp in the Lead Centre without ever logging into Facebook. Three ways to go:
+    </p>
+
+    <div class="box">
+      <div class="opt">
+        <h3>What we'd do <span>~£45/mo</span></h3>
+        <p>
+          We buy the number through a provider that's licensed to run WhatsApp for you. There is an account on
+          Meta's side — there always is, for any WhatsApp that isn't just someone's personal phone — but we set it
+          up and we hold it. No login for you, no documents, no queue. One catch: until a business is verified
+          there's a limit on how many new people you can message a day. We think around 250. At forty enquiries a
+          week you wouldn't get near it, and we'll confirm the number before we buy anything.
+        </p>
+      </div>
+
+      <div class="opt">
+        <h3>Get verified later <span>only if you ever want it</span></h3>
+        <p>
+          Verification shows your business name instead of a bare number and lifts that daily limit. It needs C1's
+          documents going to Meta, which is the bit Sam doesn't want. Skip it for now. Revisit if the volume
+          grows.
+        </p>
+      </div>
+
+      <div class="opt">
+        <h3>No Meta at all <span>£0 extra</span></h3>
+        <p>
+          Drop WhatsApp and run on calls and texts through Aircall. Nothing touches Meta in any form. Given Dan's
+          two enquiries in eight months, that's more sensible than it sounds — say the word and we'll price it
+          that way.
+        </p>
+      </div>
+    </div>
+
+    <p class="warn-box">
+      <b>One to say no to.</b> If anyone offers WhatsApp with no Meta involvement at all, it's a tool that logs in
+      as a normal user. It breaks WhatsApp's rules and gets numbers banned with no appeal. The proper providers
+      aren't avoiding Meta — they're just dealing with it so you don't have to.
+    </p>
+  </section>
+
+  <section>
+    <h2>What's changed since the last pack</h2>
+    <div class="box">
+      <ul class="list">
+        <li><span><b>No Facebook route.</b> That rules out Aircall's own WhatsApp add-on, which needed a verified Meta account. It was the slowest thing on the old list, so dropping it speeds us up.</span></li>
+        <li><span><b>The van stays as it is.</b> Dan's had 2 enquiries in 8 months off the QR code, so we're not touching it and nothing gets restickered. We'd assumed it was your main source and built a careful plan around protecting it — that plan's gone.</span></li>
+        <li><span><b>New separate WhatsApp number</b> instead, wired straight into the Lead Centre. Nothing happens to <code>07440 517077</code>.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Things we guessed — tell us if we're wrong</h2>
+    <p class="lede">These came from the design, not from you. Dan was right about the QR, so there may be more.</p>
+    <div class="box">
+      <ul class="list">
+        <li><span><b>The flow Sam talked us through.</b> That's worth more than anything we guessed, but it's only in someone's notes. We'll write it up and send it back for Sam to correct — it'll probably settle most of the rest of this list.</span></li>
+        <li><span><b>Eight stages</b> — new enquiry, contacted, site photos in, quote sent, booked, job completed, invoiced, paid. Plus lost / no answer. Is that how you work a job?</span></li>
+        <li><span><b>Job types</b> — full house, flat void, garden, probate, office strip-out, builders waste, single item.</span></li>
+        <li><span><b>Routing</b> — 7am to 6pm rings the office then Sam's mobile, out of hours goes to voicemail, missed calls get a text within a minute.</span></li>
+        <li><span><b>How fast is late?</b> The inbox flags an enquiry as overdue after a set time. Half an hour, an hour, same day?</span></li>
+        <li><span><b>Auto-reply wording</b> for missed calls and out of hours, in your words.</span></li>
+        <li><span><b>Email, the website form, and Statto CRM.</b> All in the design, none connected. Which are real and worth wiring up?</span></li>
+        <li><span><b>Call recording announcement, and how long we keep things.</b> Callers have to be told they're recorded, and GDPR wants a set retention period rather than forever.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>What we still have to build</h2>
+    <p class="lede">Being straight about what isn't finished. The first three matter most.</p>
+    <div class="box">
+      <ul class="list">
+        <li><span><b>The WhatsApp connection.</b> The app only speaks Aircall today, so a different provider means building a second connection. Our cost, not yours.</span></li>
+        <li><span><b>Photos have nowhere to go.</b> You quote off photos, and right now anything sent over WhatsApp arrives and gets dropped.</span></li>
+        <li><span><b>Nobody gets told when it breaks.</b> No alerting yet — if the connection fails, enquiries stop and the inbox just looks quiet. Worst way for a lead system to fail.</span></li>
+        <li><span><b>Call recordings get binned</b>, backups aren't confirmed yet, and the Numbers &amp; Routing screen still shows the old porting plan that's now cancelled.</span></li>
+        <li><span><b>Smaller stuff:</b> no password reset, everyone can see every screen, the lead list loads all at once, and it's still on a temporary web address.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Then what happens</h2>
+    <ol class="steps">
+      <li><b>Sam answers the 0330 question</b> and sends the Aircall settings.</li>
+      <li><b>We confirm the no-Facebook route in writing</b> before buying anything.</li>
+      <li><b>We buy and connect the number</b>, registered to C1 so it's always yours.</li>
+      <li><b>We wire up the phones</b> — calls, voicemail and texts start landing on lead threads.</li>
+      <li><b>We test it properly</b> with Dan — real message in, real reply out, plus a real call.</li>
+      <li><b>We clear the demo data and set the real logins.</b></li>
+      <li><b>Go live.</b></li>
+    </ol>
+  </section>
+
+  <div class="closing">
+    <h2>Short version</h2>
+    <p>
+      Two answers unblock everything: whether 0330 133 9144 is moving to Aircall, and a yes to the new WhatsApp
+      number. Send those with the Aircall settings and real enquiries could be arriving within days. The rest can
+      follow while the inbox is already working.
+    </p>
+  </div>
+
+  <footer>
+    C1 Clearance Lead Centre · 15 September 2026 · anything unclear, just ask and we'll go through it on a call.
+    <br>
+    <a href="2026-09-15-c1-go-live-questions.html">Answer it on the questions page</a> ·
+    <a href="index.html">Back to the portal</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -154,6 +154,17 @@
 
   .qs { display: grid; gap: 16px; margin-top: 26px; }
 
+  .section-head {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin: 14px 0 -4px 2px;
+  }
+  .qs .section-head:first-child { margin-top: 0; }
+
   .qcard {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -289,7 +300,9 @@
 
   <div class="end">
     <b>That's the lot.</b> Once we've got the 0330 answer and a yes on the WhatsApp number, we can have real
-    enquiries landing in the Lead Centre within days. Anything you'd rather talk through, just give us a ring.
+    enquiries landing in the Lead Centre within days — the rest can follow while the inbox is already working.
+    The one thing we'll need in person is ten minutes with Dan on switch-on day, to test a real message and a
+    real call. Anything you'd rather talk through, just give us a ring.
   </div>
 
   <footer>C1 Clearance Lead Centre · September 2026 · <a href="index.html">Back to the portal</a></footer>
@@ -300,10 +313,11 @@
   const QUESTIONS = [
     {
       id: "q1-0330",
+      section: "The two that unblock everything",
       key: true,
       flag: "Big one",
       q: "Is 0330 133 9144 moving over to Aircall, or is the Aircall number a new one?",
-      hint: "If it's a new number, the one painted on the van is wrong from day one — so this is the first thing to sort.",
+      hint: "It's painted down the side of the van and it's on the leaflets. If the Aircall one is new, that number is wrong from day one. Either answer is fine \u2014 we just can't set the call routing up until we know.",
       ph: "It's moving across / it's a new number / not decided yet"
     },
     {
@@ -311,50 +325,96 @@
       key: true,
       flag: "Big one",
       q: "Happy for us to get the new WhatsApp number going?",
-      hint: "About £45 a month. Separate number, wired straight into the Lead Centre. Nothing on your side goes near Facebook, and nothing happens to the van's number.",
-      ph: "Yes, go ahead / hold off for now"
+      hint: "Roughly \u00a345 a month. We buy it through a provider licensed to run WhatsApp, and we hold the Meta side \u2014 no Facebook login for you, no documents. Nothing happens to 07440 517077.",
+      ph: "Yes, go ahead / hold off for now / rather drop WhatsApp altogether"
     },
-    {
-      id: "q3-sources",
-      q: "Where does most of your work actually come from?",
-      hint: "Phone calls, Google, the website, word of mouth, repeat customers. A rough split is plenty — it decides what we connect next.",
-      ph: "e.g. most ring the office, a few off Google, some word of mouth"
-    },
-    {
-      id: "q4-team",
-      q: "Who's in the team, and who should be an admin?",
-      hint: "Name and email for each person. Right now there are two made-up accounts and everyone shares one password.",
-      ph: "Sam — sam@…, admin\nDan — dan@…"
-    },
+
     {
       id: "q5-aircall",
+      section: "Setting it up",
       q: "Who's your Aircall admin?",
-      hint: "We'll send them the five settings we need — two keys, the number id, and a webhook with its secret. Ten minutes at a keyboard.",
+      hint: "We need the account, the two API keys, the number id, and a webhook with its secret. Ten minutes at a keyboard \u2014 we'll send them the exact steps.",
       ph: "Name, and the best way to reach them"
+    },
+    {
+      id: "q10-billing",
+      q: "Happy for the number to be billed in C1's name?",
+      hint: "It means the number is always yours, whatever happens to us. We'd set it up that way unless you'd rather not.",
+      ph: "Yes / we'd rather do it another way"
     },
     {
       id: "q6-business",
       q: "Business details for the WhatsApp profile",
-      hint: "Legal company name, trading address, website — and the name you want customers to see when you message them.",
+      hint: "Legal company name, trading address, website \u2014 and the name you want customers to see when you message them.",
       ph: "C1 Clearance Ltd, address, c1clearance.co.uk, shown as \"C1 Clearance\""
+    },
+    {
+      id: "q4-team",
+      q: "Who's in the team, and who should be an admin?",
+      hint: "Name and email for each person. Right now there are two made-up accounts and everyone shares one password \u2014 they get replaced with proper ones before any real enquiry lands.",
+      ph: "Sam \u2014 sam@\u2026, admin\nDan \u2014 dan@\u2026"
+    },
+    {
+      id: "q3-sources",
+      q: "Where does most of your work actually come from?",
+      hint: "Phone calls, Google, the website, word of mouth, repeat customers. A rough split is plenty \u2014 it decides what we connect after the phones.",
+      ph: "e.g. most ring the office, a few off Google, some word of mouth"
+    },
+    {
+      id: "q11-jobtypes",
+      q: "What job types do you really quote for?",
+      hint: "We guessed: full house, flat void, garden, probate, office strip-out, builders waste, single item. Cross off what you never do and add what's missing.",
+      ph: "Mostly full house and flat voids; never office strip-outs\u2026"
+    },
+    {
+      id: "q12-live-enquiries",
+      q: "Any live enquiries to bring across, or do we start clean?",
+      hint: "If there are jobs in flight when we switch on, we can load them in so nothing gets lost.",
+      ph: "Start clean / there are a handful on the go"
+    },
+
+    {
+      id: "q9-wrong",
+      section: "Things we guessed \u2014 tell us if we're wrong",
+      q: "Are these the stages a job actually goes through?",
+      hint: "New enquiry, contacted, site photos in, quote sent, booked, job completed, invoiced, paid \u2014 plus lost / no answer. That came from the design, not from you.",
+      ph: "Anything that doesn't match how you work"
+    },
+    {
+      id: "q13-routing",
+      q: "Is this how the phone should ring?",
+      hint: "We guessed: 7am to 6pm rings the office then Sam's mobile, out of hours goes to voicemail, and a missed call gets a text back within a minute.",
+      ph: "e.g. 8\u20135 not 7\u20136, and it should ring Dan second"
     },
     {
       id: "q7-speed",
       q: "How quickly should a new enquiry be answered?",
-      hint: "The inbox flags anything left too long. Half an hour, an hour, same day — whatever's realistic.",
+      hint: "The inbox flags anything left too long. Half an hour, an hour, same day \u2014 whatever's realistic.",
       ph: "e.g. within the hour on weekdays"
     },
     {
       id: "q8-autoreply",
       q: "What should the automatic replies say?",
-      hint: "One for a missed call, one for out of hours. In your words — we'll use them exactly as written.",
-      ph: "Sorry we missed you — we'll call you straight back…"
+      hint: "One for a missed call, one for out of hours. In your words \u2014 we'll use them exactly as written.",
+      ph: "Sorry we missed you \u2014 we'll call you straight back\u2026"
     },
     {
-      id: "q9-wrong",
-      q: "Anything we've got wrong?",
-      hint: "We guessed the job stages from the design: new enquiry, contacted, site photos in, quote sent, booked, job completed, invoiced, paid — plus lost / no answer. Same with the job types. Tell us what doesn't match how you work.",
-      ph: "Anything at all — better now than after real leads are in"
+      id: "q14-channels",
+      q: "Email, the website form, Statto CRM \u2014 which of these are real?",
+      hint: "All three are in the design and none are connected yet. Tell us which ones actually bring you work and we'll wire those up first.",
+      ph: "The website form definitely; email rarely; never heard of\u2026"
+    },
+    {
+      id: "q15-recording",
+      q: "Call recording \u2014 what should callers be told, and how long do we keep it?",
+      hint: "Callers have to be told they're being recorded, and GDPR wants a set period rather than keeping everything forever. Six months is a common choice.",
+      ph: "e.g. standard announcement, keep recordings six months"
+    },
+    {
+      id: "q16-anything",
+      q: "Anything else we've got wrong?",
+      hint: "Dan was right about the QR code, and that changed the whole plan \u2014 so there may be more.",
+      ph: "Anything at all \u2014 better now than after real leads are in"
     }
   ];
 
@@ -368,6 +428,13 @@
   const fields = {};
 
   QUESTIONS.forEach(function (item) {
+    if (item.section) {
+      const head = document.createElement("h2");
+      head.className = "section-head";
+      head.textContent = item.section;
+      qsEl.appendChild(head);
+    }
+
     const card = document.createElement("div");
     card.className = "qcard" + (item.key ? " key" : "");
 

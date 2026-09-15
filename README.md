@@ -12,8 +12,15 @@ they answer on.
 ## Live URLs
 
 - **Landing** — `https://yashc-0101.github.io/c1-client-portal/`
+- **Sign in to the Lead Centre** — `https://yashc-0101.github.io/c1-client-portal/2026-09-15-c1-lead-centre-live.html`
 - **Questions** (Sam / Dan) — `https://yashc-0101.github.io/c1-client-portal/2026-09-15-c1-go-live-questions.html`
 - **Admin view** (Octogle Team) — `https://yashc-0101.github.io/c1-client-portal/view.html`
+
+The app itself is at `https://c1-lead-centre.vercel.app` (demo data). Its two demo
+logins are **AES-GCM encrypted inside** `2026-09-15-c1-lead-centre-live.html` and
+decrypt only with the access code — this repo is public, so nothing readable in the
+source may be a credential. To change them, re-encrypt with `encryptJson` from
+`lib.js` and replace the `CREDS` blob.
 
 The questions page and the admin view are gated by the same access code
 (`lib.js` → `CONFIG.passwordHash`). **Default code: `c12026`.** The document
@@ -24,12 +31,14 @@ pages are not gated — they carry nothing sensitive.
 | File | Purpose |
 |---|---|
 | `index.html` | Landing page — every C1 document, newest first |
-| `2026-09-15-c1-go-live-questions.html` | The nine go-live questions (gated, saves as you type) |
+| `2026-09-15-c1-lead-centre-live.html` | Sign-in page for the live app + status (gated; logins encrypted) |
+| `2026-09-15-c1-go-live-questions.html` | The sixteen go-live questions (gated, saves as you type) |
 | `view.html` | Admin view of the latest answers (gated) |
 | `lib.js` | Shared password gate + AES-GCM crypto + GitHub Contents API |
-| `2026-09-07-c1-where-to-focus-next.html` / `.pdf` | 7 Sep note — the plan after "two WhatsApp enquiries in eight months" |
-| `2026-09-04-c1-whatsapp-options.pdf` | 4 Sep WhatsApp options paper (Plans B and D since dropped) |
-| `2026-09-03-c1-lead-centre-go-live.pdf` | 3 Sep go-live paper |
+| `2026-09-15-c1-what-we-need.html` / `.pdf` | 15 Sep pack — what we need, WhatsApp without Facebook, what's left to build |
+| `2026-09-15-c1-lead-centre-go-live.pdf` | 15 Sep detail version, item by item |
+| `2026-09-15-c1-whatsapp-five-ways.pdf` | 15 Sep — five ways to do the WhatsApp number |
+| `2026-09-07-c1-where-to-focus-next.html` / `.pdf` | 7 Sep note, superseded by the 15 Sep papers |
 | `2026-08-17-c1-lead-centre-overview.html` | The pitch |
 | `2026-08-17-c1-lead-centre-mockup.html` | Clickable mobile mockup |
 | `2026-08-17-c1-lead-centre-feasibility.html` | Feasibility & build plan |
@@ -40,7 +49,7 @@ they are copies, so the old links keep working.
 
 ## How the questions page behaves
 
-1. Sam or Dan opens the URL → access code → the nine questions.
+1. Sam or Dan opens the URL → access code → the sixteen questions.
 2. **Every keystroke is written to `localStorage` first.** Nothing typed is ever
    lost, whatever happens to the network or the token below.
 3. If `CONFIG.token` is set, the whole answer set is then encrypted (AES-GCM,
@@ -56,12 +65,19 @@ they are copies, so the old links keep working.
 
 ## Turning saving on
 
-`lib.js` → `CONFIG.token` is a placeholder. To enable the write path:
+`lib.js` → `CONFIG.token` is a placeholder, and on a **public** repo it has to stay
+one: GitHub's secret scanning revokes a PAT the moment it lands in public code, and
+push protection usually blocks the push first. So pick one of:
 
-1. Create a fine-grained PAT at https://github.com/settings/personal-access-tokens/new
-   - Repository access: only `c1-client-portal`
-   - Permissions → Repository → **Contents → Read and write**
-2. Paste it into `CONFIG.token` and push.
+- **Make this repo private** and paste the PAT into `CONFIG.token` (GitHub Pages on a
+  private repo needs a paid plan), or
+- **Put the token behind a small endpoint** — a Vercel/Cloudflare function holding it
+  as an env var, with the page POSTing to it. The pages can stay on GitHub Pages; only
+  the save call changes, so no URL that has been sent out breaks.
+- **Leave it as it is** — answers stay in the browser and come back via **Copy answers**.
+
+Either way the PAT is fine-grained: repository access *only* `c1-client-portal`,
+Permissions → Repository → **Contents → Read and write**.
 
 To change the access code:
 
@@ -73,10 +89,11 @@ printf "%s" "your-new-code" | shasum -a 256   # → CONFIG.passwordHash
 
 | Risk | Mitigation |
 |---|---|
-| The PAT is visible in `lib.js` source | Fine-grained: Contents write on this one repo. Worst case is vandalism of `answers.json` — revert and rotate. |
+| A PAT in `lib.js` source | Don't, while the repo is public — GitHub revokes it. See *Turning saving on*. If it is ever set on a private repo it is fine-grained: Contents write on this one repo, so the worst case is vandalism of `answers.json` — revert and rotate. |
 | `answers.json` is publicly readable | AES-GCM encrypted with a key derived from the access code. A direct fetch returns gibberish. |
 | Brute-forcing the code | PBKDF2, 200,000 iterations. Use a non-dictionary code if the answers get sensitive. |
-| Client data in the repo | Nothing here is a credential. Never paste an Aircall key, a Meta token or a real customer record into a page or a commit. |
+| Demo logins for the app | Encrypted with the access code, never in plaintext in the repo. They are demo accounts on demo data and get replaced before real enquiries land. |
+| Client data in the repo | Never paste an Aircall key, a Meta token or a real customer record into a page or a commit. |
 
 ## Update flow
 

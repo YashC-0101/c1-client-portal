@@ -15,6 +15,7 @@ they answer on.
 - **Sign in to the Lead Centre** — `https://yashc-0101.github.io/c1-client-portal/2026-09-15-c1-lead-centre-live.html`
 - **Questions** (Sam / Dan) — `https://yashc-0101.github.io/c1-client-portal/2026-09-15-c1-go-live-questions.html`
 - **What we did with the answers** — `https://yashc-0101.github.io/c1-client-portal/2026-09-16-c1-what-weve-done.html`
+- **What we need now** — `https://yashc-0101.github.io/c1-client-portal/2026-09-16-c1-what-we-need-now.html`
 - **Admin view** (Octogle Team) — `https://yashc-0101.github.io/c1-client-portal/view.html`
 
 The app itself is at `https://c1-lead-centre.vercel.app` (demo data). Its two demo
@@ -32,7 +33,8 @@ pages are not gated — they carry nothing sensitive.
 | File | Purpose |
 |---|---|
 | `index.html` | Landing page — every C1 document, newest first |
-| `2026-09-16-c1-what-weve-done.html` | 16 Sep — what we built from Sam's answers, and what is still with him |
+| `2026-09-16-c1-what-weve-done.html` | 16 Sep — what we built from Sam's answers |
+| `2026-09-16-c1-what-we-need-now.html` | 16 Sep — the shorter list still with Sam |
 | `2026-09-15-c1-lead-centre-live.html` | Sign-in page for the live app + status (gated; logins encrypted) |
 | `2026-09-15-c1-go-live-questions.html` | The sixteen go-live questions (gated, saves as you type) |
 | `view.html` | Admin view of the latest answers (gated) |

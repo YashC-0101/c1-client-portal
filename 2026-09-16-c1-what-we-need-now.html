@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What we need from you now</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&display=swap">
+
+<style>
+  :root {
+    --lime: #9fe870;
+    --lime-deep: #66b534;
+    --lime-wash: #eef9e2;
+    --ink: #062f28;
+
+    --ground: #f1f3f0;
+    --surface: #ffffff;
+    --line: #dde3dc;
+
+    --fg: #0d221d;
+    --fg-2: #4e615a;
+    --fg-3: #7d8d86;
+
+    --amber: #b0741a;
+    --amber-wash: #fbf1de;
+    --teal: #2f6b78;
+
+    --display: "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+    --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --lime: #9fe870;
+      --lime-deep: #b6ed8e;
+      --lime-wash: #14312a;
+      --ink: #0d2a23;
+      --ground: #071a16;
+      --surface: #0e2520;
+      --line: #234139;
+      --fg: #e8f2ec;
+      --fg-2: #a6bcb2;
+      --fg-3: #7d968c;
+      --amber: #e8b45f;
+      --amber-wash: #33270f;
+      --teal: #8fc4cf;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--ground);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .top { background: var(--ink); padding: 40px 22px 34px; }
+  .top-inner { max-width: 660px; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin: 0 0 12px;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(26px, 5.5vw, 34px);
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin: 0 0 12px;
+    color: #fff;
+    text-wrap: balance;
+  }
+
+  .top p { margin: 0; color: #bed4ca; max-width: 52ch; }
+  .top .when {
+    margin-top: 20px;
+    font-family: var(--display);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #7e978f;
+  }
+
+  .wrap { max-width: 660px; margin: 0 auto; padding: 32px 22px 60px; }
+
+  section { margin-bottom: 36px; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 19px;
+    margin: 0 0 6px;
+    color: var(--fg);
+    text-wrap: balance;
+  }
+
+  .lede { margin: 0 0 18px; color: var(--fg-2); font-size: 15.5px; max-width: 54ch; }
+
+  .box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+
+  /* one ask */
+  .ask { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px; }
+  .ask:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+  .ask h3 {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 5px;
+    color: var(--fg);
+    text-wrap: balance;
+  }
+  .ask p { margin: 0; font-size: 15px; color: var(--fg-2); max-width: 56ch; }
+  .ask p + p { margin-top: 7px; }
+  .then {
+    margin-top: 9px;
+    font-size: 14px;
+    color: var(--lime-deep);
+    font-family: var(--display);
+    font-weight: 500;
+  }
+
+  .blocking {
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .blocking h2 { color: #fff; }
+  .blocking .ask { border-top-color: rgba(255,255,255,.14); }
+  .blocking .ask h3 { color: #fff; }
+  .blocking .ask p { color: #bed4ca; }
+  .blocking .then { color: var(--lime); }
+  .blocking code { background: rgba(255,255,255,.12); color: #fff; }
+
+  .quick { display: grid; gap: 14px; }
+  .quick .q {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 15px 18px;
+  }
+  .quick .q h3 {
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: var(--fg);
+  }
+  .quick .q p { margin: 0; font-size: 14.5px; color: var(--fg-2); }
+
+  .closing {
+    background: var(--lime-wash);
+    border: 1px solid color-mix(in srgb, var(--lime-deep) 30%, transparent);
+    border-radius: 14px;
+    padding: 20px 22px;
+    font-size: 15.5px;
+    color: var(--fg-2);
+  }
+  .closing b { font-family: var(--display); color: var(--fg); font-weight: 600; }
+
+  footer {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--fg-3);
+  }
+
+  a { color: var(--teal); }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: .88em;
+    background: color-mix(in srgb, var(--fg-3) 14%, transparent);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+  :focus-visible { outline: 2px solid var(--lime-deep); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <p class="eyebrow">C1 Clearance · Lead Centre</p>
+    <h1>What we need from you now</h1>
+    <p>
+      Your answers are all in the app. This is the shorter list that's left — two things hold everything up,
+      the rest are quick answers or a "tell us and we'll sort it".
+    </p>
+    <p class="when">For Sam · 16 September 2026</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="blocking">
+      <h2 style="margin-bottom:14px;">The two that hold everything up</h2>
+
+      <div class="ask">
+        <h3>The Aircall settings, once your admin login exists</h3>
+        <p>
+          Five things from that account: two API keys, the id of the number, and a webhook with a secret on it.
+          Ten minutes for whoever has admin. Send us a shout when the login's made and we'll send the exact
+          steps, or do it on a call with you.
+        </p>
+        <p class="then">Then: calls, voicemail and texts start landing on lead threads.</p>
+      </div>
+
+      <div class="ask">
+        <h3>A yes on the WhatsApp number — and a correction on the bill</h3>
+        <p>
+          You said put it on the current Aircall account. It can't go there: WhatsApp through Aircall needs the
+          Facebook verification you've ruled out, which is the whole reason we're using someone else for it.
+        </p>
+        <p>
+          So it's a <b>separate bill, about £45 a month</b>, in C1's name so the number is always yours. Just
+          confirm you're happy with that and we'll buy it.
+        </p>
+        <p class="then">Then: a WhatsApp number wired straight into the Lead Centre, live in days.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Four quick answers</h2>
+    <p class="lede">A line each is plenty. None of these stop us working.</p>
+
+    <div class="quick">
+      <div class="q">
+        <h3>"Job Complicated" — did you mean Job Completed?</h3>
+        <p>We've built it as Job Complete. Two seconds to change if you meant something else.</p>
+      </div>
+      <div class="q">
+        <h3>Invoiced and Paid: gone on purpose?</h3>
+        <p>You didn't list them, so we dropped them — you invoice elsewhere and a second copy here would only go stale. Say the word and they come back.</p>
+      </div>
+      <div class="q">
+        <h3>How long do we keep things?</h3>
+        <p>Lead records, call recordings, transcripts. Aircall covers telling callers they're recorded; this is about how long it all lives in here. A year? Two? GDPR wants a number rather than "forever".</p>
+      </div>
+      <div class="q">
+        <h3>Who should the alarm ring?</h3>
+        <p>The app now notices if enquiries stop arriving. We need somewhere to send that — an email address, or a mobile for a text. Yours, or whoever picks things up fastest.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Two we'll sort the moment you tell us</h2>
+    <div class="box">
+      <div class="ask">
+        <h3>What's the website built in?</h3>
+        <p>
+          WordPress, Wix, Squarespace, something custom — and who looks after it. The bit that takes form fills
+          straight into the Lead Centre is built and waiting; we just need to hand their developer the right
+          thing to paste.
+        </p>
+        <p class="then">Then: enquiries off the site and your Google Ads pages land in the inbox like a call.</p>
+      </div>
+      <div class="ask">
+        <h3>What does <code>hello@c1clearance.co.uk</code> run on?</h3>
+        <p>
+          Google Workspace, Microsoft, or something else. You listed email as a real source of work, and that
+          answer decides how we connect it.
+        </p>
+        <p class="then">Then: emailed enquiries sit on the same thread as the calls and the WhatsApps.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>One decision that costs something</h2>
+    <div class="box">
+      <div class="ask">
+        <h3>Do you want your own copies of the photos?</h3>
+        <p>
+          Photos now show up in the conversation, which is the important part. What we keep is a link to the
+          phone company's copy — so if they ever expire theirs, you're left with a filename where the picture
+          was.
+        </p>
+        <p>
+          Holding your own copies means renting somewhere to put them. Likely a <b>few pounds a month</b>. Worth
+          deciding before real photos start arriving, because by then the ones that matter are already ageing.
+        </p>
+        <p class="then">Say the word and we'll price it properly rather than guess at it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Two things worth a thought</h2>
+    <div class="quick">
+      <div class="q">
+        <h3>Everyone sharing the hello@ login</h3>
+        <p>Fine for now, and it's what you asked for. It does mean the app can't show who replied to what, or who's looking after which lead. Easy to split into real accounts later — just say when.</p>
+      </div>
+      <div class="q">
+        <h3>Your ringing hours</h3>
+        <p>The 30-minute clock skips weekends but doesn't know your hours, so an enquiry at 9pm counts the same as one at 9am. Tell us the hours and it'll stop overnight too.</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="closing">
+    <b>The short version.</b> Aircall settings and a yes on the WhatsApp bill, and we can have real enquiries
+    arriving within days. Everything else on this page can follow while the inbox is already working. Anything
+    you'd rather talk through, give us a ring.
+  </p>
+
+  <footer>
+    <a href="index.html">Back to the portal</a> · C1 Clearance Lead Centre · 16 September 2026
+  </footer>
+
+</div>
+</body>
+</html>

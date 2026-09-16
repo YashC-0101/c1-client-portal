@@ -6,7 +6,7 @@
 <title>What we need from you now</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=IBM+Plex+Sans:wght@0,400;0,500&display=swap">
 
 <style>
   :root {
@@ -18,14 +18,12 @@
     --ground: #f1f3f0;
     --surface: #ffffff;
     --line: #dde3dc;
+    --field: #fbfcfa;
 
     --fg: #0d221d;
     --fg-2: #4e615a;
     --fg-3: #7d8d86;
-
     --amber: #b0741a;
-    --amber-wash: #fbf1de;
-    --teal: #2f6b78;
 
     --display: "Poppins", "Avenir Next", "Segoe UI", sans-serif;
     --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
@@ -36,24 +34,41 @@
       --lime: #9fe870;
       --lime-deep: #b6ed8e;
       --lime-wash: #14312a;
-      --ink: #0d2a23;
+      --ink: #dff0e6;
+
       --ground: #071a16;
       --surface: #0e2520;
       --line: #234139;
+      --field: #0a1f1a;
+
       --fg: #e8f2ec;
       --fg-2: #a6bcb2;
       --fg-3: #7d968c;
       --amber: #e8b45f;
-      --amber-wash: #33270f;
-      --teal: #8fc4cf;
     }
+  }
+
+  :root[data-theme="dark"] {
+    --lime: #9fe870;
+    --lime-deep: #b6ed8e;
+    --lime-wash: #14312a;
+    --ink: #dff0e6;
+
+    --ground: #071a16;
+    --surface: #0e2520;
+    --line: #234139;
+    --field: #0a1f1a;
+
+    --fg: #e8f2ec;
+    --fg-2: #a6bcb2;
+    --fg-3: #7d968c;
+    --amber: #e8b45f;
   }
 
   * { box-sizing: border-box; }
 
-  html, body {
+  body {
     margin: 0;
-    padding: 0;
     background: var(--ground);
     color: var(--fg);
     font-family: var(--body);
@@ -62,8 +77,8 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  .top { background: var(--ink); padding: 40px 22px 34px; }
-  .top-inner { max-width: 660px; margin: 0 auto; }
+  .top { background: #062f28; padding: 36px 22px 30px; }
+  .top-inner { max-width: 620px; margin: 0 auto; }
 
   .eyebrow {
     font-family: var(--display);
@@ -71,14 +86,14 @@
     font-weight: 500;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--lime);
+    color: #9fe870;
     margin: 0 0 12px;
   }
 
   h1 {
     font-family: var(--display);
     font-weight: 600;
-    font-size: clamp(26px, 5.5vw, 34px);
+    font-size: clamp(25px, 5.5vw, 32px);
     line-height: 1.15;
     letter-spacing: -.02em;
     margin: 0 0 12px;
@@ -86,113 +101,171 @@
     text-wrap: balance;
   }
 
-  .top p { margin: 0; color: #bed4ca; max-width: 52ch; }
-  .top .when {
-    margin-top: 20px;
-    font-family: var(--display);
-    font-size: 11px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: #7e978f;
+  .top p { margin: 0; color: #bed4ca; font-size: 16px; max-width: 48ch; }
+  .top a { color: #9fe870; }
+
+  .wrap {
+    max-width: 620px;
+    margin: 0 auto;
+    padding-inline: 22px;
+    padding-block: 0 60px;
   }
 
-  .wrap { max-width: 660px; margin: 0 auto; padding: 32px 22px 60px; }
+  /* who + save state */
 
-  section { margin-bottom: 36px; }
-
-  h2 {
-    font-family: var(--display);
-    font-weight: 600;
-    font-size: 19px;
-    margin: 0 0 6px;
-    color: var(--fg);
-    text-wrap: balance;
-  }
-
-  .lede { margin: 0 0 18px; color: var(--fg-2); font-size: 15.5px; max-width: 54ch; }
-
-  .box {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 20px 22px;
-  }
-
-  /* one ask */
-  .ask { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px; }
-  .ask:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
-  .ask h3 {
-    font-family: var(--display);
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0 0 5px;
-    color: var(--fg);
-    text-wrap: balance;
-  }
-  .ask p { margin: 0; font-size: 15px; color: var(--fg-2); max-width: 56ch; }
-  .ask p + p { margin-top: 7px; }
-  .then {
-    margin-top: 9px;
-    font-size: 14px;
-    color: var(--lime-deep);
-    font-family: var(--display);
-    font-weight: 500;
-  }
-
-  .blocking {
-    background: var(--ink);
-    border-radius: 14px;
-    padding: 22px 24px;
-  }
-  .blocking h2 { color: #fff; }
-  .blocking .ask { border-top-color: rgba(255,255,255,.14); }
-  .blocking .ask h3 { color: #fff; }
-  .blocking .ask p { color: #bed4ca; }
-  .blocking .then { color: var(--lime); }
-  .blocking code { background: rgba(255,255,255,.12); color: #fff; }
-
-  .quick { display: grid; gap: 14px; }
-  .quick .q {
+  .whobar {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 12px;
-    padding: 15px 18px;
+    padding: 12px 16px;
+    margin-top: -18px;
+    box-shadow: 0 8px 24px -18px rgba(6, 47, 40, .5);
   }
-  .quick .q h3 {
+  .whobar label {
     font-family: var(--display);
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0 0 4px;
-    color: var(--fg);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg-2);
   }
-  .quick .q p { margin: 0; font-size: 14.5px; color: var(--fg-2); }
+  .whobar input {
+    flex: 1 1 140px;
+    min-width: 0;
+    font: inherit;
+    font-size: 15px;
+    color: var(--fg);
+    background: var(--field);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 10px;
+  }
+  #state {
+    font-size: 12.5px;
+    color: var(--fg-3);
+    font-family: var(--display);
+    flex: 1 1 100%;
+  }
+  #state.warn { color: var(--amber); }
 
-  .closing {
+  /* questions */
+
+  .qs { display: grid; gap: 16px; margin-top: 26px; }
+
+  .section-head {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    margin: 14px 0 -4px 2px;
+  }
+  .qs .section-head:first-child { margin-top: 0; }
+
+  .qcard {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .qcard.key { border-color: var(--lime-deep); }
+
+  .qhead {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .qcard h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 16.5px;
+    line-height: 1.35;
+    margin: 0;
+    color: var(--fg);
+    text-wrap: balance;
+  }
+
+  .flag {
+    font-family: var(--display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--lime-deep);
+    background: var(--lime-wash);
+    border-radius: 999px;
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+
+  .hint { margin: 6px 0 0; font-size: 14.5px; color: var(--fg-2); }
+
+  textarea {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    font: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--fg);
+    background: var(--field);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 11px 13px;
+    resize: vertical;
+    min-height: 56px;
+    overflow: hidden;
+  }
+  textarea::placeholder { color: var(--fg-3); }
+  textarea:focus { outline: 2px solid var(--lime-deep); outline-offset: 1px; border-color: transparent; }
+
+  .saved {
+    font-family: var(--display);
+    font-size: 11.5px;
+    color: var(--lime-deep);
+    margin-top: 7px;
+    height: 14px;
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .saved.on { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .saved { transition: none; } }
+
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  .actions button {
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--fg);
+    cursor: pointer;
+  }
+  .actions button.primary { background: var(--ink); color: var(--ground); border-color: transparent; }
+  .actions button:hover { border-color: var(--lime-deep); }
+  #copyNote { font-family: var(--display); font-size: 12.5px; color: var(--lime-deep); align-self: center; }
+
+  .end {
+    margin-top: 26px;
     background: var(--lime-wash);
     border: 1px solid color-mix(in srgb, var(--lime-deep) 30%, transparent);
     border-radius: 14px;
-    padding: 20px 22px;
+    padding: 18px 20px;
     font-size: 15.5px;
     color: var(--fg-2);
   }
-  .closing b { font-family: var(--display); color: var(--fg); font-weight: 600; }
+  .end b { font-family: var(--display); color: var(--fg); font-weight: 600; }
 
-  footer {
-    margin-top: 28px;
-    padding-top: 18px;
-    border-top: 1px solid var(--line);
-    font-size: 13px;
-    color: var(--fg-3);
-  }
+  footer { margin-top: 26px; font-size: 12.5px; color: var(--fg-3); }
+  footer a { color: var(--fg-3); }
 
-  a { color: var(--teal); }
-  code {
-    font-family: ui-monospace, "SF Mono", Menlo, monospace;
-    font-size: .88em;
-    background: color-mix(in srgb, var(--fg-3) 14%, transparent);
-    border-radius: 4px;
-    padding: 1px 5px;
-  }
   :focus-visible { outline: 2px solid var(--lime-deep); outline-offset: 2px; }
 </style>
 </head>
@@ -203,134 +276,347 @@
     <p class="eyebrow">C1 Clearance · Lead Centre</p>
     <h1>What we need from you now</h1>
     <p>
-      Your answers are all in the app. This is the shorter list that's left — two things hold everything up,
-      the rest are quick answers or a "tell us and we'll sort it".
+      Your answers from Tuesday are all in the app — thank you. This is the shorter list that is left. Type
+      straight into the boxes, it saves as you go, and under every question is why we are asking and what it is
+      holding up.
     </p>
-    <p class="when">For Sam · 16 September 2026</p>
   </div>
 </header>
 
 <div class="wrap">
 
-  <section>
-    <div class="blocking">
-      <h2 style="margin-bottom:14px;">The two that hold everything up</h2>
+  <div class="whobar">
+    <label for="who">Who's filling this in?</label>
+    <input id="who" type="text" placeholder="Sam" autocomplete="off">
+    <span id="state">Saves as you type</span>
+  </div>
 
-      <div class="ask">
-        <h3>The Aircall settings, once your admin login exists</h3>
-        <p>
-          Five things from that account: two API keys, the id of the number, and a webhook with a secret on it.
-          Ten minutes for whoever has admin. Send us a shout when the login's made and we'll send the exact
-          steps, or do it on a call with you.
-        </p>
-        <p class="then">Then: calls, voicemail and texts start landing on lead threads.</p>
-      </div>
+  <div class="qs" id="qs"></div>
 
-      <div class="ask">
-        <h3>A yes on the WhatsApp number — and a correction on the bill</h3>
-        <p>
-          You said put it on the current Aircall account. It can't go there: WhatsApp through Aircall needs the
-          Facebook verification you've ruled out, which is the whole reason we're using someone else for it.
-        </p>
-        <p>
-          So it's a <b>separate bill, about £45 a month</b>, in C1's name so the number is always yours. Just
-          confirm you're happy with that and we'll buy it.
-        </p>
-        <p class="then">Then: a WhatsApp number wired straight into the Lead Centre, live in days.</p>
-      </div>
-    </div>
-  </section>
+  <div class="actions">
+    <button type="button" class="primary" id="copyBtn">Copy answers</button>
+    <button type="button" id="downloadBtn">Download as text</button>
+    <span id="copyNote"></span>
+  </div>
 
-  <section>
-    <h2>Four quick answers</h2>
-    <p class="lede">A line each is plenty. None of these stop us working.</p>
+  <div class="end">
+    <b>That's the lot.</b> The top two are what hold up the switch-on — ten minutes with your Aircall admin,
+    and a yes on the WhatsApp bill. With those, real enquiries could be arriving within days, and everything
+    else here can follow while the inbox is already working. Anything you'd rather talk through, give us a
+    ring.
+  </div>
 
-    <div class="quick">
-      <div class="q">
-        <h3>"Job Complicated" — did you mean Job Completed?</h3>
-        <p>We've built it as Job Complete. Two seconds to change if you meant something else.</p>
-      </div>
-      <div class="q">
-        <h3>Invoiced and Paid: gone on purpose?</h3>
-        <p>You didn't list them, so we dropped them — you invoice elsewhere and a second copy here would only go stale. Say the word and they come back.</p>
-      </div>
-      <div class="q">
-        <h3>How long do we keep things?</h3>
-        <p>Lead records, call recordings, transcripts. Aircall covers telling callers they're recorded; this is about how long it all lives in here. A year? Two? GDPR wants a number rather than "forever".</p>
-      </div>
-      <div class="q">
-        <h3>Who should the alarm ring?</h3>
-        <p>The app now notices if enquiries stop arriving. We need somewhere to send that — an email address, or a mobile for a text. Yours, or whoever picks things up fastest.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Two we'll sort the moment you tell us</h2>
-    <div class="box">
-      <div class="ask">
-        <h3>What's the website built in?</h3>
-        <p>
-          WordPress, Wix, Squarespace, something custom — and who looks after it. The bit that takes form fills
-          straight into the Lead Centre is built and waiting; we just need to hand their developer the right
-          thing to paste.
-        </p>
-        <p class="then">Then: enquiries off the site and your Google Ads pages land in the inbox like a call.</p>
-      </div>
-      <div class="ask">
-        <h3>What does <code>hello@c1clearance.co.uk</code> run on?</h3>
-        <p>
-          Google Workspace, Microsoft, or something else. You listed email as a real source of work, and that
-          answer decides how we connect it.
-        </p>
-        <p class="then">Then: emailed enquiries sit on the same thread as the calls and the WhatsApps.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>One decision that costs something</h2>
-    <div class="box">
-      <div class="ask">
-        <h3>Do you want your own copies of the photos?</h3>
-        <p>
-          Photos now show up in the conversation, which is the important part. What we keep is a link to the
-          phone company's copy — so if they ever expire theirs, you're left with a filename where the picture
-          was.
-        </p>
-        <p>
-          Holding your own copies means renting somewhere to put them. Likely a <b>few pounds a month</b>. Worth
-          deciding before real photos start arriving, because by then the ones that matter are already ageing.
-        </p>
-        <p class="then">Say the word and we'll price it properly rather than guess at it.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Two things worth a thought</h2>
-    <div class="quick">
-      <div class="q">
-        <h3>Everyone sharing the hello@ login</h3>
-        <p>Fine for now, and it's what you asked for. It does mean the app can't show who replied to what, or who's looking after which lead. Easy to split into real accounts later — just say when.</p>
-      </div>
-      <div class="q">
-        <h3>Your ringing hours</h3>
-        <p>The 30-minute clock skips weekends but doesn't know your hours, so an enquiry at 9pm counts the same as one at 9am. Tell us the hours and it'll stop overnight too.</p>
-      </div>
-    </div>
-  </section>
-
-  <p class="closing">
-    <b>The short version.</b> Aircall settings and a yes on the WhatsApp bill, and we can have real enquiries
-    arriving within days. Everything else on this page can follow while the inbox is already working. Anything
-    you'd rather talk through, give us a ring.
-  </p>
-
-  <footer>
-    <a href="index.html">Back to the portal</a> · C1 Clearance Lead Centre · 16 September 2026
-  </footer>
-
+  <footer>C1 Clearance Lead Centre · September 2026 · <a href="index.html">Back to the portal</a></footer>
 </div>
+
+<script src="lib.js"></script>
+<script>
+  const QUESTIONS = [
+    {
+      id: "aircall-admin",
+      section: "The two holding up the switch-on",
+      key: true,
+      flag: "Big one",
+      q: "When can we get ten minutes with your Aircall admin?",
+      hint: "Nothing reaches the Lead Centre until five settings come out of that account — two keys, the id of the number, and a webhook with its secret. Until they are in, the inbox turns every call and message away. It really is ten minutes, and we will walk whoever it is through it, or do it on a call with you.",
+      ph: "Name and number, or a couple of times that suit"
+    },
+    {
+      id: "whatsapp-bill",
+      key: true,
+      flag: "Big one",
+      q: "Happy with the WhatsApp number being its own bill, about £45 a month?",
+      hint: "You said put it on the current Aircall account and we cannot — WhatsApp through Aircall needs the Facebook verification you ruled out, which is the whole reason we are using someone else for it. So it is a separate small bill, in C1's name so the number stays yours whatever happens to us. Nothing gets bought until you say.",
+      ph: "Yes, go ahead / hold off / talk me through it first"
+    },
+    {
+      id: "job-complete",
+      section: "Four quick ones",
+      q: "\"Job Complicated\" — did you mean Job Completed?",
+      hint: "It is the stage every finished job ends on, so if it means something else then every job you finish is sitting in the wrong place. We have built it as Job Complete.",
+      ph: "Job Completed / no, it means…"
+    },
+    {
+      id: "invoiced-paid",
+      q: "Invoiced and Paid — did you drop those on purpose?",
+      hint: "They were not in your list, so we took it that invoicing happens elsewhere and left them out rather than keep a second version here that goes stale. If you do want payment status in the app, it is much easier to add now than once real jobs are moving through.",
+      ph: "Right to leave them out / put them back"
+    },
+    {
+      id: "retention",
+      q: "How long should we keep lead records, recordings and transcripts?",
+      hint: "Aircall covers telling callers they are recorded. This is the other half — how long it all sits in the Lead Centre afterwards. GDPR expects a set period, and “forever” is the answer that causes trouble later. A year and two years are both common.",
+      ph: "e.g. 2 years, then delete"
+    },
+    {
+      id: "alarm-to",
+      q: "If enquiries stop arriving, who should we tell?",
+      hint: "The app now watches for that, because a password changing at Aircall's end would stop everything without a single error on screen — the inbox would just look like a slow day. An alarm nobody receives is not an alarm, so we need an email address or a mobile, ideally whoever picks things up fastest.",
+      ph: "Email address, or a mobile for a text"
+    },
+    {
+      id: "website",
+      section: "Two we will sort the moment you tell us",
+      q: "What is the website built in, and who looks after it?",
+      hint: "The part that takes form fills straight into the Lead Centre is built and waiting. We just need to hand their developer the right thing to paste, and that depends on whether it is WordPress, Wix, Squarespace or something custom. Your Google Ads pages count too.",
+      ph: "e.g. WordPress, looked after by…"
+    },
+    {
+      id: "email-host",
+      q: "What does hello@c1clearance.co.uk run on?",
+      hint: "You listed email as a real source of work, and Aircall does not carry email — it needs a connection of its own, and which one depends on whether you are on Google, Microsoft or something else.",
+      ph: "Google Workspace / Microsoft 365 / not sure"
+    },
+    {
+      id: "photo-storage",
+      section: "One that costs a bit",
+      q: "Do you want your own copies of the photos?",
+      hint: "Photos now show up on the conversation, which is the important part. What we hold is a link to the phone company's copy though — if they ever expire it, you are left with a filename where the picture was, and those pictures are what you quote off. Keeping your own copies means renting somewhere to put them, likely a few pounds a month. Say the word and we will price it properly rather than guess.",
+      ph: "Yes, price it up / links are fine for now"
+    },
+    {
+      id: "hours",
+      section: "Two worth a thought",
+      q: "What hours should the 30-minute clock run?",
+      hint: "It skips weekends already, but it does not know your hours — so an enquiry at nine at night is marked late by half nine, which is not fair on anyone. Your hours live in Aircall; we only need the numbers.",
+      ph: "e.g. 7am to 6pm, weekdays"
+    },
+    {
+      id: "shared-login",
+      q: "Happy for everyone to keep sharing the hello@ login?",
+      hint: "It is what you asked for and it is fine for three people. The cost is that the app cannot show who replied to what, or who is looking after which lead — everything reads as hello@. Easy to split into real accounts whenever you want.",
+      ph: "Keep it for now / let's split it"
+    }
+  ];
+
+  const DRAFT_KEY = "c1-what-we-need-now-v1";
+  const WHO_KEY = "c1-who";
+
+  const qsEl = document.getElementById("qs");
+  const whoEl = document.getElementById("who");
+  const stateEl = document.getElementById("state");
+  const copyNote = document.getElementById("copyNote");
+  const fields = {};
+
+  QUESTIONS.forEach(function (item) {
+    if (item.section) {
+      const head = document.createElement("h2");
+      head.className = "section-head";
+      head.textContent = item.section;
+      qsEl.appendChild(head);
+    }
+
+    const card = document.createElement("div");
+    card.className = "qcard" + (item.key ? " key" : "");
+
+    const head = document.createElement("div");
+    head.className = "qhead";
+
+    const h = document.createElement("h2");
+    h.textContent = item.q;
+    h.id = "label-" + item.id;
+    head.appendChild(h);
+
+    if (item.flag) {
+      const flag = document.createElement("span");
+      flag.className = "flag";
+      flag.textContent = item.flag;
+      head.appendChild(flag);
+    }
+    card.appendChild(head);
+
+    const hint = document.createElement("p");
+    hint.className = "hint";
+    hint.textContent = item.hint;
+    card.appendChild(hint);
+
+    const ta = document.createElement("textarea");
+    ta.id = item.id;
+    ta.placeholder = item.ph;
+    ta.rows = 2;
+    ta.setAttribute("aria-labelledby", "label-" + item.id);
+    card.appendChild(ta);
+
+    const saved = document.createElement("div");
+    saved.className = "saved";
+    saved.textContent = "Saved";
+    card.appendChild(saved);
+
+    qsEl.appendChild(card);
+    fields[item.id] = { ta: ta, saved: saved };
+
+    ta.addEventListener("input", function () {
+      grow(ta);
+      writeDraft();           // never lose what was typed, even offline
+      queueSave(item.id);
+    });
+  });
+
+  function grow(ta) {
+    ta.style.height = "auto";
+    ta.style.height = ta.scrollHeight + "px";
+  }
+
+  function collect() {
+    const out = {};
+    QUESTIONS.forEach(function (item) { out[item.id] = fields[item.id].ta.value; });
+    return out;
+  }
+
+  function apply(answers) {
+    if (!answers) return;
+    QUESTIONS.forEach(function (item) {
+      const f = fields[item.id];
+      const text = typeof answers[item.id] === "string" ? answers[item.id] : "";
+      if (!text || document.activeElement === f.ta || f.ta.value === text) return;
+      f.ta.value = text;
+      grow(f.ta);
+    });
+  }
+
+  // ── Local draft — the safety net under everything else ────────────────────
+
+  function writeDraft() {
+    try {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({
+        at: new Date().toISOString(),
+        by: whoEl.value.trim(),
+        answers: collect(),
+      }));
+    } catch (e) { /* private window — fine */ }
+  }
+
+  function readDraft() {
+    try {
+      return JSON.parse(localStorage.getItem(DRAFT_KEY) || "null");
+    } catch (e) { return null; }
+  }
+
+  try {
+    const storedWho = localStorage.getItem(WHO_KEY);
+    if (storedWho) whoEl.value = storedWho;
+  } catch (e) { /* ignore */ }
+
+  whoEl.addEventListener("input", function () {
+    try { localStorage.setItem(WHO_KEY, whoEl.value); } catch (e) { /* ignore */ }
+    writeDraft();
+  });
+
+  // ── Saving back to the repo (encrypted) ───────────────────────────────────
+
+  let password = null;
+  let timer = null;
+  let writing = Promise.resolve();
+
+  function flashSaved(id) {
+    const f = fields[id];
+    if (!f) return;
+    f.saved.classList.add("on");
+    setTimeout(function () { f.saved.classList.remove("on"); }, 1600);
+  }
+
+  function queueSave(id) {
+    if (!password || !tokenConfigured()) {
+      flashSaved(id);   // the draft did save — just not off this device
+      return;
+    }
+    clearTimeout(timer);
+    timer = setTimeout(function () { save(id); }, 800);
+  }
+
+  function save(id) {
+    // One write at a time, in order, so a fast typist cannot overlap writes.
+    writing = writing
+      .then(function () { return saveAnswers(password, collect(), whoEl.value.trim()); })
+      .then(function () {
+        flashSaved(id);
+        stateEl.textContent = "Saved — the Octogle Team can see this";
+        stateEl.className = "";
+      })
+      .catch(function (err) {
+        stateEl.textContent = "Couldn't save to the portal — your answers are still on this device, use Copy answers";
+        stateEl.className = "warn";
+        console.error(err);
+      });
+  }
+
+  // ── Copy / download — always available, token or no token ─────────────────
+
+  function asText() {
+    const who = whoEl.value.trim() || "(name not given)";
+    const lines = ["C1 Clearance — Lead Centre: what we need now (16 September)",
+                   "Filled in by: " + who,
+                   "Date: " + new Date().toLocaleString("en-GB"),
+                   ""];
+    QUESTIONS.forEach(function (item, i) {
+      lines.push((i + 1) + ". " + item.q);
+      lines.push(fields[item.id].ta.value.trim() || "(no answer yet)");
+      lines.push("");
+    });
+    return lines.join("\n");
+  }
+
+  function note(msg) {
+    copyNote.textContent = msg;
+    setTimeout(function () { copyNote.textContent = ""; }, 2600);
+  }
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    const text = asText();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text)
+        .then(function () { note("Copied — paste it into WhatsApp or an email"); })
+        .catch(function () { note("Couldn't copy — use Download instead"); });
+    } else {
+      note("Couldn't copy — use Download instead");
+    }
+  });
+
+  document.getElementById("downloadBtn").addEventListener("click", function () {
+    const blob = new Blob([asText()], { type: "text/plain;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "c1-what-we-need-now.txt";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+
+  // ── Boot: gate first, then whichever answers are newest ───────────────────
+
+  mountPasswordGate(function (pw) {
+    password = pw;
+
+    const draft = readDraft();
+    if (draft) {
+      apply(draft.answers);
+      if (draft.by && !whoEl.value) whoEl.value = draft.by;
+    }
+
+    if (!tokenConfigured()) {
+      stateEl.textContent = "Saved on this device as you type — when you're done, press Copy answers and send them over";
+      stateEl.className = "warn";
+      return;
+    }
+
+    loadAnswers(password)
+      .then(function (saved) {
+        if (!saved || !saved.answers) return;
+        // Whatever is in the repo was saved by whoever went last — it wins over
+        // an older local draft, but never over something being typed right now.
+        if (!draft || !draft.at || new Date(saved.savedAt) >= new Date(draft.at)) {
+          apply(saved.answers);
+          if (saved.savedBy && !whoEl.value.trim()) whoEl.value = saved.savedBy;
+        }
+      })
+      .catch(function (err) {
+        stateEl.textContent = "Couldn't load earlier answers — anything you type is still saved on this device";
+        stateEl.className = "warn";
+        console.error(err);
+      });
+  });
+</script>
+
 </body>
 </html>

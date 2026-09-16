@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What we did with your answers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&display=swap">
+
+<style>
+  :root {
+    --lime: #9fe870;
+    --lime-deep: #66b534;
+    --lime-wash: #eef9e2;
+    --ink: #062f28;
+
+    --ground: #f1f3f0;
+    --surface: #ffffff;
+    --line: #dde3dc;
+
+    --fg: #0d221d;
+    --fg-2: #4e615a;
+    --fg-3: #7d8d86;
+
+    --amber: #b0741a;
+    --amber-wash: #fbf1de;
+    --teal: #2f6b78;
+
+    --display: "Poppins", "Avenir Next", "Segoe UI", sans-serif;
+    --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --lime: #9fe870;
+      --lime-deep: #b6ed8e;
+      --lime-wash: #14312a;
+      --ink: #dff0e6;
+      --ground: #071a16;
+      --surface: #0e2520;
+      --line: #234139;
+      --fg: #e8f2ec;
+      --fg-2: #a6bcb2;
+      --fg-3: #7d968c;
+      --amber: #e8b45f;
+      --amber-wash: #33270f;
+      --teal: #8fc4cf;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--ground);
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .top { background: var(--ink); padding: 40px 22px 34px; }
+  .top-inner { max-width: 660px; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: var(--display);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin: 0 0 12px;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(26px, 5.5vw, 34px);
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin: 0 0 12px;
+    color: #fff;
+    text-wrap: balance;
+  }
+
+  .top p { margin: 0; color: #bed4ca; max-width: 52ch; }
+  .top .when {
+    margin-top: 20px;
+    font-family: var(--display);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #7e978f;
+  }
+
+  .wrap { max-width: 660px; margin: 0 auto; padding: 32px 22px 60px; }
+
+  section { margin-bottom: 38px; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 19px;
+    margin: 0 0 6px;
+    color: var(--fg);
+    text-wrap: balance;
+  }
+
+  .lede { margin: 0 0 18px; color: var(--fg-2); font-size: 15.5px; max-width: 54ch; }
+
+  .box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+  }
+
+  ul.list { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+  ul.list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: baseline;
+    font-size: 15.5px;
+    color: var(--fg-2);
+  }
+  ul.list li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--lime-deep);
+    transform: translateY(-2px);
+  }
+  ul.list b { font-family: var(--display); font-weight: 600; color: var(--fg); }
+
+  ul.list.plain li::before { background: var(--fg-3); }
+
+  .stages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .stage {
+    font-family: var(--display);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--lime-wash);
+    color: var(--lime-deep);
+    white-space: nowrap;
+  }
+  .stage.off { background: var(--amber-wash); color: var(--amber); }
+
+  .note {
+    background: var(--amber-wash);
+    border: 1px solid color-mix(in srgb, var(--amber) 32%, transparent);
+    border-radius: 14px;
+    padding: 18px 20px;
+    font-size: 15.5px;
+    color: var(--fg-2);
+  }
+  .note b { font-family: var(--display); color: var(--fg); font-weight: 600; }
+
+  .cta {
+    display: block;
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 20px 22px;
+    text-decoration: none;
+    color: #fff;
+  }
+  .cta h2 { color: #fff; margin-bottom: 4px; }
+  .cta p { margin: 0; color: #bed4ca; font-size: 15px; }
+
+  footer {
+    margin-top: 10px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--fg-3);
+  }
+
+  a { color: var(--teal); }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: .88em;
+    background: color-mix(in srgb, var(--fg-3) 14%, transparent);
+    border-radius: 4px;
+    padding: 1px 5px;
+  }
+  :focus-visible { outline: 2px solid var(--lime-deep); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <p class="eyebrow">C1 Clearance · Lead Centre</p>
+    <h1>What we did with your answers</h1>
+    <p>
+      Thanks Sam — you answered everything, so we spent today putting it into the app. It's all live now.
+      Here's what changed, and the few bits still sitting with you.
+    </p>
+    <p class="when">For Sam and Dan · 16 September 2026</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2>Your stages, not our guesses</h2>
+    <p class="lede">
+      The ones we'd built came off the design. These are the ones you gave us, and they're what the app runs on now.
+    </p>
+    <div class="box">
+      <div class="stages">
+        <span class="stage">New Lead</span>
+        <span class="stage">Images Requested</span>
+        <span class="stage">Images Received</span>
+        <span class="stage">Site Visit Required</span>
+        <span class="stage">Site Visit Booked</span>
+        <span class="stage">Quoted</span>
+        <span class="stage">Job Booked</span>
+        <span class="stage">Job Complete</span>
+        <span class="stage off">Lost</span>
+        <span class="stage off">Job Issues</span>
+      </div>
+      <p style="margin:16px 0 0;font-size:15px;color:var(--fg-2);">
+        Lost and Job Issues sit off to the side rather than in the line, because a job doesn't pass
+        <em>through</em> them. <b>Invoiced and Paid are gone</b> — you invoice elsewhere, and a second copy of
+        that here would only ever be the out-of-date one. Say if you'd rather have them back.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>And your job types</h2>
+    <div class="box">
+      <div class="stages">
+        <span class="stage">Full House Clearance</span>
+        <span class="stage">Part House Clearance</span>
+        <span class="stage">Garage Clearance</span>
+        <span class="stage">Garden Waste Clearance</span>
+        <span class="stage">Sofa or Bed Collection</span>
+        <span class="stage">Commercial Job</span>
+        <span class="stage">Other</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The 30-minute clock is running</h2>
+    <div class="box">
+      <ul class="list">
+        <li><span>Any lead nobody has answered shows <b>how long is left</b>, and turns red once it's past 30 minutes.</span></li>
+        <li><span><b>Weekends don't count.</b> Something landing on a Saturday isn't late on Sunday — it picks up where it left off on Monday, carrying Friday's minutes with it.</span></li>
+        <li><span>It stops as soon as someone replies, or moves the lead on from New Lead.</span></li>
+      </ul>
+      <p style="margin:16px 0 0;font-size:15px;color:var(--fg-2);">
+        It doesn't know your opening hours, because you've got those in Aircall. Tell us the hours and we'll
+        stop the clock outside them too.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Numbers &amp; Routing now shows your plan</h2>
+    <p class="lede">
+      It was still showing the old idea — porting the van's WhatsApp number off Lycamobile, with a Facebook
+      verification step. Both are gone.
+    </p>
+    <div class="box">
+      <ul class="list">
+        <li><span><code>0330 133 9144</code> — <b>forwarding to Aircall</b>, then ported across in about a month, exactly as you described it.</span></li>
+        <li><span>The new Aircall number and the WhatsApp number show as <b>pending</b> until they exist.</span></li>
+        <li><span><code>07440 517077</code> is <b>out of the app altogether</b>. It stays on Dan's phone and nothing touches it.</span></li>
+        <li><span>Ring groups, hours and automatic replies now point at Aircall, since that's where you're setting them. The app was describing rules it doesn't actually control.</span></li>
+        <li><span>Nothing shows as connected any more until it genuinely is. It was quietly claiming everything was live.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Website forms can come straight in</h2>
+    <p class="lede">
+      You asked for a way to push form fills into the system. It's built and live.
+    </p>
+    <div class="box">
+      <ul class="list">
+        <li><span>A form fill lands as its <b>own kind of lead</b>, not filed as an email — you can't reply to a form, and pretending otherwise gets someone caught out.</span></li>
+        <li><span>If the person has rung or messaged before, <b>it joins their existing thread</b> instead of making a second one.</span></li>
+        <li><span>It's shut until we switch it on, so nobody can push junk into your inbox.</span></li>
+      </ul>
+      <p style="margin:16px 0 0;font-size:15px;color:var(--fg-2);">
+        Two things to finish it: we set a key on our side, and someone points the form on the website at it.
+        <b>Just tell us what the website's built in</b> — WordPress, Wix, something custom — and we'll send whoever
+        looks after it the exact thing to paste.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <p class="note">
+      <b>One thing you'll notice.</b> The eleven made-up leads in there still show our old job types — "flat void",
+      "office strip-out" and so on. That's deliberate: the app won't overwrite lead data on an update, which is
+      the behaviour you want the day those are real customers. They disappear when we clear the demo data and
+      start clean, as you asked.
+    </p>
+  </section>
+
+  <section>
+    <h2>Still with you</h2>
+    <div class="box">
+      <ul class="list plain">
+        <li><span><b>The Aircall settings</b>, once you've made that admin login. Five things, ten minutes — we'll send the steps.</span></li>
+        <li><span><b>WhatsApp billing.</b> You said put it on the current Aircall account, but the WhatsApp number can't come through Aircall — that's the Facebook route you ruled out. It'll be a separate small bill, about £45 a month. Just confirm you're happy with that.</span></li>
+        <li><span><b>"Job Complicated"</b> — we've read that as Job Complete. Shout if you meant something else.</span></li>
+        <li><span><b>How long we keep things.</b> Aircall covers telling callers they're recorded, but not how long lead records and transcripts live in here. GDPR wants a number — a year, two years, whatever suits.</span></li>
+        <li><span><b>What <code>hello@c1clearance.co.uk</code> runs on</b> — Google, Microsoft, or something else. Email's a real channel per your answer, and that decides how we connect it.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>What we're on next</h2>
+    <div class="box">
+      <ul class="list plain">
+        <li><span><b>Photos.</b> You quote off photos, and right now one sent over WhatsApp would arrive and be dropped. This is the big one.</span></li>
+        <li><span><b>Call recordings.</b> The thread offers them, but nothing's kept behind it yet.</span></li>
+        <li><span><b>Telling us when it breaks.</b> If the Aircall connection fails, enquiries stop and the inbox just looks quiet. That's the worst way for this to go wrong, so it needs to shout.</span></li>
+        <li><span><b>Backups.</b> Confirming they're switched on before a single real customer is in there.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <a class="cta" href="https://c1-lead-centre.vercel.app">
+    <h2>Open the Lead Centre ›</h2>
+    <p>Everything above is live in it now. Sign-in details are on the portal page from yesterday.</p>
+  </a>
+
+  <footer>
+    <a href="index.html">Back to the portal</a> · C1 Clearance Lead Centre · 16 September 2026
+  </footer>
+
+</div>
+</body>
+</html>

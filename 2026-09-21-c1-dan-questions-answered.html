@@ -57,6 +57,11 @@
   ul.plain small{display:block;color:var(--muted);font-size:10pt;margin-top:.8mm;line-height:1.5;}
 
   code{font-family:"IBM Plex Mono",monospace;font-size:9.6pt;background:#f2f4f1;border-radius:3px;padding:.5mm 1.6mm;}
+  .two{display:flex;gap:6mm;margin-top:3mm;}
+  .two > div{break-inside:avoid;flex:1;border:1px solid var(--line);border-top:3px solid var(--lime);border-radius:3px;padding:6mm 7mm;}
+  .two h3{font-size:13pt;margin-bottom:3mm;font-weight:600;}
+  .ask{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.13em;text-transform:uppercase;color:#4e8c2c;display:block;margin-bottom:2mm;}
+  .blocks{font-family:"IBM Plex Mono",monospace;font-size:7.6pt;letter-spacing:.06em;text-transform:uppercase;background:var(--redwash);color:var(--red);padding:.8mm 2.2mm;border-radius:999px;margin-left:1.5mm;white-space:nowrap;}
   footer{break-inside:avoid;margin-top:8mm;padding-top:3mm;border-top:1px solid var(--line);color:var(--muted);font-size:9pt;line-height:1.5;}
 
   @media (max-width:620px){
@@ -64,6 +69,7 @@
     header{padding:7mm 6mm;}
     .card{padding:5mm 6mm;}
     .callout{flex-direction:column;gap:2mm;padding:5mm 6mm;}
+    .two{flex-direction:column;gap:4mm;}
     table, thead, tbody, tr, td{display:block;width:100%;}
     thead{display:none;}
     tr{border-bottom:1px solid var(--line);padding:3mm 0;}
@@ -71,124 +77,141 @@
     td{border-bottom:0;padding:1mm 0;}
   }
 </style>
-</head>
-<body>
+</head><body>
 <div class="page">
 
   <header>
     <div class="eyebrow">C1 Clearance &nbsp;·&nbsp; For Dan &nbsp;·&nbsp; 21 September 2026</div>
     <h1>Your questions, answered</h1>
-    <p>You asked about the landline, where the WhatsApps are going, and why the leads on the Lead Centre don't look right. Here's all of it, straight.</p>
+    <p>Hi Dan — you asked about the landline, where the WhatsApps are going, and why the leads on the Lead Centre don't look right. Had a proper look at all of it. Here's the lot.</p>
   </header>
 
   <div class="card warn">
-    <h2>The short version</h2>
-    <p><strong>None of the channels are switched on yet.</strong> What you're looking at on the Lead Centre is the demo data we built it with — made-up names, made-up jobs — not live enquiries.</p>
-    <p>That's why your form leads aren't in there. They were never being sent to it. <strong>Nothing has been lost</strong> — they've gone wherever they were going before, the website's own notifications and the inbox.</p>
-    <p>We checked the live system this morning to be sure: phone, SMS and WhatsApp are not connected, the website form is not connected, and nothing has even attempted to post in. So it isn't a case of leads arriving and being dropped. They aren't being sent.</p>
+    <h2>The honest answer first</h2>
+    <p><strong>None of the channels are switched on yet.</strong> So what you're seeing on the Lead Centre is the demo data we built it with — made-up names, made-up jobs — not real enquiries.</p>
+    <p>That's why your form leads aren't showing. They were never being sent to it in the first place. <strong>Nothing's been lost</strong> — they've gone wherever they were going before.</p>
+    <p>We checked the live system this morning to be sure rather than going off memory. Phone, texts and WhatsApp aren't connected, the website form isn't connected, and nothing has even tried to send anything in. So it isn't leads arriving and getting dropped somewhere. They aren't being sent yet.</p>
   </div>
 
-  <h2 class="section">The four questions</h2>
+  <h2 class="section">The landline</h2>
 
   <div class="card">
-    <span class="q">Question one</span>
-    <p class="quote">Is the landline number set up, and if so where can I access it?</p>
-    <p><strong>It exists, but it isn't plugged into the Lead Centre yet.</strong> <code>0330 133 9144</code> is the number on the van and that doesn't change. What hasn't happened is connecting it to the system.</p>
-    <p>The order it goes in: Sam creates the Aircall account, which issues the number and the settings we need. Then we forward <code>0330</code> into it — same day, no waiting. Then about a month later the <code>0330</code> is ported across properly and the forwarding comes off.</p>
-    <p>Until the forwarding is on, calls to <code>0330</code> just ring where they ring today, and nothing about them lands in the app. Once it's on, every call, voicemail and text to that number opens a lead thread with the recording attached, and that's where you'd access it — the Lead Centre, same place as everything else. <strong>Nothing on the van or the leaflets ever changes at any point.</strong></p>
+    <p><strong>0330 133 9144 is set up as the number on the van, but it's not plugged into the Lead Centre yet.</strong></p>
+    <p>That's waiting on Sam creating the Aircall account, which is the thing that issues the number and switches on the calls, the voicemail and the texts. Once that's done we forward the 0330 into it the same day, and every call starts landing on a lead thread with the recording attached. About a month after that the 0330 moves across properly and the forwarding comes off.</p>
+    <p>So to answer "where can I access it" — right now, nowhere, it just rings where it rings today. Once the forwarding's on, it's the Lead Centre, same place as everything else. <strong>The van and the leaflets never change at any point</strong>, that was the whole reason for doing it in this order.</p>
   </div>
 
+  <h2 class="section">WhatsApp</h2>
+
   <div class="card">
-    <span class="q">Question two</span>
-    <p class="quote">Where are the WhatsApps going? Do I need to log in to WhatsApp with a new number?</p>
-    <p><strong>Nowhere yet — we haven't bought the WhatsApp number.</strong></p>
-    <p>And no, you won't be logging into WhatsApp on a handset. The plan is a <strong>brand new number used only for WhatsApp</strong>, run through a provider, so the messages come into the Lead Centre rather than sitting on one person's phone. That's rather the point of it — anyone in the office can see them and reply, and nothing is stuck on a device that's out on a job.</p>
-    <p><strong>Your <code>07440 517077</code> stays exactly where it is, on your phone, untouched.</strong> That's deliberate. It's the number printed inside the QR code on the van, and moving a number that's on a vehicle is a re-wrap if anything goes wrong. On your own figures — two enquiries in eight months from that QR — there's nothing there worth that risk.</p>
+    <p><strong>It isn't going anywhere yet — we haven't bought the number.</strong></p>
+    <p>And no, you won't need to log into WhatsApp on a new phone or anything like that. It'll be a separate number that runs through the provider, so the messages come straight into the Lead Centre rather than sitting on someone's handset. That's rather the point — anyone in the office can see them and reply, and nothing's stuck on a phone that's out on a job.</p>
+    <p><strong>Your 07440 517077 stays exactly where it is, on your phone, untouched.</strong> We're deliberately leaving that one alone since it's the number printed inside the QR code on the van. On your own figures — two enquiries in eight months off that QR — there's nothing there worth the risk of moving it.</p>
   </div>
 
+  <h2 class="section">The form leads that aren't showing</h2>
+
   <div class="card">
-    <span class="q">Question three</span>
-    <p class="quote">The leads on the C1 page don't seem to be correct. I've had multiple leads come in via the form but they aren't showing.</p>
-    <p><strong>You're right, and we know exactly why.</strong> The Lead Centre has a door built into it for website form fills — it's finished and tested. The website has simply never been pointed at it, and the key that authorises it was never set on the server.</p>
-    <p>So every form fill you've had has gone down the old route, the same as before we started. They aren't missing, they're just not in the new place.</p>
-    <p>Two small jobs fix it: point the form on <code>c1clearance.co.uk</code> at our intake address, and set the key. <strong>This one doesn't wait on Sam or on Aircall</strong> — it's completely separate from all of that.</p>
-    <p>It does need one thing from you, and it's on the 16 September list already: <strong>what the website is built in, and who looks after it.</strong> WordPress, Wix, Squarespace or something custom — the answer changes what we hand their developer to paste in. Your Google Ads landing pages count too. Tell us that and we can have it done this week, and a form fill will show up in the inbox within seconds of someone pressing submit.</p>
+    <p><strong>You're right, and we know exactly why.</strong> There's a door already built into the Lead Centre for website form fills. It's finished and tested. We just never pointed the website at it.</p>
+    <p>So every form fill you've had has gone down the old route, same as before we started. They're not missing, they're just not in the new place yet.</p>
+    <p>This one doesn't wait on Sam or on Aircall, it's completely separate. But it does need one thing from you, and it's already on the list we sent over on the 16th: <strong>what's the website built in, and who looks after it?</strong> WordPress, Wix, Squarespace, something custom — the answer changes what we hand their developer to paste in. Your Google Ads landing pages count too.</p>
+    <p>Tell us that and we can have it done this week, and a form fill will show up in the inbox within seconds of someone pressing submit.</p>
   </div>
 
-  <div class="card">
-    <span class="q">Question four</span>
-    <p class="quote">Give me a breakdown of where leads will come from — email, lead form, a WhatsApp number, or will they all show up in the Lead Centre?</p>
-    <p>Once it's all switched on: <strong>the form, the calls, the texts and the WhatsApps all land in the one place.</strong> Email is the exception. Here's where each one stands today.</p>
+  <h2 class="section">Where leads will come from</h2>
+  <p class="lede">Once it's all live: the form, the calls, the texts and the WhatsApps all land in the one place. Email's the exception. Here's where each one stands today.</p>
 
-    <table>
-      <thead>
-        <tr><th>Where it comes from</th><th>Lands in Lead Centre?</th><th>Today</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Website &amp; Google Ads form</td>
-          <td><span class="pill yes">Yes</span> as its own Form channel</td>
-          <td>Not connected. Needs one answer from you — what the site is built in — then it's a week's work at most.</td>
-        </tr>
-        <tr>
-          <td>Calls to 0330 133 9144</td>
-          <td><span class="pill yes">Yes</span> with voicemail and recording</td>
-          <td>Not connected. Waiting on Sam's Aircall account.</td>
-        </tr>
-        <tr>
-          <td>Texts to the Aircall number</td>
-          <td><span class="pill yes">Yes</span></td>
-          <td>Comes with Aircall, same switch-on.</td>
-        </tr>
-        <tr>
-          <td>WhatsApp</td>
-          <td><span class="pill yes">Yes</span></td>
-          <td><span class="pill wait">Number not bought yet</span> Needs a yes from you on the separate number.</td>
-        </tr>
-        <tr>
-          <td>Email to hello@c1clearance.co.uk</td>
-          <td><span class="pill no">No — not built</span></td>
-          <td>The one real gap. Aircall doesn't carry email, so it needs a connection of its own. Already asked on 16 Sep: what does hello@ run on?</td>
-        </tr>
-        <tr>
-          <td>07440 517077 (van QR, your phone)</td>
-          <td><span class="pill no">No — by design</span></td>
-          <td>Stays on your phone, as agreed.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table>
+    <thead>
+      <tr><th>Where it comes from</th><th>Lands in Lead Centre?</th><th>Today</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Website &amp; Google Ads form</td>
+        <td><span class="pill yes">Yes</span> as its own Form channel</td>
+        <td>Not connected. Needs one answer from you — what the site's built in — then it's a week's work at most.</td>
+      </tr>
+      <tr>
+        <td>Calls to 0330 133 9144</td>
+        <td><span class="pill yes">Yes</span> with voicemail and recording</td>
+        <td>Not connected. Waiting on Sam's Aircall account.</td>
+      </tr>
+      <tr>
+        <td>Texts to the Aircall number</td>
+        <td><span class="pill yes">Yes</span></td>
+        <td>Comes with Aircall, same switch-on.</td>
+      </tr>
+      <tr>
+        <td>WhatsApp</td>
+        <td><span class="pill yes">Yes</span></td>
+        <td><span class="pill wait">Number not bought yet</span> Needs a yes from you on the separate number.</td>
+      </tr>
+      <tr>
+        <td>Email to hello@c1clearance.co.uk</td>
+        <td><span class="pill no">No — not yet</span></td>
+        <td>Aircall doesn't carry email, so it needs a connection of its own. Already asked on the 16th: what does hello@ run on?</td>
+      </tr>
+      <tr>
+        <td>07440 517077 (van QR, your phone)</td>
+        <td><span class="pill no">No — by design</span></td>
+        <td>Stays on your phone, as agreed.</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <h2 class="section">On not missing leads</h2>
-  <p class="lede">This was the bit underneath all four questions, so it's worth answering on its own.</p>
+  <h2 class="section">On not missing any leads</h2>
 
   <div class="card">
-    <p>The worst way a system like this fails is quietly — a setting changes, enquiries stop arriving, and every screen carries on looking completely normal. You'd find out a fortnight later.</p>
-    <p>So there's a monitor built in that watches for exactly that. <strong>If a connected channel goes silent during working hours, it goes red and we get told</strong> — and it's clever enough to ignore evenings and weekends, so it isn't crying wolf at 9pm on a Saturday.</p>
-    <p>The honest caveat: that only works for channels that are actually connected. Today that's none of them. Which is the real answer to "am I missing leads" — you're not missing them <em>in</em> the Lead Centre, because nothing is going into it yet.</p>
+    <p>This was the bit underneath all four questions, so it's worth answering on its own.</p>
+    <p>The worst way a system like this fails is quietly. A setting changes, enquiries stop arriving, and every screen carries on looking completely normal — you'd find out a fortnight later.</p>
+    <p>So there's a monitor built in that watches for exactly that. <strong>If a connected channel goes quiet during working hours it goes red and we get told</strong>, and it's sensible enough to ignore evenings and weekends so it isn't crying wolf at 9pm on a Saturday.</p>
+    <p>The honest caveat: that only works for channels that are actually connected, and today that's none of them. Which is really the answer to "am I missing leads" — you're not missing them <em>in</em> the Lead Centre, because nothing's going into it yet.</p>
   </div>
 
   <h2 class="section">What happens next</h2>
-  <p class="lede">Two things, and they're independent of each other.</p>
+  <p class="lede">Three things, and they're all independent of each other.</p>
 
   <div class="card">
     <ul class="plain">
-      <li><strong>The website form — the quickest win, and it's yours to unlock.</strong>
-        <small>Doesn't need Sam and doesn't need Aircall. Just tell us what the site is built in and who looks after it, and you'll have real form leads appearing in the Lead Centre this week. Honestly this is the one to do first — it's the quickest way for you to stop having to take our word for any of this.</small></li>
+      <li><strong>The website form — quickest win, and it's yours to unlock.</strong>
+        <small>Doesn't need Sam, doesn't need Aircall. Just tell us what the site's built in and who looks after it, and you'll have real form leads appearing this week. Honestly this is the one to do first — it's the quickest way for you to stop having to take our word for any of this.</small></li>
       <li><strong>Everything else unblocks on Sam's Aircall account.</strong>
         <small>That single step gives us the number, the calls, the voicemail, the texts and the route to WhatsApp. It's the one thing the rest of it is queued behind.</small></li>
       <li><strong>Email needs its own connection.</strong>
-        <small>Aircall carries calls, texts and WhatsApp, but not email — so hello@c1clearance.co.uk needs wiring up separately, and how depends on whether you're on Google, Microsoft or something else. That question is already on the 16 September list. If a decent share of your enquiries come in by email, it's worth answering sooner rather than later.</small></li>
+        <small>Aircall carries calls, texts and WhatsApp, but not email — so hello@c1clearance.co.uk has to be wired up separately, and how depends on whether you're on Google, Microsoft or something else. That question's already on the 16 September list. If a fair few of your enquiries come in by email, worth answering sooner rather than later.</small></li>
     </ul>
+  </div>
+
+  <h2 class="section">What we still need, and who from</h2>
+  <p class="lede">Nothing here is hard — it's all just answers. These are the ones that actually hold things up.</p>
+
+  <div class="two">
+    <div>
+      <span class="ask">From Sam</span>
+      <h3>Ten minutes with your Aircall admin <span class="blocks">Blocks the lot</span></h3>
+      <p>The account, the two API keys, the number id and a webhook with its secret. We'll send the exact steps — it's genuinely ten minutes, and everything else is queued behind it: the calls, the voicemail, the texts and the route to WhatsApp.</p>
+      <p style="margin-top:4mm;"><strong>And a yes on the WhatsApp number</strong> — about £45 a month on its own bill, in C1's name so the number's always yours. Nothing gets bought until you say so.</p>
+    </div>
+    <div>
+      <span class="ask">From Dan</span>
+      <h3>What's the website built in? <span class="blocks">Blocks the form</span></h3>
+      <p>And who looks after it. WordPress, Wix, Squarespace, something custom — it changes what we hand their developer. Google Ads landing pages count too. <strong>This is the one that gets your form leads flowing, and it doesn't wait on anyone else.</strong></p>
+      <p style="margin-top:4mm;"><strong>Then three quick ones:</strong> what hello@c1clearance.co.uk runs on (Google, Microsoft, something else), who we should tell if enquiries ever stop arriving, and whether there are live enquiries to bring across or we start clean.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="k">The full list</span>
+    <p>There are a few smaller ones beyond these — the hours the 30-minute clock should run, how long to keep recordings, whether you want your own copies of the photos. They're all on the <strong>16 September questions page</strong> on the portal, as boxes you type into that save as you go. It needs the access code we sent you.</p>
   </div>
 
   <div class="callout">
     <span class="k">In one line</span>
-    <p>Nothing is broken, and nothing has been lost — it just hasn't been plugged in yet. Give us the go-ahead on the form and you'll see the first real lead land within a few days.</p>
+    <p>Nothing's broken and nothing's been lost — it just hasn't been plugged in yet. Send us what the website runs on and you'll see the first real lead land within a few days.</p>
   </div>
 
   <footer>
-    Checked against the live system on 21 September 2026. Sits alongside the 15 September pack — this answers Dan's questions specifically; the go-live list and the WhatsApp options are unchanged.
+    Checked against the live system on 21 September 2026. Sits alongside the 15 and 16 September papers — this one answers Dan's questions specifically; the go-live list and the WhatsApp options haven't changed.
   </footer>
 
 </div>

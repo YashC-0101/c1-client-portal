@@ -12,6 +12,7 @@ they answer on.
 ## Live URLs
 
 - **Landing** — `https://yashc-0101.github.io/c1-client-portal/`
+- **Where we got to today** (28 Sep) — `https://yashc-0101.github.io/c1-client-portal/2026-09-28-c1-today-and-whats-left.html`
 - **Dan's questions, answered** (21 Sep) — `https://yashc-0101.github.io/c1-client-portal/2026-09-21-c1-dan-questions-answered.html`
 - **Sign in to the Lead Centre** — `https://yashc-0101.github.io/c1-client-portal/2026-09-15-c1-lead-centre-live.html`
 - **Questions** (Sam / Dan) — `https://yashc-0101.github.io/c1-client-portal/2026-09-15-c1-go-live-questions.html`
@@ -34,6 +35,7 @@ pages are not gated — they carry nothing sensitive.
 | File | Purpose |
 |---|---|
 | `index.html` | Landing page — every C1 document, newest first |
+| `2026-09-28-c1-today-and-whats-left.html` | 28 Sep — the day's 21 fixes, the shared-Aircall-account catch, and the three things still with the client (not gated) |
 | `2026-09-21-c1-dan-questions-answered.html` | 21 Sep — Dan's four questions answered: channel status, the landline, WhatsApp, why form leads weren't showing (not gated) |
 | `2026-09-16-c1-what-weve-done.html` | 16 Sep — what we built from Sam's answers |
 | `2026-09-16-c1-what-we-need-now.html` | 16 Sep — the shorter list still with Sam (gated, saves as you type) |

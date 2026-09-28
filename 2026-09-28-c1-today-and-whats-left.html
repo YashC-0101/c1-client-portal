@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where we got to today &mdash; 28 September</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12261c; --body:#2c3a33; --muted:#6b7a72;
+    --dark:#0c2f22; --dark2:#134034; --lime:#7bd44a;
+    --line:#e4e7e5; --cream:#fbf1dd; --creamrule:#b07c2a; --creamink:#7a5a20;
+    --red:#b23c2e; --redwash:#fdeceb;
+  }
+  @page{ size:A4; margin:12mm 0; }
+  *{box-sizing:border-box;}
+  body{margin:0;padding:6mm 5mm;font-family:"Source Sans 3",-apple-system,Segoe UI,sans-serif;color:var(--body);font-size:11pt;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{width:186mm;max-width:100%;margin:0 auto;}
+  h1,h2,h3{font-family:Poppins,-apple-system,sans-serif;color:var(--ink);margin:0;letter-spacing:-0.01em;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:8.2pt;letter-spacing:.16em;color:var(--lime);text-transform:uppercase;}
+
+  header{background:linear-gradient(105deg,var(--dark) 0%,var(--dark2) 100%);color:#fff;padding:9mm 13mm 9.5mm;border-radius:2px;}
+  header h1{color:#fff;font-size:24pt;line-height:1.14;margin:5mm 0 4mm;font-weight:700;}
+  header p{margin:0;color:#c3d6cc;font-size:11.5pt;max-width:120mm;line-height:1.5;}
+
+  .card{break-inside:avoid;border:1px solid var(--line);border-top:3px solid var(--lime);border-radius:3px;padding:6mm 9mm;margin-top:5mm;}
+  .card h2{font-size:16pt;margin-bottom:3mm;font-weight:600;}
+  .card p{margin:0 0 3mm;}
+  .card p:last-child{margin-bottom:0;}
+  .card.warn{border-top-color:var(--red);}
+
+  .q{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.13em;text-transform:uppercase;color:#4e8c2c;display:block;margin-bottom:2mm;}
+  .quote{border-left:2px solid var(--line);padding-left:5mm;margin:0 0 4mm;color:var(--muted);font-style:italic;}
+
+  .callout{break-inside:avoid;background:var(--cream);border-left:3px solid var(--creamrule);padding:5mm 8mm;margin-top:5mm;display:flex;gap:7mm;}
+  .callout .k{font-family:"IBM Plex Mono",monospace;font-size:9pt;color:var(--creamink);white-space:nowrap;padding-top:.4mm;}
+  .callout p{margin:0;}
+  a.link{color:#4e8c2c;text-decoration:underline;text-underline-offset:2px;font-weight:600;}
+  a.link:hover{color:var(--ink);}
+  .urlnote{display:block;font-family:"IBM Plex Mono",monospace;font-size:8.2pt;color:var(--creamink);margin-top:2.5mm;word-break:break-all;}
+
+  h2.section{break-after:avoid;font-size:16pt;margin-top:8mm;font-weight:600;}
+  h2.section + p.lede{color:var(--muted);margin:2mm 0 4mm;font-size:10.6pt;}
+
+  table{width:100%;border-collapse:collapse;margin-top:3mm;font-size:10.4pt;break-inside:avoid;}
+  th{font-family:Poppins,sans-serif;font-size:8.4pt;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 4mm 2.5mm 0;border-bottom:1px solid var(--line);font-weight:600;}
+  td{padding:3.2mm 4mm 3.2mm 0;border-bottom:1px solid var(--line);vertical-align:top;}
+  td:first-child{color:var(--ink);font-weight:600;}
+  tr:last-child td{border-bottom:0;}
+  .pill{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.06em;padding:1mm 2.5mm;border-radius:999px;white-space:nowrap;}
+  .pill.no{background:var(--redwash);color:var(--red);}
+  .pill.yes{background:#e9f6e0;color:#3f7a1f;}
+  .pill.wait{background:#f2f0ea;color:#7a6a45;}
+
+  ul.plain{list-style:none;padding:0;margin:0;}
+  ul.plain li{padding:3.4mm 0;border-bottom:1px solid var(--line);}
+  ul.plain li:last-child{border-bottom:0;padding-bottom:0;}
+  ul.plain li:first-child{padding-top:0;}
+  ul.plain strong{color:var(--ink);}
+  ul.plain small{display:block;color:var(--muted);font-size:10pt;margin-top:.8mm;line-height:1.5;}
+
+  code{font-family:"IBM Plex Mono",monospace;font-size:9.6pt;background:#f2f4f1;border-radius:3px;padding:.5mm 1.6mm;}
+  .two{display:flex;gap:6mm;margin-top:3mm;}
+  .two > div{break-inside:avoid;flex:1;border:1px solid var(--line);border-top:3px solid var(--lime);border-radius:3px;padding:6mm 7mm;}
+  .two h3{font-size:13pt;margin-bottom:3mm;font-weight:600;}
+  .ask{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.13em;text-transform:uppercase;color:#4e8c2c;display:block;margin-bottom:2mm;}
+  .blocks{font-family:"IBM Plex Mono",monospace;font-size:7.6pt;letter-spacing:.06em;text-transform:uppercase;background:var(--redwash);color:var(--red);padding:.8mm 2.2mm;border-radius:999px;margin-left:1.5mm;white-space:nowrap;}
+  footer{break-inside:avoid;margin-top:8mm;padding-top:3mm;border-top:1px solid var(--line);color:var(--muted);font-size:9pt;line-height:1.5;}
+
+  @media (max-width:620px){
+    body{font-size:12pt;}
+    header{padding:7mm 6mm;}
+    .card{padding:5mm 6mm;}
+    .callout{flex-direction:column;gap:2mm;padding:5mm 6mm;}
+    .two{flex-direction:column;gap:4mm;}
+    table, thead, tbody, tr, td{display:block;width:100%;}
+    thead{display:none;}
+    tr{border-bottom:1px solid var(--line);padding:3mm 0;}
+    tr:last-child{border-bottom:0;}
+    td{border-bottom:0;padding:1mm 0;}
+  }
+</style>
+</head><body>
+<div class="page">
+
+  <header>
+    <div class="eyebrow">C1 Clearance &nbsp;·&nbsp; For Sam and Dan &nbsp;·&nbsp; 28 September 2026</div>
+    <h1>Where we got to today</h1>
+    <p>A tester went through the whole Lead Centre and found 21 things. They're all fixed and live. We also got into your Aircall account and caught something serious before it could bite. Here's the lot, and the short list of what's now with you.</p>
+  </header>
+
+  <div class="card warn">
+    <h2>Start here</h2>
+    <p><strong>Everything we can do without you is done.</strong> The app is fixed, tested and deployed.</p>
+    <p><strong>One thing is still stopping real enquiries arriving:</strong> four settings from Aircall need putting onto our server, and a webhook needs creating in Aircall. That's about ten minutes and it's the only thing between you and the first real lead landing.</p>
+    <p>Until that's done, the Lead Centre still shows made-up data — exactly as it did when Dan asked last week.</p>
+  </div>
+
+  <h2 class="section">What we need from you</h2>
+  <p class="lede">Three things, in the order they matter.</p>
+
+  <div class="two">
+    <div>
+      <span class="ask">One &nbsp;·&nbsp; Sam &nbsp;·&nbsp; 10 minutes</span>
+      <h3>Switch Aircall on <span class="blocks">Blocks everything</span></h3>
+      <p>We've been into the account and confirmed the key works. What's left is putting four settings onto our server and creating one webhook in Aircall so calls and texts actually reach the Lead Centre. We'll send the exact steps, or sit with you while you do it.</p>
+      <p style="margin-top:4mm;"><strong>Please generate a fresh API key when you do.</strong> The one we tested with has been passed around during setup and shouldn't be the one that goes live. Takes a few seconds in the same screen.</p>
+    </div>
+    <div>
+      <span class="ask">Two &nbsp;·&nbsp; Dan &nbsp;·&nbsp; one introduction</span>
+      <h3>Who looks after the website?</h3>
+      <p>We found out what it's built in ourselves, so this is no longer a question about technology — <strong>we just need an introduction to whoever maintains c1clearance.co.uk.</strong> It's a half-hour job at their end and then every form fill lands in the Lead Centre within seconds.</p>
+      <p style="margin-top:4mm;">Good news: the site is built in a way that makes this clean and safe. No password or key ever ends up on the public page.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:5mm;">
+    <span class="q">Three &nbsp;·&nbsp; a yes or a no</span>
+    <p><strong>The separate WhatsApp number — about £45 a month, on its own bill in C1's name.</strong> Nothing gets bought until you say so, and nothing else is waiting on it. If you'd rather not, say so and we'll drop it; the phones and the website form don't depend on it either way.</p>
+  </div>
+
+  <h2 class="section">The one worth telling you about</h2>
+
+  <div class="card warn">
+    <h2>Your Aircall account isn't only yours</h2>
+    <p>When we got in to set things up, we found <strong>four numbers on that account</strong> — C1 Clearance, and three lines belonging to completely unrelated businesses: a clinical line and two site-services firms.</p>
+    <p>That matters because of how Aircall works. It sends call and message alerts <strong>for the whole account</strong>, not per number. Connected as it was, the first call to that clinical line would have opened a lead in C1's inbox — their caller's phone number, their voicemail, their recording, sitting in your system.</p>
+    <p><strong>We found it before switching anything on, and fixed it the same day.</strong> The Lead Centre now ignores anything that didn't come in on C1's own number. We tested it: a call on the clinical line is refused, the identical call on C1's line opens the lead properly.</p>
+    <p>Worth knowing either way — if that account is shared with other businesses on purpose, it's worth a conversation with whoever administers it.</p>
+  </div>
+
+  <h2 class="section">What we fixed today</h2>
+  <p class="lede">A tester went through every screen on a phone and a desktop. Twenty-one findings, all done.</p>
+
+  <div class="card">
+    <ul class="plain">
+      <li><strong>Buttons did the wrong thing.</strong>
+        <small>"Send chaser" didn't send a chaser — it quietly moved the job to Booked. "Price it up" moved it to Site Visit Required. Every button now does what its label says, or says what it actually does.</small></li>
+      <li><strong>Every time was an hour out.</strong>
+        <small>An enquiry that came in at 17:57 was shown as 16:57. Now correct, and it handles the clocks changing in October by itself.</small></li>
+      <li><strong>The page was wider than the screen on a normal laptop.</strong>
+        <small>Anything between a small laptop and a big monitor scrolled sideways, cutting off the Sign out button and the end of the pipeline. Fits properly now.</small></li>
+      <li><strong>Notifications were chopped off on phones.</strong>
+        <small>The panel ran off the edge of the screen and every line lost its first few words.</small></li>
+      <li><strong>The "next step" notes were stale.</strong>
+        <small>A finished job still said "Confirm Thu 8:30", and one quote said to chase it on a date before the enquiry even arrived. They're worked out from the job now, so they can't go stale.</small></li>
+      <li><strong>The Numbers page was telling you something untrue.</strong>
+        <small>It stated "Forwarding is already live" while the setup step for forwarding hadn't started, and listed all four channels under a heading saying "CONNECTED" while Settings correctly said none were. Both now read the real state. This was the one we least wanted left in.</small></li>
+      <li><strong>Text you couldn't comfortably read.</strong>
+        <small>Timestamps, "Unassigned", the green stage labels and the red "Overdue" were all too faint to meet the accessibility standard. Every word on every screen now passes.</small></li>
+      <li><strong>The phone version was the poorer product.</strong>
+        <small>It hid the "next action" column — the one that tells you what to do — and you couldn't start a quote from a phone at all. Buttons were too small to hit reliably. All fixed, and a conversation now has noticeably more room for the messages.</small></li>
+      <li><strong>Small things that add up.</strong>
+        <small>Refreshing no longer throws you back to the Dashboard, the Back button works, rows that look clickable now open the lead, the dashboard counts stopped calling finished jobs "live", developer notes came off the screen, and the app can go on a phone's home screen.</small></li>
+    </ul>
+  </div>
+
+  <h2 class="section">Two more things to be aware of</h2>
+
+  <div class="card">
+    <ul class="plain">
+      <li><strong>Your new Aircall number is 0333 091 3602.</strong>
+        <small>That's not the 0330 133 9144 on the van. That's per the plan — the van's number gets forwarded to it now and moved across properly in about a month — but worth confirming that's what Sam intended, rather than the 0330 being moved directly.</small></li>
+      <li><strong>There's still some test data in the live system.</strong>
+        <small>One lead shows as finished three times over, and a stray "hi" someone typed while testing is sitting as a lead's summary line. Harmless, but untidy. We've built the tool to clear it — it just needs running by whoever has access to the database, and it shows you exactly what it'll remove before it removes anything.</small></li>
+    </ul>
+  </div>
+
+  <h2 class="section">Still open from the 16th</h2>
+  <p class="lede">None of these block the switch-on. They're the smaller ones from the questions page.</p>
+
+  <div class="card">
+    <ul class="plain">
+      <li><strong>What does hello@c1clearance.co.uk run on?</strong>
+        <small>Google, Microsoft or something else. Email needs a connection of its own — Aircall doesn't carry it. If a fair share of your enquiries come in by email, this one's worth answering sooner.</small></li>
+      <li><strong>If enquiries stop arriving, who should we tell?</strong>
+        <small>An email address or a mobile. The alarm is built and running; it just needs somewhere to ring.</small></li>
+      <li><strong>What hours should the 30-minute clock run?</strong>
+        <small>It currently runs all day on weekdays and ignores weekends.</small></li>
+      <li><strong>And the quick ones.</strong>
+        <small>How long to keep recordings, whether you want your own copies of the photos, and whether everyone carries on sharing the hello@ login.</small></li>
+    </ul>
+    <p style="margin-top:5mm;">They're all on the <a class="link" href="2026-09-16-c1-what-we-need-now.html">16 September questions page</a>, as boxes you type into that save as you go.
+      <span class="urlnote">yashc-0101.github.io/c1-client-portal/2026-09-16-c1-what-we-need-now.html</span></p>
+  </div>
+
+  <div class="callout">
+    <span class="k">In one line</span>
+    <p>The app is finished and correct. Ten minutes with your Aircall admin and an introduction to the website's developer, and real enquiries start landing.</p>
+  </div>
+
+  <footer>
+    Written 28 September 2026, after the day's fixes were deployed and checked on the live system. Supersedes nothing — the 15 and 16 September papers still stand, and the answers to Dan's questions of the 21st are unchanged except where noted above.
+  </footer>
+
+</div>
+</body>
+</html>

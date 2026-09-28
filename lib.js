@@ -323,11 +323,33 @@ async function writeFile(path, blob, prevSha, commitMessage) {
  * name typed at the top of the page. The file is overwritten each time, so the
  * repo history is the version history.
  */
+/**
+ * Save answers, MERGING with whatever is already there.
+ *
+ * Every questions page writes to the same answers.json, and each page only
+ * collects its own ids — so a straight replace meant opening the newest page
+ * and typing one line silently wiped every answer given on an older one.
+ * Answers are merged by id: this page's values win for its own questions,
+ * and everything else is left exactly as it was.
+ *
+ * If the existing file cannot be read or decrypted we keep the new answers
+ * rather than risk writing over something we could not see.
+ */
 async function saveAnswers(password, answers, who) {
+  let merged = answers;
+  try {
+    const existing = await loadAnswers(password);
+    const before = existing && existing.answers;
+    if (before && typeof before === 'object') {
+      merged = Object.assign({}, before, answers);
+    }
+  } catch (err) {
+    console.warn('could not read existing answers; saving only this page', err);
+  }
   const payload = {
     savedAt: new Date().toISOString(),
     savedBy: who || '',
-    answers,
+    answers: merged,
   };
   const cipher = await encryptJson(password, payload);
   const envelope = { v: 1, encrypted: true, lastUpdated: payload.savedAt, data: cipher };

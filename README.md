@@ -35,7 +35,7 @@ pages are not gated — they carry nothing sensitive.
 | File | Purpose |
 |---|---|
 | `index.html` | Landing page — every C1 document, newest first |
-| `2026-09-28-c1-today-and-whats-left.html` | 28 Sep — the day's 21 fixes, the shared-Aircall-account catch, and the three things still with the client (not gated) |
+| `2026-09-28-c1-today-and-whats-left.html` | 28 Sep — the day's 21 fixes, the Aircall progress tracker, the shared-account catch, and 12 answer boxes at the foot of the page (not gated; answers stay in the browser) |
 | `2026-09-21-c1-dan-questions-answered.html` | 21 Sep — Dan's four questions answered: channel status, the landline, WhatsApp, why form leads weren't showing (not gated) |
 | `2026-09-16-c1-what-weve-done.html` | 16 Sep — what we built from Sam's answers |
 | `2026-09-16-c1-what-we-need-now.html` | 16 Sep — the shorter list still with Sam (gated, saves as you type) |

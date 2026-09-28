@@ -64,7 +64,47 @@
   .two > div{break-inside:avoid;flex:1;border:1px solid var(--line);border-top:3px solid var(--lime);border-radius:3px;padding:6mm 7mm;}
   .two h3{font-size:13pt;margin-bottom:3mm;font-weight:600;}
   .ask{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.13em;text-transform:uppercase;color:#4e8c2c;display:block;margin-bottom:2mm;}
+  .track{list-style:none;padding:0;margin:3mm 0 0;}
+  .track li{display:flex;gap:5mm;padding:3.6mm 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+  .track li:last-child{border-bottom:0;padding-bottom:0;}
+  .track .mark{flex:0 0 5mm;font-size:11pt;line-height:1.35;text-align:center;}
+  .track .who{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding-top:.8mm;}
+  .track strong{color:var(--ink);}
+  .track small{display:block;color:var(--muted);font-size:10pt;margin-top:.8mm;line-height:1.5;}
+  .track li.done strong{color:var(--muted);}
+  .track li.now{background:#f4fbef;margin:0 -4mm;padding-left:4mm;padding-right:4mm;border-radius:3px;}
+  .bar{display:flex;height:3mm;border-radius:999px;overflow:hidden;margin-top:4mm;background:var(--line);}
+  .bar i{display:block;background:var(--lime);}
+  .barnote{font-family:"IBM Plex Mono",monospace;font-size:8.2pt;letter-spacing:.06em;color:var(--muted);margin-top:2mm;text-transform:uppercase;}
   .blocks{font-family:"IBM Plex Mono",monospace;font-size:7.6pt;letter-spacing:.06em;text-transform:uppercase;background:var(--redwash);color:var(--red);padding:.8mm 2.2mm;border-radius:999px;margin-left:1.5mm;white-space:nowrap;}
+  /* ---------- ANSWER BOXES ---------- */
+  .qitem{break-inside:avoid;padding:5mm 0;border-bottom:1px solid var(--line);}
+  .qitem:last-of-type{border-bottom:0;}
+  .qsec{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.13em;text-transform:uppercase;color:#4e8c2c;margin:6mm 0 1mm;}
+  .qsec:first-child{margin-top:0;}
+  .qhead{display:flex;gap:3mm;align-items:baseline;flex-wrap:wrap;}
+  .qhead h3{font-size:12.5pt;font-weight:600;margin:0;flex:1;min-width:60mm;}
+  .qflag{font-family:"IBM Plex Mono",monospace;font-size:7.6pt;letter-spacing:.08em;text-transform:uppercase;background:var(--redwash);color:var(--red);padding:.8mm 2.2mm;border-radius:999px;white-space:nowrap;}
+  .qhint{color:var(--muted);font-size:10.2pt;line-height:1.55;margin:2mm 0 3mm;}
+  .qitem textarea{width:100%;min-height:19mm;font:inherit;font-size:11pt;color:var(--body);padding:3mm 3.5mm;border:1px solid var(--line);border-radius:3px;background:#fff;resize:vertical;}
+  .qitem textarea:focus{outline:2px solid var(--lime);outline-offset:-1px;border-color:var(--lime);}
+  .whoRow{display:block;margin-bottom:5mm;}
+  .qlab{display:block;font-size:10.4pt;font-weight:600;color:var(--ink);margin-bottom:1.5mm;}
+  #who{width:70mm;max-width:100%;font:inherit;font-size:11pt;padding:2.6mm 3.5mm;border:1px solid var(--line);border-radius:3px;}
+  .acts{display:flex;gap:3mm;align-items:center;flex-wrap:wrap;margin-top:6mm;padding-top:4mm;border-top:1px solid var(--line);}
+  .btn{font:inherit;font-size:10.6pt;font-weight:600;padding:2.8mm 6mm;border-radius:3px;border:1px solid var(--dark);background:var(--dark);color:#fff;cursor:pointer;}
+  .btn.ghost{background:#fff;color:var(--ink);border-color:var(--line);}
+  .btn:hover{opacity:.9;}
+  .stat{font-family:"IBM Plex Mono",monospace;font-size:8.4pt;color:var(--muted);}
+  @media print{ .acts{display:none;} .qitem textarea{min-height:14mm;} }
+  /* 16px or iOS zooms the whole page the moment a field is tapped — the same
+     trap we fixed in the app itself. */
+  @media (max-width:620px){
+    .qitem textarea, #who{ font-size:16px; }
+    .acts{ gap:2.5mm; }
+    .btn{ flex:1 1 40%; text-align:center; }
+    .stat{ flex:1 1 100%; }
+  }
   footer{break-inside:avoid;margin-top:8mm;padding-top:3mm;border-top:1px solid var(--line);color:var(--muted);font-size:9pt;line-height:1.5;}
 
   @media (max-width:620px){
@@ -91,9 +131,76 @@
 
   <div class="card warn">
     <h2>Start here</h2>
-    <p><strong>Everything we can do without you is done.</strong> The app is fixed, tested and deployed.</p>
-    <p><strong>One thing is still stopping real enquiries arriving:</strong> four settings from Aircall need putting onto our server, and a webhook needs creating in Aircall. That's about ten minutes and it's the only thing between you and the first real lead landing.</p>
+    <p><strong>Everything we can do without you is done.</strong> The app is fixed, tested and deployed, and Aircall is five steps into nine &mdash; the account is live, the key works, and we know which number is C1&rsquo;s.</p>
+    <p><strong>Two steps are left before real enquiries arrive, and both are yours:</strong> four settings onto our server, and one webhook created in Aircall. That is about ten minutes between you and the first real lead landing.</p>
     <p>Until that's done, the Lead Centre still shows made-up data — exactly as it did when Dan asked last week.</p>
+  </div>
+
+  <h2 class="section">Where Aircall has got to</h2>
+  <p class="lede">Five of the nine steps are done. Two are with you, and they are the short ones.</p>
+
+  <div class="card">
+    <div class="bar" aria-label="Five of nine steps complete"><i style="width:55.5%"></i></div>
+    <div class="barnote">5 of 9 done &nbsp;·&nbsp; 2 with you &nbsp;·&nbsp; 2 follow automatically</div>
+
+    <ul class="track">
+      <li class="done">
+        <span class="mark">&#10003;</span>
+        <span style="flex:1;"><strong>Aircall account created</strong>
+          <small>Done by Sam. This was the thing everything else was queued behind.</small></span>
+        <span class="who">Done</span>
+      </li>
+      <li class="done">
+        <span class="mark">&#10003;</span>
+        <span style="flex:1;"><strong>API key created and proved working</strong>
+          <small>We called Aircall with it and got a clean answer back, so we know the key is right rather than assuming it.</small></span>
+        <span class="who">Done</span>
+      </li>
+      <li class="done">
+        <span class="mark">&#10003;</span>
+        <span style="flex:1;"><strong>C1&rsquo;s number identified &mdash; 0333 091 3602</strong>
+          <small>Picked from the real list on the account, so there is no guesswork about which line the Lead Centre watches.</small></span>
+        <span class="who">Done</span>
+      </li>
+      <li class="done">
+        <span class="mark">&#10003;</span>
+        <span style="flex:1;"><strong>Lead Centre taught to talk to Aircall</strong>
+          <small>Both directions built and tested: reading what comes in, and sending replies back out.</small></span>
+        <span class="who">Done</span>
+      </li>
+      <li class="done">
+        <span class="mark">&#10003;</span>
+        <span style="flex:1;"><strong>Protection against the shared account</strong>
+          <small>Built and tested today, after we found three other businesses on the same account. See below &mdash; this one mattered.</small></span>
+        <span class="who">Done today</span>
+      </li>
+
+      <li class="now">
+        <span class="mark">&#9679;</span>
+        <span style="flex:1;"><strong>Four settings onto our server</strong>
+          <small>Copied from the Aircall account onto the Lead Centre&rsquo;s server. We have them ready; they just need putting in place. Minutes, not hours.</small></span>
+        <span class="who">With you</span>
+      </li>
+      <li class="now">
+        <span class="mark">&#9679;</span>
+        <span style="flex:1;"><strong>One webhook created in Aircall</strong>
+          <small>The bit that tells Aircall where to send a call or a text. One form, one address, five tick-boxes. <strong>This is the step where real enquiries start arriving.</strong></small></span>
+        <span class="who">With you</span>
+      </li>
+
+      <li>
+        <span class="mark" style="color:var(--muted);">&#9675;</span>
+        <span style="flex:1;"><strong>0330 133 9144 forwarded to Aircall</strong>
+          <small>The number on the van starts reaching the inbox. Same day as the two steps above, and nothing on the van or the leaflets changes.</small></span>
+        <span class="who">Then</span>
+      </li>
+      <li>
+        <span class="mark" style="color:var(--muted);">&#9675;</span>
+        <span style="flex:1;"><strong>0330 moved across properly</strong>
+          <small>About a month, handled with your current provider. No downtime &mdash; the forwarding covers it until it completes.</small></span>
+        <span class="who">~1 month</span>
+      </li>
+    </ul>
   </div>
 
   <h2 class="section">What we need from you</h2>
@@ -180,8 +287,29 @@
       <li><strong>And the quick ones.</strong>
         <small>How long to keep recordings, whether you want your own copies of the photos, and whether everyone carries on sharing the hello@ login.</small></li>
     </ul>
-    <p style="margin-top:5mm;">They're all on the <a class="link" href="2026-09-16-c1-what-we-need-now.html">16 September questions page</a>, as boxes you type into that save as you go.
-      <span class="urlnote">yashc-0101.github.io/c1-client-portal/2026-09-16-c1-what-we-need-now.html</span></p>
+    <p style="margin-top:5mm;">They are carried over into the boxes at the bottom of this page, so everything outstanding is in one place.</p>
+  </div>
+
+  <h2 class="section" id="answers">Your answers</h2>
+  <p class="lede">Type straight into the boxes. Everything is kept in this browser as you type, so you can close the page and come back. When you're done, press <strong>Copy answers</strong> and send them over.</p>
+
+  <div class="card">
+    <label class="whoRow">
+      <span class="qlab">Who's filling this in?</span>
+      <input id="who" type="text" placeholder="Sam / Dan">
+    </label>
+    <div id="qs"></div>
+    <div class="acts">
+      <button type="button" id="copy" class="btn">Copy answers</button>
+      <button type="button" id="dl" class="btn ghost">Download as text</button>
+      <span id="stat" class="stat">Saved in this browser as you type.</span>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="k">Answer here</span>
+    <p>Everything above that needs a reply is on one page, as boxes you type into that save as you go &mdash; when the switch-on suits, who looks after the website, the WhatsApp yes or no, and the smaller ones.
+      <a class="link" href="#answers">Answer them at the bottom of this page</a>.</p>
   </div>
 
   <div class="callout">
@@ -194,5 +322,176 @@
   </footer>
 
 </div>
+
+<script>
+(function () {
+  "use strict";
+  // Answers live in this browser only. Nothing is sent anywhere — the Copy
+  // button is how they come back to us — so the page never claims to have
+  // saved something it hasn't.
+  var KEY = "c1-answers-2026-09-28-v1";
+
+  var Q = [
+    { s: "The two that switch it on", id: "switch-on-when", flag: "Ten minutes",
+      q: "When can we do the Aircall switch-on with you?",
+      h: "Everything else is built and waiting. Four settings go from the Aircall account onto our server, and one webhook gets created in Aircall pointing at the Lead Centre. That is the moment real calls and texts start landing on lead threads. We'll do it on a call with whoever has the Aircall login — it genuinely is about ten minutes. Please generate a fresh API key while we're in there; the one we tested with has been passed around during setup and shouldn't be the one that goes live.",
+      p: "A couple of times that suit, and who'll be on the call" },
+    { id: "website-dev", flag: "One intro",
+      q: "Who looks after c1clearance.co.uk, and can you introduce us?",
+      h: "We worked out what the site is built in ourselves, so this is no longer a technical question — we just need the person. It's about half an hour at their end, and afterwards every form fill on the site and on your Google Ads pages lands in the Lead Centre within seconds of someone pressing submit. The way the site is built means no password or key ever ends up on the public page, so there's nothing sensitive to hand over.",
+      p: "Name and email, or an agency" },
+
+    { s: "One yes or no", id: "whatsapp-bill", flag: "Still open",
+      q: "The separate WhatsApp number — about £45 a month, its own bill in C1's name. Yes or no?",
+      h: "Unchanged from the 16th and still unanswered. Nothing is bought until you say so, and nothing else waits on it — the phones and the website form are independent of this either way. If you'd rather not, say so plainly and we'll drop it rather than keep asking.",
+      p: "Yes, go ahead / drop it / talk me through it again" },
+
+    { s: "Two to confirm, now we're inside the account", id: "number-intended",
+      q: "Your new Aircall number is 0333 091 3602 — is that what you intended?",
+      h: "It's a brand new number, not the 0330 133 9144 printed on the van. That matches the plan we agreed: forward the van's number to this one now, then move the 0330 across properly in about a month. We're checking because if the intention was to move the 0330 directly, the routing is set up differently — and it's much easier to change now than later.",
+      p: "Yes that's right / no, we meant to move the 0330" },
+    { id: "shared-account",
+      q: "Is it deliberate that your Aircall account also carries three other businesses?",
+      h: "Setting up, we found four numbers on that account: C1 Clearance plus a clinical line and two site-services firms. We've protected the Lead Centre so it only ever takes calls that came in on C1's own number — that's done and tested. But it's worth you knowing, because anyone with that account's login can see call records for all four, and the billing sits together. Not our call to make, just one you should be making knowingly.",
+      p: "Deliberate / news to me / I'll check with whoever set it up" },
+
+    { s: "One quick permission", id: "clean-live-data",
+      q: "Shall we clear the test data left in the live system?",
+      h: "Testing left a few marks: one lead shows as finished three times over, and a stray \"hi\" someone typed is sitting as a lead's summary line. Harmless but untidy. The tool is built, it shows exactly what it will remove before removing anything, and it only touches those specific rows. We'd rather have your yes than tidy your data without asking.",
+      p: "Go ahead / leave it / show me the list first" },
+
+    { s: "Still open from the 16th", id: "email-host",
+      q: "What does hello@c1clearance.co.uk run on?",
+      h: "You listed email as a real source of work, and Aircall doesn't carry it — email needs a connection of its own, and which one depends on whether you're on Google, Microsoft or something else. Until this is answered, email enquiries stay outside the Lead Centre and need checking by hand.",
+      p: "Google Workspace / Microsoft 365 / not sure" },
+    { id: "alarm-to",
+      q: "If enquiries stop arriving, who should we tell?",
+      h: "The app watches for this, because a setting changing at Aircall's end would stop everything without a single error on screen — the inbox would just look like a slow day. The alarm is built and running; it only needs somewhere to ring. An email address or a mobile, ideally whoever picks things up fastest.",
+      p: "Email address, or a mobile for a text" },
+    { id: "hours",
+      q: "What hours should the 30-minute reply clock run?",
+      h: "Right now it runs all day on weekdays and stops for weekends, which is what you said. If the real answer is 8 to 6, the clock should say so — otherwise a lead that came in at ten at night reads as badly overdue by breakfast, when nobody was ever going to answer it.",
+      p: "e.g. 8am–6pm Mon–Fri, or leave it as it is" },
+    { id: "retention",
+      q: "How long should we keep lead records, recordings and transcripts?",
+      h: "Call recordings of members of the public have rules attached, and the honest default is to keep them only as long as they're useful. Give us a number and we'll set it; leave it and everything is kept indefinitely, which is a decision too.",
+      p: "e.g. 12 months, or not sure — advise us" },
+    { id: "photo-storage",
+      q: "Do you want your own copies of the photos customers send?",
+      h: "Today a photo is shown from the provider's own link. That works, but if they ever expire or you leave the provider, the pictures go with them — and a clearance is quoted off photos. Keeping your own copies costs a few pounds a month.",
+      p: "Yes please / not worth it" },
+    { id: "shared-login",
+      q: "Happy for everyone to keep sharing the hello@ login?",
+      h: "It's what you asked for and it's fine for three people. The cost is that the app can't show who replied to what, or who's looking after which lead — everything reads as hello@. Easy to split into real accounts whenever you want.",
+      p: "Keep sharing / split us out" }
+  ];
+
+  var wrap = document.getElementById("qs");
+  var whoEl = document.getElementById("who");
+  var stat = document.getElementById("stat");
+  var boxes = {};
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  Q.forEach(function (item) {
+    if (item.s) wrap.appendChild(el("div", "qsec", item.s));
+    var box = el("div", "qitem");
+    var head = el("div", "qhead");
+    head.appendChild(el("h3", null, item.q));
+    if (item.flag) head.appendChild(el("span", "qflag", item.flag));
+    box.appendChild(head);
+    box.appendChild(el("p", "qhint", item.h));
+    var ta = document.createElement("textarea");
+    ta.placeholder = item.p || "";
+    ta.setAttribute("aria-label", item.q);
+    box.appendChild(ta);
+    wrap.appendChild(box);
+    boxes[item.id] = ta;
+    ta.addEventListener("input", save);
+  });
+  whoEl.addEventListener("input", save);
+
+  function collect() {
+    var out = {};
+    Q.forEach(function (i) { out[i.id] = boxes[i.id].value; });
+    return out;
+  }
+
+  var t;
+  function save() {
+    clearTimeout(t);
+    t = setTimeout(function () {
+      try {
+        localStorage.setItem(KEY, JSON.stringify({
+          at: new Date().toISOString(), by: whoEl.value, answers: collect()
+        }));
+        stat.textContent = "Saved in this browser · " +
+          new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+      } catch (e) {
+        // Private mode, or storage switched off. Say so rather than pretend.
+        stat.textContent = "Can't save in this browser — copy your answers before leaving.";
+      }
+    }, 250);
+  }
+
+  // Bring back whatever was typed last time.
+  try {
+    var prev = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (prev && prev.answers) {
+      Object.keys(prev.answers).forEach(function (k) {
+        if (boxes[k]) boxes[k].value = prev.answers[k] || "";
+      });
+      whoEl.value = prev.by || "";
+      if (prev.at) {
+        stat.textContent = "Loaded what you typed on " +
+          new Date(prev.at).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+      }
+    }
+  } catch (e) { /* nothing saved yet */ }
+
+  function asText() {
+    var lines = ["C1 Clearance — answers, 28 September 2026"];
+    lines.push("From: " + (whoEl.value || "(not given)"));
+    lines.push("");
+    Q.forEach(function (i) {
+      lines.push(i.q);
+      lines.push("  " + (boxes[i.id].value.trim() || "(not answered)"));
+      lines.push("");
+    });
+    return lines.join("\n");
+  }
+
+  document.getElementById("copy").addEventListener("click", function () {
+    var text = asText();
+    function done() { stat.textContent = "Copied — paste it into WhatsApp or an email."; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); }
+      catch (e) { stat.textContent = "Couldn't copy — use Download instead."; }
+      document.body.removeChild(ta);
+    }
+  });
+
+  document.getElementById("dl").addEventListener("click", function () {
+    var blob = new Blob([asText()], { type: "text/plain;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "c1-answers-28-september.txt";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+    stat.textContent = "Downloaded.";
+  });
+})();
+</script>
+
 </body>
 </html>

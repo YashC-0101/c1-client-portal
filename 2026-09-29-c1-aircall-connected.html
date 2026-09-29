@@ -129,7 +129,7 @@
   <header>
     <div class="eyebrow">C1 Clearance &nbsp;·&nbsp; For Sam and Dan &nbsp;·&nbsp; 29 September 2026</div>
     <h1>Aircall is connected</h1>
-    <p>The phones are wired into the Lead Centre. A tester went through the whole app twice and found twenty-six things. Twenty are fixed; the six that are not are listed below, with why. There are six questions at the bottom &mdash; the first is a thirty-second job that finishes this off.</p>
+    <p>The phones are wired into the Lead Centre. A tester went through the whole app twice and found twenty-six things. Twenty-five are fixed and live. The one that is not is a question for you, below. There are five questions at the bottom &mdash; the first is a thirty-second job that finishes this off.</p>
   </header>
 
   <div class="card warn">
@@ -244,33 +244,25 @@
   </div>
 
   <h2 class="section">Still outstanding &mdash; and why</h2>
-  <p class="lede">Six of the twenty-six. None stops the Lead Centre working. Two of them we have deliberately not decided on our own, and they are in the questions below.</p>
+  <p class="lede">One, and it is a question for you rather than work we have not got to.</p>
 
   <div class="card">
     <ul class="plain">
-      <li><strong>A conversation is still cramped on a small phone.</strong> <span class="qflag">Needs your call</span>
-        <small><em>Why not done:</em> we got the message area from about 250 pixels to just over 300, but getting properly more space means taking something else off the screen &mdash; either the menu bar along the bottom, or the WhatsApp / SMS / Email buttons above the reply box. Both are things you use. We are not guessing which one you would rather lose. <strong>See the question below.</strong></small></li>
-
-      <li><strong>The unread badge is per browser, not per person.</strong> <span class="qflag">Needs your call</span>
-        <small><em>Why not done:</em> read your notifications on the laptop and your phone still shows them unread. Fixing it means the app remembering what each person has read, which is a change to how it stores data &mdash; about half a day, and it touches the database. Worth doing, but not worth doing quietly in the middle of go-live week. <strong>See the question below.</strong></small></li>
-
-      <li><strong>"1 lost" is text, where every other figure is a link.</strong>
-        <small><em>Why not done:</em> small, and it was the lowest-value thing on a long list. About an hour. We will do it unless you say otherwise.</small></li>
-
-      <li><strong>Settings forgets which tab you were on.</strong>
-        <small><em>Why not done:</em> refresh while looking at Integrations and it returns to General. Same fix we applied to the main tabs last week, just not carried into the sub-tabs yet. An hour or so.</small></li>
-
-      <li><strong>Settings &rarr; General does not say who can change things.</strong>
-        <small><em>Why not done:</em> it shows your account, the team and the 30-minute target, all read-only, without saying who to ask to change them. The honest fix depends on your answer about the shared hello@ login &mdash; if everyone shares one account, "who can change this" has a different answer. Waiting on that rather than writing something we would have to undo.</small></li>
-
-      <li><strong>The notifications panel does not hold keyboard focus.</strong>
-        <small><em>Why not done:</em> opening it with a keyboard and pressing Tab walks out of the panel instead of around it. Escape does close it. Matters for anyone using the app by keyboard; a couple of hours.</small></li>
+      <li><strong>A conversation is still a little cramped on a small phone.</strong> <span class="qflag">Needs your call</span>
+        <small>On the smallest screen &mdash; an iPhone with Safari's bars showing &mdash; the messages get 311 pixels, just under half the height. That is up from about 250, so it is better, but not yet comfortable.
+        <br><em>Why it is not simply done:</em> the only way to find meaningfully more space is to take something else off the screen, and the two candidates are both things you use &mdash; the menu bar along the bottom, or the WhatsApp / SMS / Email buttons above the reply box. We are not going to pick one on your behalf. <strong>There is a question about it below.</strong></small></li>
     </ul>
-    <p style="margin-top:5mm;">Everything else the tester raised across both rounds is fixed and live &mdash; the list is above.</p>
+  </div>
+
+  <div class="card warn">
+    <h2>A correction to yesterday's version of this page</h2>
+    <p>This page previously listed <strong>six</strong> outstanding items. That was wrong, and it was our mistake rather than a change of plan.</p>
+    <p>When we checked each one properly against the code rather than against our own notes, four of them turned out to be already done: notifications now remember what you have read <em>per person</em> rather than per browser, Settings keeps its place when you refresh, it does say who to ask about the read-only settings, and the notifications panel does hold keyboard focus. A fifth &mdash; the lost-lead figure &mdash; is now a link like every other number on the dashboard.</p>
+    <p>We would rather correct it in writing than quietly tidy the list. If you read the earlier version, the honest position is the one above: <strong>one item outstanding, and it is waiting on your preference.</strong></p>
   </div>
 
   <h2 class="section">Questions for you</h2>
-  <p class="lede">Six. The first is the only one holding anything up; the last two are decisions about what to build next.</p>
+  <p class="lede">Five. The first is the only one holding anything up.</p>
 
   <div class="card">
     <span class="q">Either of you &nbsp;·&nbsp; 30 seconds</span>
@@ -283,8 +275,6 @@
     <ul class="plain">
       <li><strong>Either &mdash; on a phone, what would you rather lose inside a conversation?</strong>
         <small>To give the messages more room we can hide the menu bar along the bottom while you are reading a conversation (you would use Back to get out), or fold the WhatsApp / SMS / Email buttons into the reply box so you pick the channel as you send. Either frees up real space. Tell us which you would miss less and we will do it.</small></li>
-      <li><strong>Either &mdash; should we make "read" notifications follow you between devices?</strong>
-        <small>At the moment reading them on the laptop leaves your phone still showing unread. Making it follow the person rather than the browser is about half a day and touches how the app stores things, so we would rather do it deliberately than slip it in this week. Say when.</small></li>
       <li><strong>Sam &mdash; the WhatsApp number, about &pound;45 a month on its own bill.</strong>
         <small>Yes or no. Asked on the 16th and still open. Nothing is bought until you say, and nothing else waits on it &mdash; if you would rather not, say so plainly and we will drop it rather than keep asking.</small></li>
       <li><strong>Sam &mdash; call recording is switched off on the new number.</strong>

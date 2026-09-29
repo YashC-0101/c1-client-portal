@@ -73,6 +73,9 @@
   .track small{display:block;color:var(--muted);font-size:10pt;margin-top:.8mm;line-height:1.5;}
   .track li.done strong{color:var(--muted);}
   .track li.now{background:#f4fbef;margin:0 -4mm;padding-left:4mm;padding-right:4mm;border-radius:3px;}
+  ol.steps{margin:3mm 0 3mm 0;padding-left:6mm;}
+  ol.steps li{padding:1.6mm 0;color:var(--muted);font-size:10.2pt;line-height:1.55;}
+  ol.steps li strong{color:var(--ink);}
   .bar{display:flex;height:3mm;border-radius:999px;overflow:hidden;margin-top:4mm;background:var(--line);}
   .bar i{display:block;background:var(--lime);}
   .barnote{font-family:"IBM Plex Mono",monospace;font-size:8.2pt;letter-spacing:.06em;color:var(--muted);margin-top:2mm;text-transform:uppercase;}
@@ -162,8 +165,15 @@
         <span class="who">Done</span></li>
 
       <li class="now"><span class="mark">&#9679;</span>
-        <span style="flex:1;"><strong>One test call &mdash; ring 0333 091 3602</strong>
-          <small>Ring it from a mobile, let it ring, hang up. Then tell us and we will confirm the lead landed properly and that nothing from the other three businesses came through with it. This is the only thing standing between "connected" and "proven".</small></span>
+        <span style="flex:1;"><strong>One test call &mdash; and you can check it yourself</strong>
+          <small><strong>This is the only thing standing between "connected" and "proven".</strong> Four steps, about two minutes:</small>
+          <ol class="steps">
+            <li><strong>Ring 0333 091 3602</strong> from your mobile. Let it ring a few times, then hang up &mdash; you do not need to answer or say anything. If you want to test texting too, send a short text to the same number.</li>
+            <li><strong>Open the Lead Centre</strong> and sign in: <span class="urlnote" style="margin-top:1mm;">c1-lead-centre.vercel.app</span></li>
+            <li><strong>Look at the Lead Centre tab.</strong> Your call should be at the top of the list within a few seconds, showing your own mobile number and the time you rang. Open it and you will see the call on the thread.</li>
+            <li><strong>Check it has no TEST label.</strong> The three leads already in there are ours, each marked TEST. Yours will have no label &mdash; that is how you will know it came through for real.</li>
+          </ol>
+          <small><strong>If you see it: ping us and we will confirm from our side</strong> &mdash; that it matched correctly and that nothing from the other three businesses on your Aircall account came through with it. If you do not see it within a minute, tell us that instead; it means something needs adjusting at our end and we would rather find it now than on a customer's call.</small></span>
         <span class="who">With you</span></li>
 
       <li><span class="mark" style="color:var(--muted);">&#9675;</span>
@@ -213,7 +223,8 @@
     <div>
       <span class="ask">Either of you &nbsp;·&nbsp; 30 seconds</span>
       <h3>Ring 0333 091 3602 <span class="blocks">Last step</span></h3>
-      <p>From a mobile, let it ring, hang up. Then message us. We will confirm the lead landed with the right number and time, and that nothing from the other three businesses on your Aircall account came through with it.</p>
+      <p>From a mobile, let it ring, hang up. Then sign in at <strong>c1-lead-centre.vercel.app</strong> and look at the Lead Centre tab &mdash; your call should be at the top within seconds, with your own number on it and <strong>no TEST label</strong>.</p>
+      <p style="margin-top:4mm;"><strong>If it is there, ping us and we will confirm from our side.</strong> If it is not there after a minute, tell us that instead &mdash; better we find it now than on a customer's call. Full steps are in the tracker above.</p>
     </div>
     <div>
       <span class="ask">Dan &nbsp;·&nbsp; one introduction</span>

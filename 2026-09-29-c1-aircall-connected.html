@@ -129,7 +129,7 @@
   <header>
     <div class="eyebrow">C1 Clearance &nbsp;·&nbsp; For Sam and Dan &nbsp;·&nbsp; 29 September 2026</div>
     <h1>Aircall is connected</h1>
-    <p>The phones are wired into the Lead Centre. A tester also went through the whole app again and found twenty-six things; those are fixed. There are four questions for you at the bottom &mdash; the first is a thirty-second job that finishes this off.</p>
+    <p>The phones are wired into the Lead Centre. A tester went through the whole app twice and found twenty-six things. Twenty are fixed; the six that are not are listed below, with why. There are four questions for you at the bottom &mdash; the first is a thirty-second job that finishes this off.</p>
   </header>
 
   <div class="card warn">
@@ -208,13 +208,34 @@
       <li><strong>Test data was indistinguishable from real.</strong>
         <small>Every invented lead carries a TEST label, wherever it appears. This is the one that matters most from here: when your first real enquiry lands, you will know it is real without having to recognise a name.</small></li>
     </ul>
-    <p style="margin-top:5mm;">Also: the keyboard focus ring on the dashboard, a button in the conversation header that did nothing, a counter that said 11 and opened a page showing 6, and a handful of smaller things.</p>
+    <p style="margin-top:5mm;">Also: times on an open page stopped updating &mdash; a dashboard left alone said "19h" for half an hour after it should have said "20h", and now refreshes itself. A failed page load used to show zeros everywhere, which read as a business with no customers rather than a page that had not loaded; it says so plainly now. Plus the keyboard focus ring on the dashboard, a button in the conversation header that did nothing, and a counter that said 11 and opened a page showing 6.</p>
   </div>
 
   <div class="card warn">
     <h2>One we caught before it bit</h2>
     <p>Clearing out the old demo data left the Lead Centre empty, which was the point &mdash; so your first real enquiry arrives into a clean inbox. But the app rebuilds its starter data whenever it finds an empty database, and the next routine update would have poured nineteen invented customers straight back in, alongside anything real that had arrived.</p>
     <p>Found and fixed the same day. Worth telling you because it is the kind of thing that would have been very confusing a week later.</p>
+  </div>
+
+  <h2 class="section">Still outstanding</h2>
+  <p class="lede">Six of the twenty-six. None of them stops the Lead Centre working, and we would rather you saw the list than took our word that everything was done.</p>
+
+  <div class="card">
+    <ul class="plain">
+      <li><strong>A conversation on a small phone screen still feels cramped.</strong>
+        <small>We got the message area from about 250 pixels to just over 300, which is better but still under half the screen. Getting properly more room means moving the bottom menu or the channel buttons out of the way inside a conversation &mdash; a design decision rather than a fix, and we would rather agree it with you than guess.</small></li>
+      <li><strong>The unread badge is per browser, not per person.</strong>
+        <small>If you read your notifications on your laptop, your phone will still show them as unread. Doing it properly means the app remembering what each person has read, which is a change to how it stores things. Worth doing, not urgent.</small></li>
+      <li><strong>The lost lead is a number, not something you can click.</strong>
+        <small>The dashboard says "1 lost" as plain text. Every other figure there opens the matching list; this one does not yet.</small></li>
+      <li><strong>Settings forgets which tab you were on.</strong>
+        <small>Refresh the page while looking at Integrations and it goes back to General.</small></li>
+      <li><strong>Settings &rarr; General does not say who can change what.</strong>
+        <small>It shows your account, the team and the 30-minute target, all read-only, without saying who to ask. The labels themselves are clear.</small></li>
+      <li><strong>The notifications panel does not hold keyboard focus.</strong>
+        <small>Opening it with a keyboard and pressing Tab walks out of the panel instead of moving through it. Escape does close it.</small></li>
+    </ul>
+    <p style="margin-top:5mm;">Say the word on any of these and we will pick them up. The first two are the ones we would do next.</p>
   </div>
 
   <h2 class="section">Questions for you</h2>

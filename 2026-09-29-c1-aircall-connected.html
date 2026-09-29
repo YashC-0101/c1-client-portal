@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aircall is connected &mdash; 29 September</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12261c; --body:#2c3a33; --muted:#6b7a72;
+    --dark:#0c2f22; --dark2:#134034; --lime:#7bd44a;
+    --line:#e4e7e5; --cream:#fbf1dd; --creamrule:#b07c2a; --creamink:#7a5a20;
+    --red:#b23c2e; --redwash:#fdeceb;
+  }
+  @page{ size:A4; margin:12mm 0; }
+  *{box-sizing:border-box;}
+  body{margin:0;padding:6mm 5mm;font-family:"Source Sans 3",-apple-system,Segoe UI,sans-serif;color:var(--body);font-size:11pt;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .page{width:186mm;max-width:100%;margin:0 auto;}
+  h1,h2,h3{font-family:Poppins,-apple-system,sans-serif;color:var(--ink);margin:0;letter-spacing:-0.01em;}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:8.2pt;letter-spacing:.16em;color:var(--lime);text-transform:uppercase;}
+
+  header{background:linear-gradient(105deg,var(--dark) 0%,var(--dark2) 100%);color:#fff;padding:9mm 13mm 9.5mm;border-radius:2px;}
+  header h1{color:#fff;font-size:24pt;line-height:1.14;margin:5mm 0 4mm;font-weight:700;}
+  header p{margin:0;color:#c3d6cc;font-size:11.5pt;max-width:120mm;line-height:1.5;}
+
+  .card{break-inside:avoid;border:1px solid var(--line);border-top:3px solid var(--lime);border-radius:3px;padding:6mm 9mm;margin-top:5mm;}
+  .card h2{font-size:16pt;margin-bottom:3mm;font-weight:600;}
+  .card p{margin:0 0 3mm;}
+  .card p:last-child{margin-bottom:0;}
+  .card.warn{border-top-color:var(--red);}
+
+  .q{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.13em;text-transform:uppercase;color:#4e8c2c;display:block;margin-bottom:2mm;}
+  .quote{border-left:2px solid var(--line);padding-left:5mm;margin:0 0 4mm;color:var(--muted);font-style:italic;}
+
+  .callout{break-inside:avoid;background:var(--cream);border-left:3px solid var(--creamrule);padding:5mm 8mm;margin-top:5mm;display:flex;gap:7mm;}
+  .callout .k{font-family:"IBM Plex Mono",monospace;font-size:9pt;color:var(--creamink);white-space:nowrap;padding-top:.4mm;}
+  .callout p{margin:0;}
+  a.link{color:#4e8c2c;text-decoration:underline;text-underline-offset:2px;font-weight:600;}
+  a.link:hover{color:var(--ink);}
+  .urlnote{display:block;font-family:"IBM Plex Mono",monospace;font-size:8.2pt;color:var(--creamink);margin-top:2.5mm;word-break:break-all;}
+
+  h2.section{break-after:avoid;font-size:16pt;margin-top:8mm;font-weight:600;}
+  h2.section + p.lede{color:var(--muted);margin:2mm 0 4mm;font-size:10.6pt;}
+
+  table{width:100%;border-collapse:collapse;margin-top:3mm;font-size:10.4pt;break-inside:avoid;}
+  th{font-family:Poppins,sans-serif;font-size:8.4pt;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-align:left;padding:0 4mm 2.5mm 0;border-bottom:1px solid var(--line);font-weight:600;}
+  td{padding:3.2mm 4mm 3.2mm 0;border-bottom:1px solid var(--line);vertical-align:top;}
+  td:first-child{color:var(--ink);font-weight:600;}
+  tr:last-child td{border-bottom:0;}
+  .pill{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.06em;padding:1mm 2.5mm;border-radius:999px;white-space:nowrap;}
+  .pill.no{background:var(--redwash);color:var(--red);}
+  .pill.yes{background:#e9f6e0;color:#3f7a1f;}
+  .pill.wait{background:#f2f0ea;color:#7a6a45;}
+
+  ul.plain{list-style:none;padding:0;margin:0;}
+  ul.plain li{padding:3.4mm 0;border-bottom:1px solid var(--line);}
+  ul.plain li:last-child{border-bottom:0;padding-bottom:0;}
+  ul.plain li:first-child{padding-top:0;}
+  ul.plain strong{color:var(--ink);}
+  ul.plain small{display:block;color:var(--muted);font-size:10pt;margin-top:.8mm;line-height:1.5;}
+
+  code{font-family:"IBM Plex Mono",monospace;font-size:9.6pt;background:#f2f4f1;border-radius:3px;padding:.5mm 1.6mm;}
+  .two{display:flex;gap:6mm;margin-top:3mm;}
+  .two > div{break-inside:avoid;flex:1;border:1px solid var(--line);border-top:3px solid var(--lime);border-radius:3px;padding:6mm 7mm;}
+  .two h3{font-size:13pt;margin-bottom:3mm;font-weight:600;}
+  .ask{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.13em;text-transform:uppercase;color:#4e8c2c;display:block;margin-bottom:2mm;}
+  .track{list-style:none;padding:0;margin:3mm 0 0;}
+  .track li{display:flex;gap:5mm;padding:3.6mm 0;border-bottom:1px solid var(--line);align-items:flex-start;}
+  .track li:last-child{border-bottom:0;padding-bottom:0;}
+  .track .mark{flex:0 0 5mm;font-size:11pt;line-height:1.35;text-align:center;}
+  .track .who{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding-top:.8mm;}
+  .track strong{color:var(--ink);}
+  .track small{display:block;color:var(--muted);font-size:10pt;margin-top:.8mm;line-height:1.5;}
+  .track li.done strong{color:var(--muted);}
+  .track li.now{background:#f4fbef;margin:0 -4mm;padding-left:4mm;padding-right:4mm;border-radius:3px;}
+  .bar{display:flex;height:3mm;border-radius:999px;overflow:hidden;margin-top:4mm;background:var(--line);}
+  .bar i{display:block;background:var(--lime);}
+  .barnote{font-family:"IBM Plex Mono",monospace;font-size:8.2pt;letter-spacing:.06em;color:var(--muted);margin-top:2mm;text-transform:uppercase;}
+  .blocks{font-family:"IBM Plex Mono",monospace;font-size:7.6pt;letter-spacing:.06em;text-transform:uppercase;background:var(--redwash);color:var(--red);padding:.8mm 2.2mm;border-radius:999px;margin-left:1.5mm;white-space:nowrap;}
+  /* ---------- ANSWER BOXES ---------- */
+  .qitem{break-inside:avoid;padding:5mm 0;border-bottom:1px solid var(--line);}
+  .qitem:last-of-type{border-bottom:0;}
+  .qsec{font-family:"IBM Plex Mono",monospace;font-size:8pt;letter-spacing:.13em;text-transform:uppercase;color:#4e8c2c;margin:6mm 0 1mm;}
+  .qsec:first-child{margin-top:0;}
+  .qhead{display:flex;gap:3mm;align-items:baseline;flex-wrap:wrap;}
+  .qhead h3{font-size:12.5pt;font-weight:600;margin:0;flex:1;min-width:60mm;}
+  .qflag{font-family:"IBM Plex Mono",monospace;font-size:7.6pt;letter-spacing:.08em;text-transform:uppercase;background:var(--redwash);color:var(--red);padding:.8mm 2.2mm;border-radius:999px;white-space:nowrap;}
+  .qhint{color:var(--muted);font-size:10.2pt;line-height:1.55;margin:2mm 0 3mm;}
+  .qitem textarea{width:100%;min-height:19mm;font:inherit;font-size:11pt;color:var(--body);padding:3mm 3.5mm;border:1px solid var(--line);border-radius:3px;background:#fff;resize:vertical;}
+  .qitem textarea:focus{outline:2px solid var(--lime);outline-offset:-1px;border-color:var(--lime);}
+  .whoRow{display:block;margin-bottom:5mm;}
+  .qlab{display:block;font-size:10.4pt;font-weight:600;color:var(--ink);margin-bottom:1.5mm;}
+  #who{width:70mm;max-width:100%;font:inherit;font-size:11pt;padding:2.6mm 3.5mm;border:1px solid var(--line);border-radius:3px;}
+  .acts{display:flex;gap:3mm;align-items:center;flex-wrap:wrap;margin-top:6mm;padding-top:4mm;border-top:1px solid var(--line);}
+  .btn{font:inherit;font-size:10.6pt;font-weight:600;padding:2.8mm 6mm;border-radius:3px;border:1px solid var(--dark);background:var(--dark);color:#fff;cursor:pointer;}
+  .btn.ghost{background:#fff;color:var(--ink);border-color:var(--line);}
+  .btn:hover{opacity:.9;}
+  .stat{font-family:"IBM Plex Mono",monospace;font-size:8.4pt;color:var(--muted);}
+  @media print{ .acts{display:none;} .qitem textarea{min-height:14mm;} }
+  /* 16px or iOS zooms the whole page the moment a field is tapped — the same
+     trap we fixed in the app itself. */
+  @media (max-width:620px){
+    .qitem textarea, #who{ font-size:16px; }
+    .acts{ gap:2.5mm; }
+    .btn{ flex:1 1 40%; text-align:center; }
+    .stat{ flex:1 1 100%; }
+  }
+  footer{break-inside:avoid;margin-top:8mm;padding-top:3mm;border-top:1px solid var(--line);color:var(--muted);font-size:9pt;line-height:1.5;}
+
+  @media (max-width:620px){
+    body{font-size:12pt;}
+    header{padding:7mm 6mm;}
+    .card{padding:5mm 6mm;}
+    .callout{flex-direction:column;gap:2mm;padding:5mm 6mm;}
+    .two{flex-direction:column;gap:4mm;}
+    table, thead, tbody, tr, td{display:block;width:100%;}
+    thead{display:none;}
+    tr{border-bottom:1px solid var(--line);padding:3mm 0;}
+    tr:last-child{border-bottom:0;}
+    td{border-bottom:0;padding:1mm 0;}
+  }
+</style>
+</head><body>
+<div class="page">
+
+  <header>
+    <div class="eyebrow">C1 Clearance &nbsp;·&nbsp; For Sam and Dan &nbsp;·&nbsp; 29 September 2026</div>
+    <h1>Aircall is connected</h1>
+    <p>The phones are wired into the Lead Centre. A tester also went through the whole app again and found twenty-six things; those are fixed. There are five questions for you at the bottom &mdash; one of them is a thirty-second job that finishes this off.</p>
+  </header>
+
+  <div class="card warn">
+    <h2>Where we got to today</h2>
+    <p><strong>Aircall is connected.</strong> The settings are on the server, the webhook is live, and the Lead Centre is ready to receive. It says so itself now &mdash; the Integrations panel checks rather than waiting for someone to tick a box.</p>
+    <p><strong>One thing left before it is proven:</strong> somebody needs to ring <strong>0333 091 3602</strong> and hang up. We cannot do that from India. Thirty seconds, and it turns "set up" into "working".</p>
+    <p>The Lead Centre currently holds <strong>three test leads, each labelled TEST</strong>. Anything real that arrives will have no label, so you will be able to tell the difference at a glance.</p>
+  </div>
+
+  <h2 class="section">Aircall &mdash; where it stands</h2>
+  <p class="lede">Seven of the nine steps are done. One is yours, and it is small.</p>
+
+  <div class="card">
+    <div class="bar" aria-label="Seven of nine steps complete"><i style="width:77.7%"></i></div>
+    <div class="barnote">7 of 9 done &nbsp;·&nbsp; 1 with you &nbsp;·&nbsp; 1 follows in about a month</div>
+
+    <ul class="track">
+      <li class="done"><span class="mark">&#10003;</span>
+        <span style="flex:1;"><strong>Aircall account and number</strong>
+          <small>0333 091 3602, issued 28 September.</small></span>
+        <span class="who">Done</span></li>
+      <li class="done"><span class="mark">&#10003;</span>
+        <span style="flex:1;"><strong>Settings on the server</strong>
+          <small>Done today. The Lead Centre can now both read from Aircall and send replies back out through it.</small></span>
+        <span class="who">Done today</span></li>
+      <li class="done"><span class="mark">&#10003;</span>
+        <span style="flex:1;"><strong>Webhook created and live</strong>
+          <small>This is the piece that tells Aircall where to send a call or a text. Calls, voicemail and SMS now have somewhere to land.</small></span>
+        <span class="who">Done today</span></li>
+      <li class="done"><span class="mark">&#10003;</span>
+        <span style="flex:1;"><strong>Protection against the shared account</strong>
+          <small>Your Aircall account also carries three other businesses. Only calls to C1's own number reach your inbox &mdash; built and tested before anything was switched on.</small></span>
+        <span class="who">Done</span></li>
+
+      <li class="now"><span class="mark">&#9679;</span>
+        <span style="flex:1;"><strong>One test call &mdash; ring 0333 091 3602</strong>
+          <small>Ring it from a mobile, let it ring, hang up. Then tell us and we will confirm the lead landed properly and that nothing from the other three businesses came through with it. This is the only thing standing between "connected" and "proven".</small></span>
+        <span class="who">With you</span></li>
+
+      <li><span class="mark" style="color:var(--muted);">&#9675;</span>
+        <span style="flex:1;"><strong>0330 133 9144 forwarded to Aircall</strong>
+          <small>The number on the van starts reaching the inbox. With your current provider, and nothing on the van changes.</small></span>
+        <span class="who">Sam</span></li>
+      <li><span class="mark" style="color:var(--muted);">&#9675;</span>
+        <span style="flex:1;"><strong>0330 moved across properly</strong>
+          <small>About a month. No downtime &mdash; the forwarding covers it.</small></span>
+        <span class="who">~1 month</span></li>
+    </ul>
+  </div>
+
+  <h2 class="section">What the tester found, and what we did</h2>
+  <p class="lede">Two rounds of testing, twenty-six findings between them. All fixed.</p>
+
+  <div class="card">
+    <ul class="plain">
+      <li><strong>The reply box vanished on a laptop.</strong>
+        <small>At common laptop and iPad widths the box you type into had no room left at all &mdash; just a send arrow and nowhere to write. Our fix last week stopped the page scrolling sideways but pushed the squeeze inside the cards, which was worse. Properly fixed now, and checked at every width from 901 to 1440.</small></li>
+      <li><strong>Columns were being hidden with no way to reach them.</strong>
+        <small>On All Leads the Stage and Next Action columns simply disappeared on a narrower screen. They scroll now, so nothing is lost.</small></li>
+      <li><strong>The dashboard was cutting off stages and telling you to scroll when there was nothing to scroll to.</strong>
+        <small>It measures itself now: the hint only appears when something really is out of view.</small></li>
+      <li><strong>The Integrations panel said Aircall was not connected, while it was.</strong>
+        <small>That panel was a box someone had to tick by hand, so it could say anything. It checks the real state now and explains what it found. The same box could have claimed a channel was live when it was carrying nothing, which is the worse way round.</small></li>
+      <li><strong>Dates came in three different styles on one screen.</strong>
+        <small>Everything now reads like "1 Sep 2026". The two deadline counters also counted different kinds of day without saying so; the one that skips weekends now says "working days".</small></li>
+      <li><strong>Buttons too small to hit on a phone.</strong>
+        <small>Several were the right height but too narrow. All of them clear the 44-pixel minimum in both directions now.</small></li>
+      <li><strong>Test data was indistinguishable from real.</strong>
+        <small>Every invented lead carries a TEST label, wherever it appears. This is the one that matters most from here: when your first real enquiry lands, you will know it is real without having to recognise a name.</small></li>
+    </ul>
+    <p style="margin-top:5mm;">Also: the keyboard focus ring on the dashboard, a button in the conversation header that did nothing, a counter that said 11 and opened a page showing 6, and a handful of smaller things.</p>
+  </div>
+
+  <div class="card warn">
+    <h2>One we caught before it bit</h2>
+    <p>Clearing out the old demo data left the Lead Centre empty, which was the point &mdash; so your first real enquiry arrives into a clean inbox. But the app rebuilds its starter data whenever it finds an empty database, and the next routine update would have poured nineteen invented customers straight back in, alongside anything real that had arrived.</p>
+    <p>Found and fixed the same day. Worth telling you because it is the kind of thing that would have been very confusing a week later.</p>
+  </div>
+
+  <h2 class="section">Questions for you</h2>
+  <p class="lede">Five. The first one is the only one holding anything up.</p>
+
+  <div class="two">
+    <div>
+      <span class="ask">Either of you &nbsp;·&nbsp; 30 seconds</span>
+      <h3>Ring 0333 091 3602 <span class="blocks">Last step</span></h3>
+      <p>From a mobile, let it ring, hang up. Then message us. We will confirm the lead landed with the right number and time, and that nothing from the other three businesses on your Aircall account came through with it.</p>
+    </div>
+    <div>
+      <span class="ask">Dan &nbsp;·&nbsp; one introduction</span>
+      <h3>Who looks after the website?</h3>
+      <p>We know what it is built in and have written the instructions. We just need the person. Half an hour at their end and every form fill lands in the Lead Centre within seconds.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:5mm;">
+    <ul class="plain">
+      <li><strong>Sam &mdash; the WhatsApp number, about &pound;45 a month on its own bill.</strong>
+        <small>Yes or no. Asked on the 16th and still open. Nothing is bought until you say, and nothing else waits on it &mdash; if you would rather not, say so plainly and we will drop it rather than keep asking.</small></li>
+      <li><strong>Sam &mdash; call recording is switched off on the new number.</strong>
+        <small>The Lead Centre will show a "play recording" option on calls; with this off there will be nothing to play. It may well be off deliberately, since recording members of the public has rules attached. We just want it to be a decision rather than an oversight.</small></li>
+      <li><strong>Either &mdash; is it deliberate that your Aircall account carries three other businesses?</strong>
+        <small>Alongside C1 there is a clinical line and two site-services firms. Your inbox is protected from them, but anyone with that account's login can see call records for all four and the billing sits together. Not our call to make &mdash; just one you should be making knowingly.</small></li>
+      <li><strong>Either &mdash; the sign-in password is still the default one from our setup notes.</strong>
+        <small>Fine while the app held invented data. Less fine once it holds real customers' names, numbers and addresses. Tell us when you want it changed and to what, or we will pick something and send it over.</small></li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <span class="k">In one line</span>
+    <p>Aircall is connected and the app is in good shape. One phone call proves it, and then C1 has a working lead centre.</p>
+  </div>
+
+  <footer>
+    Written 29 September 2026, after the day's work was deployed and checked on the live system. Supersedes the 28 September page where they differ. The questions from the 16th that are still open are repeated above rather than left on a separate page.
+  </footer>
+
+</div>
+</body>
+</html>
